@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener los checkboxes
-    var check1 = document.getElementById('check_1');
-    var check2 = document.getElementById('check_2');
+    let check1 = document.getElementById('check_1');
+    let check2 = document.getElementById('check_2');
 
     // Obtener el botón de envío
-    var btnRegistro = document.getElementById('btn_registro');
+    let btnRegistro = document.getElementById('btn_registro');
 
     // Agregar un evento de escucha para los checkboxes
     check1.addEventListener('change', toggleSubmitButton);
@@ -14,12 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleSubmitButton() {
         if (check1.checked && check2.checked) {
             btnRegistro.classList.remove('btn_disabled'); // Remover la clase que desactiva el botón
-            btnRegistro.classList.add('inp_sub');
-            btnRegistro.removeAttribute('disabled');
+            btnRegistro.classList.add('inp_sub'); // Agregar la clase del botón
+            btnRegistro.removeAttribute('disabled'); // Remover el atributo que desactiva al botón
         } else {
-            btnRegistro.classList.remove('inp_sub');
+            btnRegistro.classList.remove('inp_sub'); //Remover la clase del botón
             btnRegistro.classList.add('btn_disabled'); // Agregar la clase que desactiva el botón
-            btnRegistro.setAttribute('disabled','disabled');
+            btnRegistro.setAttribute('disabled','disabled'); // Agregar el atributo que bloquea al botón
         }
     }
+    // Habilitar el campo "Profesión/Oficio"
+    let rubro = document.getElementById('rubro');
+    let input_oficio = document.getElementById('oficio')
+
+    // Agregando una escucha para el cambio de select
+    rubro.addEventListener('change', function() {
+        if (rubro.value === 'ninguno') {
+            input_oficio.disabled = true; // Deshabilitar el campo de texto
+            input_oficio.classList.remove('inp_form');
+            input_oficio.classList.add('inp_disabled');
+        }else {
+            input_oficio.disabled = false; // Habilitar el campo de texto
+            input_oficio.classList.remove('inp_disabled');
+            input_oficio.classList.add('inp_form');
+        }
+    })
 });

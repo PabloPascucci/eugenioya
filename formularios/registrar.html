@@ -45,15 +45,15 @@
             <input type="password" name="password" placeholder="Contraseña" required class="inp_form">
             <input type="password" name="password_1" placeholder="Confirma tu Contraseña" required class="inp_form">
             <label for="rubro" class="a_form">Elije una Categoría</label>
-            <select name="rubro" id="" class="inp_form">
-                <option value="ninguno">Ninguno</option>
+            <select name="rubro" id="rubro" class="inp_form">
+                <option value="ninguno" id="ninguno">Ninguno</option>
                 <option value="electricista">Electricista</option>
                 <option value="plomeria">Plomería</option>
                 <option value="Gasista">Gasista</option>
-                <option value="Rep_cel_pc">Reparación de Celulares y PC</option>
+                <option value="celularPc">Reparación de Celulares y PC</option>
                 <option value="fotografo">Fotógrafo</option>
                 <option value="artista">Artista</option>
-                <option value="cons_reforma">Construcción y Reformas</option>
+                <option value="consReforma">Construcción y Reformas</option>
                 <option value="jardin">Jardinería y Paisajismo</option>
                 <option value="hogar">Cuidado del Hogar y Limpieza</option>
                 <option value="eventos">Servicios de Catering y Eventos</option>
@@ -66,7 +66,7 @@
                 <option value="carpintero">Carpintería</option>
                 <option value="mecanico">Reparación de Automóviles y Mecánica</option>
             </select>
-            <input type="text" name="oficio" placeholder="Profesión/Oficio" class="inp_form" autocomplete="off">
+            <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled>
             <article class="art_form">
                 <label for="check" class="p_check">Estoy de acuerdo con la <a href="----" class="a_form">Política de Privacidad</a></label>
             <input type="checkbox" name="check" id="check_1" class="check">

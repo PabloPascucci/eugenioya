@@ -60,6 +60,10 @@
         border-bottom: 2px solid var(--footer_color);
         outline: none;
     }
+
+    .inp_disabled {
+        display: none;
+    }
     
     .inp_sub {
         padding: 5px;
