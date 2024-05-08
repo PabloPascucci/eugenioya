@@ -1,0 +1,30 @@
+/* =======>> Estilo de las categorias <<========= */
+
+/* ==>> Variables <<== */
+:root {
+    --main_color: #007BFF;
+    --title_font: "Poetsen One", sans-serif;
+    --main_font: "Roboto", sans-serif;
+    --font_weight: 500;
+    --font_style: normal;
+    --second_color: #999;
+    --footer_color: #0056b3;
+}
+
+/* ==>> body del indice.html <<== */
+
+ .div2_header_indice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 150px auto;
+    padding: 20px;
+}
+
+.p2_header_indice {
+    font-size: 32px;
+    font-family: var(--title_font);
+    font-weight: 200;
+    text-align: center;
+    width: 1100px;
+}

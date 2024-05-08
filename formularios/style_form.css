@@ -1,0 +1,119 @@
+/* ==>> Variables <<== */
+:root {
+    --main_color: #007BFF;
+    --title_font: "Poetsen One", sans-serif;
+    --main_font: "Roboto", sans-serif;
+    --font_weight: 500;
+    --font_style: normal;
+    --second_color: #999;
+    --footer_color: #0056b3;
+}   
+   
+   /* ==>> Formularios <<== */
+
+    .header_inicio {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .h1_inicio {
+        font-size: 32px;
+        font-family: var(--title_font);
+        font-weight: 200;
+        color: var(--main_color);
+    }
+    
+    .sec_inicio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        margin-top: 100px;
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 2px solid var(--main_color);
+        border-radius: 20px;
+        width: 290px;
+    }
+    
+    .h2_form {
+        font-size: 26px;
+        font-family: var(--main_font);
+        font-weight: var(--font_weight);
+        font-style: var(--font_style);
+        color: var(--second_color);
+        margin-bottom: 30px;
+    }
+    
+    .inp_form {
+        width: 280px;
+        margin: 10px 0;
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid var(--footer_color);
+        outline: none;
+    }
+    
+    .inp_sub {
+        padding: 5px;
+        margin: 5px;
+        border: none;
+        background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn_disabled {
+        background-color: var(--second_color);
+        cursor: not-allowed;
+        color: #fff;
+    }
+
+    .art_form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .p_check {
+        font-size: 13px;
+        font-family: var(--main_font);
+        font-style: var(--font_style);
+        color: var(--main_color);
+    }
+    
+    .a_form {
+        margin: 5px 0 0 0;
+        font-size: 13px;
+        font-family: var(--main_font);
+        font-weight: var(--font_weight);
+        font-style: var(--font_style);
+        color: var(--footer_color);
+        text-decoration: none;
+        transition: all .3s;
+    }
+
+    .a_form_1 {
+        margin: 5px 0 0 5px;
+        font-size: 14px;
+        font-family: var(--main_font);
+        font-weight: var(--font_weight);
+        font-style: var(--font_style);
+        color: var(--footer_color);
+        text-decoration: none;
+        transition: all .3s;
+    }
+    
+    .a_form:hover {
+        font-size: 14px;
+        text-decoration: underline;
+    }
+
+    /* ==>> Responsive <<== */
