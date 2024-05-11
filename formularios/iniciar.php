@@ -52,7 +52,7 @@
             <input type="submit" value="INGRESAR" class="inp_sub">
         </form>
         <a href="registrar.php" class="a_form">Crea una Cuenta</a>
-        <a href="----" class="a_form_1">¿Has olvidado tu contraseña?</a>
+        <a href="----" class="a_form">¿Has olvidado tu contraseña?</a>
     </section>
     
 </body>

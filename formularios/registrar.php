@@ -37,10 +37,14 @@
     </header>
 
     <?php
-        if($_GET) {
-            $wrong = $_GET['wrong'];
-            if ($wrong === '1'){
+        if($_SERVER['REQUEST_METHOD']=$_GET) {
+            if(isset($_GET['wrong'])){
                 echo "<p class='wrong'>Las contraseñas no coinciden</p>";
+            }
+        }
+        if($_SERVER['REQUEST_METHOD']=$_GET){
+            if(isset($_GET['new'])){
+                echo "<p class='wrong'>Debes registrarte</p>";
             }
         }
     ?>
