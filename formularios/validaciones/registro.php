@@ -52,11 +52,21 @@ if ($password === $confirm_password) {
     // Prepara la consulta SQL
     $query = "INSERT INTO usuario (nombre, correo, acceso, salt, categoria, profesion) VALUES ('$nombre', '$correo', '$hashed_password', '$salt', '$categoria', '$profesion')";
 
-    // Ejecutar la consulta
-    if ($conn->query($query) === TRUE) {
-        header("Location: ../inicio.php?success=1&name=$nombre");
-    } else {
-        echo "Error al registrar usuario: " . $conn->error;
+    // ==> Verificar que la cuenta con el correo sea nueva y no repetida <==
+    $query_very = "SELECT * FROM usuario WHERE correo = '$correo'";
+    $resultado = $conn->query($query_very);
+
+    if($resultado->num_rows > 0) {
+        // El usuario con el correo ya existe
+        header("Location: ../iniciar.php?exist=1&correo=$correo");
+    }else {
+        // El usuario es nuevo
+        // Ejecutar la consulta
+        if ($conn->query($query) === TRUE) {
+            header("Location: ../iniciar.php");
+        } else {
+            echo "Error al registrar usuario: " . $conn->error;
+        }
     }
 
     // Cierra la conexión

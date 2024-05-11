@@ -37,12 +37,10 @@
     </header>
 
     <?php
-        if($_GET) {
-            $success = $_GET['success'];
-            $nombre = $_GET['name'];
-            if ($success === '1'){
-                echo "<p class='success'>¡Hola ".$nombre." ahora solo te queda iniciar sesión!</p>";
-            }
+        if($_SERVER['REQUEST_METHOD']=$_GET) {
+            $exist = $_GET['exist'];
+            $correo = $_GET['correo'];
+            echo "<p class='success'>El usuario con el correo ". $correo . " ya existe.";
         }
     ?>
 

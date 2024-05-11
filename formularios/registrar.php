@@ -86,7 +86,7 @@
             </article>
             <input type="submit" value="REGISTRAR" id="btn_registro" class="btn_disabled" class="inp_sub" disabled>
         </form>
-        <a href="inicio.html" class="a_form">Inicia Sesión</a>
+        <a href="iniciar.php" class="a_form">Inicia Sesión</a>
     </section>
     
 </body>
