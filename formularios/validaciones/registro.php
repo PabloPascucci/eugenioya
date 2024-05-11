@@ -14,7 +14,9 @@ if ($password === $confirm_password) {
     $server_user = "root";
     $server_password = "";
     $server_db_name = "eugenioya";
+
     $conn = mysqli_connect($server,$server_user,$server_password,$server_db_name);
+    
     // Verificar la conexión
     if ($conn->connect_error){
         die("Conexión Fallida: " . $conn->connect_error);
@@ -52,7 +54,7 @@ if ($password === $confirm_password) {
 
     // Ejecutar la consulta
     if ($conn->query($query) === TRUE) {
-        echo "Registro exitoso";
+        header("Location: ../inicio.php?success=1&name=$nombre");
     } else {
         echo "Error al registrar usuario: " . $conn->error;
     }
@@ -60,6 +62,6 @@ if ($password === $confirm_password) {
     // Cierra la conexión
     $conn->close();
 } else {
-    echo "Las contraseñas no coinciden";
+    header("Location:../registrar.php?wrong=1");
 }
 ?>

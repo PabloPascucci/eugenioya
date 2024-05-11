@@ -36,6 +36,16 @@
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
+    <?php
+        if($_GET) {
+            $success = $_GET['success'];
+            $nombre = $_GET['name'];
+            if ($success === '1'){
+                echo "<p class='success'>¡Hola ".$nombre." ahora solo te queda iniciar sesión!</p>";
+            }
+        }
+    ?>
+
     <section class="sec_inicio">
         <form action="validaciones/inicio.php" method="post" class="form">
             <h2 class="h2_form">Inicia Sesión</h2>
@@ -43,7 +53,7 @@
             <input type="password" name="password" placeholder="Contraseña" required class="inp_form">
             <input type="submit" value="INGRESAR" class="inp_sub">
         </form>
-        <a href="registrar.html" class="a_form">Crea una Cuenta</a>
+        <a href="registrar.php" class="a_form">Crea una Cuenta</a>
         <a href="----" class="a_form_1">¿Has olvidado tu contraseña?</a>
     </section>
     

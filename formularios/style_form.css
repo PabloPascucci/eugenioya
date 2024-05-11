@@ -24,6 +24,19 @@
         font-weight: 200;
         color: var(--main_color);
     }
+
+    .wrong, .success {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        font-family: monospace;
+        color: #f00;
+    }
+
+    .success {
+        font-weight: 600;
+        color: rgb(0, 159, 0);
+    }
     
     .sec_inicio {
         display: flex;

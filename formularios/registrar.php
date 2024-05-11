@@ -36,6 +36,15 @@
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
+    <?php
+        if($_GET) {
+            $wrong = $_GET['wrong'];
+            if ($wrong === '1'){
+                echo "<p class='wrong'>Las contraseñas no coinciden</p>";
+            }
+        }
+    ?>
+
     <script src="registro.js"></script>
     <section class="sec_inicio">
         <form action="validaciones/registro.php" method="post" class="form">
