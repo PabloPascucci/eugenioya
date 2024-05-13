@@ -36,22 +36,21 @@
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
-    <?php
-        if($_SERVER['REQUEST_METHOD']=$_GET) {
-            if(isset($_GET['wrong'])){
-                echo "<p class='wrong'>Las contraseñas no coinciden</p>";
-            }
-        }
-        if($_SERVER['REQUEST_METHOD']=$_GET){
-            if(isset($_GET['new'])){
-                echo "<p class='wrong'>Debes registrarte</p>";
-            }
-        }
-    ?>
-
     <script src="registro.js"></script>
     <section class="sec_inicio">
         <form action="validaciones/registro.php" method="post" class="form">
+        <?php
+            if($_SERVER['REQUEST_METHOD']=$_GET) {
+                if(isset($_GET['wrong'])){
+                    echo "<p class='wrong'>Las contraseñas no coinciden</p>";
+                }
+            }
+            if($_SERVER['REQUEST_METHOD']=$_GET){
+                if(isset($_GET['new'])){
+                    echo "<p class='wrong'>Debes registrarte</p>";
+                }
+            }
+        ?>
             <h2 class="h2_form">Crea una Cuenta</h2>
             <input type="text" name="nombre" placeholder="Nombre" required class="inp_form" autocomplete="off">
             <input type="email" name="correo" placeholder="Correo Electrónico" required class="inp_form" autocomplete="off">

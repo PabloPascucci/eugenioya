@@ -16,7 +16,7 @@
 
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="style_form.css">
+    <link rel="stylesheet" href="">
     <link rel="shortcout icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,42 +27,9 @@
     
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-    <title>Inicia Sesión</title>
+    <title>perfil privado</title>
 </head>
 <body>
-
-    <header class="header_inicio">
-        <img src="" alt="">
-        <h1 class="h1_inicio">EugenioYa</h1>
-    </header>
-
-    <section class="sec_inicio">
-        <?php
-            if($_SERVER['REQUEST_METHOD']=$_GET) {
-                $exist = isset($_GET['exist']) ? $_GET['exist'] : '';
-                $correo = isset($_GET['correo']) ? $_GET['correo'] : '';
-                $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-                $wrong = isset($_GET['wrong']) ? $_GET['wrong'] : '';
-                if($exist === '1'){
-                    echo "<p class='success'>El usuario con el correo ". $correo . " ya existe.";
-                }
-                if($exist === '2'){
-                    echo "<p class='success'>Hola " . $nombre . " Bienvenido a Eugenioya, solo te queda iniciar sesión.";
-                }
-                if($wrong === '1'){
-                    echo "<p class='wrong'>La contraseña es incorrecta";
-                }
-            }
-        ?>
-        <form action="validaciones/inicio.php" method="post" class="form">
-            <h2 class="h2_form">Inicia Sesión</h2>
-            <input type="email" name="correo" placeholder="Correo Electrónico" required class="inp_form" autocomplete="off">
-            <input type="password" name="password" placeholder="Contraseña" required class="inp_form">
-            <input type="submit" value="INGRESAR" class="inp_sub">
-        </form>
-        <a href="registrar.php" class="a_form">Crea una Cuenta</a>
-        <a href="----" class="a_form">¿Has olvidado tu contraseña?</a>
-    </section>
     
 </body>
 </html>

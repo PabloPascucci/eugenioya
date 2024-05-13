@@ -5,7 +5,7 @@ $correo = $_POST['correo'];
 $password = $_POST['password'];
 $confirm_password = $_POST['password_1'];
 $categoria = $_POST['rubro'];
-$profesion = $_POST['oficio'];
+$profesion = isset($_POST['oficio']) ? $_POST['oficio'] : 'usuario';
 
 // Validar que la contraseña sea similar
 if ($password === $confirm_password) {
@@ -22,25 +22,7 @@ if ($password === $confirm_password) {
         die("Conexión Fallida: " . $conn->connect_error);
     }
 
-    // Cifrar la contraseña con hash y salt
-    function hash_password($password) {
-        // Generar un salt aleatorio
-        $salt = random_bytes(16);
-
-        // Aplicar un hash a la contraseña combinada con el salt
-        $hashed_password = hash('sha256', $password . $salt);
-
-        // Devolver el hash y el salt como array asociativo
-        return array(
-            'hashed_password' => $hashed_password,
-            'salt' => $salt
-        );
-    }
-
-    // Obtener el hash y el salt de la contraseña
-    $hashed_data = hash_password($password);
-    $hashed_password = $hashed_data['hashed_password'];
-    $salt = $hashed_data['salt'];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     // Procesar los datos
     // Utiliza la función mysqli_real_escape_string para evitar la inyección de SQL
@@ -50,7 +32,7 @@ if ($password === $confirm_password) {
     $profesion = mysqli_real_escape_string($conn, $profesion);
 
     // Prepara la consulta SQL
-    $query = "INSERT INTO usuario (nombre, correo, acceso, salt, categoria, profesion) VALUES ('$nombre', '$correo', '$hashed_password', '$salt', '$categoria', '$profesion')";
+    $query = "INSERT INTO usuario (nombre, correo, acceso, categoria, profesion) VALUES ('$nombre', '$correo', '$hashed_password', '$categoria', '$profesion')";
 
     // ==> Verificar que la cuenta con el correo sea nueva y no repetida <==
     $query_very = "SELECT * FROM usuario WHERE correo = '$correo'";
@@ -63,7 +45,7 @@ if ($password === $confirm_password) {
         // El usuario es nuevo
         // Ejecutar la consulta
         if ($conn->query($query) === TRUE) {
-            header("Location: ../iniciar.php");
+            header("Location: ../iniciar.php?exist=2&nombre=$nombre");
         } else {
             echo "Error al registrar usuario: " . $conn->error;
         }

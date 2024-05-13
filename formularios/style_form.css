@@ -27,7 +27,7 @@
 
     .wrong, .success {
         text-align: center;
-        margin-top: 20px;
+        margin-bottom: 10px;
         font-size: 16px;
         font-family: monospace;
         color: #f00;
@@ -35,8 +35,7 @@
 
     .success {
         font-weight: 600;
-        color: #0f0;
-        background: var(--second_color);
+        color: var(--main_color);
         border: solid 2px var(--footer_color);
     }
     
