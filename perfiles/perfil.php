@@ -1,3 +1,35 @@
+    <?php
+        // Iniciamos Sesión
+        session_start();
+
+        // Traemos a través de session el id del usuario.
+        $user_id = $_SESSION['user_loged_id'];
+        // Conexión con la BD
+        $server = "localhost";
+        $server_user_name = "root";
+        $server_password = "";
+        $data_base_name = "eugenioya";
+
+        $conn = mysqli_connect($server,$server_user_name,$server_password,$data_base_name);
+        
+        // Recuperando datos relacionados al usuario que inicio sesión
+        $query_data = "SELECT * from usuario WHERE id_usuario = '$user_id'";
+        $resultado_data = mysqli_query($conn,$query_data);
+
+        if($resultado_data->num_rows == 1){
+            $row = mysqli_fetch_assoc($resultado_data);
+            $user_name = $row['nombre'];
+            $user_category = $row['categoria'];
+            $user_profession = $row['profesion'];
+            $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "";
+            $user_area = isset($row['barrio']) ? $row['barrio'] : "";
+            $hours = isset($row['horas']) ? $row['horas'] : "";
+        }
+        if(!$_SESSION){
+            header("Location: ../formularios/iniciar.php");
+        }
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +59,29 @@
     
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-    <title>perfil privado</title>
+    <title><?php echo $user_name; ?></title>
 </head>
 <body>
+
+    <p>Bienvenido tus datos de usuario son:</p>
+    <?php
+        echo "----> ID: " . $user_id;
+        echo "<br>";
+        echo "----> Nombre: " . $user_name;
+        echo "<br>";
+        echo "----> Categoría: " . $user_category;
+        echo "<br>";
+        echo "----> Profesión: " . $user_profession;
+        echo "<br>";
+        echo "----> Sobre mi: " . $about_user;
+        echo "<br>";
+        echo "----> Barrio: " . $user_area;
+        echo "<br>";
+        echo "----> 24 Horas: " . $hours;
+        echo "<br><br>";
+    ?>
+    <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
+    
     
 </body>
 </html>

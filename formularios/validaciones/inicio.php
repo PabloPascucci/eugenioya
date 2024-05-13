@@ -1,4 +1,5 @@
 <?php
+session_start();
 // recibimos los datos del formulario de inicio de sesión
 $correo = $_POST['correo'];
 $password = $_POST['password'];
@@ -26,7 +27,15 @@ if ($resultado->num_rows > 0) {
         // Verificación si la contraseña introducida coincide con el hash almacenado
         if (password_verify($password, $hashed_password_db)) {
             // La contraseña es correcta, iniciar sesión
-            echo "Inicio de sesión exitoso";
+            $sql_pre_sesion = "SELECT id_usuario FROM usuario WHERE correo = '$correo'";
+            $result_id = mysqli_query($conn,$sql_pre_sesion);
+
+            if($result_id->num_rows == 1) {
+                $row_id = mysqli_fetch_assoc($result_id);
+                $id_usuario = $row_id['id_usuario'];
+                $_SESSION['user_loged_id'] = $id_usuario;
+            }
+            header("Location: ../../perfiles/perfil.php");
         } else {
             // La contraseña es incorrecta
             header("Location: ../iniciar.php?wrong=1");
@@ -35,6 +44,14 @@ if ($resultado->num_rows > 0) {
     }
 } else {
     // El usuario es nuevo
+    if($_SERVER['REQUEST_METHOD']=$_GET) {
+        $session = isset($_GET['session']) ? $_GET['session'] : '';
+        if($session == '1'){
+            session_destroy();
+            header("Location: ../../index.html");
+            exit; // Detener la ejecución del script después de la redirección
+        }
+    }
     header("Location: ../registrar.php?new=1");
     exit; // Detener la ejecución del script después de la redirección
 }

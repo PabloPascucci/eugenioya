@@ -30,8 +30,9 @@
     <title>Inicia Sesión</title>
 </head>
 <body>
-
-    <header class="header_inicio">
+<?php session_start();
+    if(!$_SESSION){?>
+        <header class="header_inicio">
         <img src="" alt="">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
@@ -62,7 +63,13 @@
         </form>
         <a href="registrar.php" class="a_form">Crea una Cuenta</a>
         <a href="----" class="a_form">¿Has olvidado tu contraseña?</a>
-    </section>
+    </section><?php
+    }else{
+        header("Location: ../perfiles/perfil.php");
+    }
+?>
+
+    
     
 </body>
 </html>
