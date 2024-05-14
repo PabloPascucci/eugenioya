@@ -21,9 +21,9 @@
             $user_name = $row['nombre'];
             $user_category = $row['categoria'];
             $user_profession = $row['profesion'];
-            $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "";
-            $user_area = isset($row['barrio']) ? $row['barrio'] : "";
-            $hours = isset($row['horas']) ? $row['horas'] : "";
+            $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "Agrega una presentación a tu perfil.";
+            $user_area = isset($row['barrio']) ? $row['barrio'] : "Configura tu barrio";
+            $hours = isset($row['horas']) ? $row['horas'] : "¿Trabajas las 24hs?";
         }
         if(!$_SESSION){
             header("Location: ../formularios/iniciar.php");
@@ -44,11 +44,11 @@
     <meta name="description" content="EugenioYa.com, tu puente directo a un mundo de servicios. Encuentra todo lo que necesitas en un solo lugar.">
     <meta name="author" content="DpDesarrollos">
     <meta name="copyright" content="EugenioYa">
-    <meta name="robots" content="index,all,follow">
+    <meta name="robots" content="noindex,follow">
 
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style_perfil.css">
     <link rel="shortcout icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,23 +63,37 @@
 </head>
 <body>
 
-    <p>Bienvenido tus datos de usuario son:</p>
-    <?php
-        echo "----> ID: " . $user_id;
-        echo "<br>";
-        echo "----> Nombre: " . $user_name;
-        echo "<br>";
-        echo "----> Categoría: " . $user_category;
-        echo "<br>";
-        echo "----> Profesión: " . $user_profession;
-        echo "<br>";
-        echo "----> Sobre mi: " . $about_user;
-        echo "<br>";
-        echo "----> Barrio: " . $user_area;
-        echo "<br>";
-        echo "----> 24 Horas: " . $hours;
-        echo "<br><br>";
-    ?>
+    <div class="div_nav">
+        <nav class="nav">
+            <input type="checkbox" name="check" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+            <ul class="barr_nav">
+                <!-- <img src="" title="Nombre" class="logo"> -->
+                <a href="index.html" class="a_nav">Chat</a>
+                <a href="index.html" class="a_nav">Subir Foto</a>
+                <a href="index.html" class="a_nav">Editar Perfil</a>
+                <a href="categorias/indice.html" class="a_nav">Bolsa de Trabajo</a>
+            </ul>
+        </nav>
+    </div>
+
+    <header class="header_perfil">
+        <img src="../imagenes/user_icon.png" alt="" class="img_perfil">
+        <article class="art_perfil">
+            <p class="user_name"><?php echo $user_name ?></p>
+            <p class="user_category"><?php echo $user_category ?></p>
+            <!-- Aca va la matricula con condicional -->
+            <p class="user_category"><?php echo $user_profession ?></p>
+            <div class="div_perfil">
+                <p class="user_area"><?php echo $user_area ?></p>
+                <p class="hours"><?php echo $hours ?></p>
+            </div>
+            <p class="about_user"><?php echo $about_user ?></p>
+        </article>
+    </header>
+    
     <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
     
     
