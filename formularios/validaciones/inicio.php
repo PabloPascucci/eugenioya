@@ -43,7 +43,7 @@ if ($resultado->num_rows > 0) {
         }
     }
 } else {
-    // El usuario es nuevo
+    // El usuario no inicio o cerro la sesión
     if($_SERVER['REQUEST_METHOD']=$_GET) {
         $session = isset($_GET['session']) ? $_GET['session'] : '';
         if($session == '1'){
@@ -52,6 +52,7 @@ if ($resultado->num_rows > 0) {
             exit; // Detener la ejecución del script después de la redirección
         }
     }
+    // El usuario es nuevo
     header("Location: ../registrar.php?new=1");
     exit; // Detener la ejecución del script después de la redirección
 }

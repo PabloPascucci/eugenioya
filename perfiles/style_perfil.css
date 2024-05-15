@@ -101,7 +101,7 @@
 }
 
 .img_perfil {
-    width: 300px;
+    width: 250px;
     border-radius: 50%;
     margin-right: 30px;
 }
@@ -162,4 +162,50 @@
     font-weight: var(--font_weight);
     font-style: var(--font_style);
     margin: 15px;
+}
+
+    /* ==>> Configuraciones.php <<== */
+
+.art_perfil_configuracion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.inp , .inp_about {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--main_color);
+    padding: 2px;
+    margin: 5px 0;
+    width: 290px;
+    resize: none;
+}
+
+.inp::placeholder {
+    color: var(--main_color);
+}
+
+.inp_about::placeholder {
+    color: var(--main_color);
+}
+
+.label {
+    font-size: 14px;
+    font-family: var(--main_font);
+    font-style: var(--font_style);
+    margin-top: 5px;
+}
+
+.inp_sub {
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    color: #fff;
+    cursor: pointer;
+    margin: 5px auto;
 }

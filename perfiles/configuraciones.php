@@ -1,4 +1,4 @@
-    <?php
+<?php
         // Iniciamos Sesión
         session_start();
 
@@ -72,25 +72,48 @@
                 </label>
             <ul class="barr_nav">
                 <!-- <img src="" title="Nombre" class="logo"> -->
-                <a href="" class="a_nav">Chat</a>
-                <a href="----" class="a_nav">Publicar Trabajo</a>
-                <a href="configuraciones.php" class="a_nav">Editar Perfil</a>
-                <a href="----" class="a_nav">Bolsa de Trabajo</a>
+                <a href="perfil.php" class="a_nav">Volver</a>
             </ul>
         </nav>
     </div>
 
     <header class="header_perfil">
-        <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
-        <article class="art_perfil">
-            <p class="user_name"><?php echo $user_name ?></p>
-            <!-- Aca va la matricula con condicional -->
-            <p class="user_category"><?php echo $user_profession ?></p>
-            <div class="div_perfil">
-                <p class="user_area"><?php echo $user_area ?></p>
-                <p class="hours"><?php echo $hours ?></p>
-            </div>
-            <p class="about_user"><?php echo $about_user ?></p>
+        <form action="procesar_imagen.php" enctype="multipart/form-data" method="post" class="art_perfil_configuracion">
+            <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
+            <input type="file" name="foto_perfil">
+            <input type="submit" value="Actualizar Foto" class="inp_sub">
+        </form>
+        <article class="art_perfil_configuracion">
+            <p class="user_category"><?php echo $user_name ?></p>
+            <form action="configuraciones.php" method="post" class="art_perfil_configuracion">
+                <input type="text" name="profesion" placeholder="<?php echo $user_profession ?>" class="inp" autocomplete="off">
+                <label for="barrio" class="label">Elije tu zona</label>
+                <select name="barrio" class="inp">
+                    <option value="ninguno" id="ninguno">Ninguna</option>
+                    <option value="Zona Centro">Zona Centro</option>
+                    <option value="Cordones del Chapelco">Cordones del Chapelco</option>
+                    <option value="Vega Maipú">Vega Maipú</option>
+                    <option value="Rucha Hue">Rucha Hue</option>
+                    <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
+                    <option value="Villa Vega San Martín">Villa Vega San Martín</option>
+                    <option value="Altos del Cahpelco">Altos del Cahpelco</option>
+                    <option value="Lolog">Lolog</option>
+                    <option value="Rincón Radales">Rincón Radales</option>
+                    <option value="Alihuen Alto">Alihuen Alto</option>
+                    <option value="Alihuen">Alihuen</option>
+                    <option value="Villa Paur">Villa Paur</option>
+                    <option value="Kantec">Kantec</option>
+                    <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
+                    <option value="El Arenal">El Arenal</option>
+                    <option value="Los Radales">Los Radales</option>
+                    <option value="Intercultural">Intercultural</option>
+                    <option value="Buenos Aires Chico">Buenos Aires Chico</option>
+                </select>
+                <label for="horas" class="label">¿Estas disponible las 24 Horas?</label>
+                <input type="checkbox" name="horas" class="inp">
+                <textarea name="sobre_mi" placeholder="<?php echo $about_user ?>" class="inp_about" autocomplete="off"></textarea>
+                <input type="submit" value="Guardar Cambios" class="inp_sub">
+            </form>
         </article>
     </header>
     
