@@ -11,49 +11,66 @@ if(isset($_FILES['foto_perfil'])) {
     $archivo_tamaño = $_FILES['foto_perfil']['size'];
 
     // Modificar el nombre del archivo con el $user_id
-    $nuevo_nombre = $user_id . "_" . $archivo_nombre;
+    $nuevo_nombre = "perfil_" . $user_id . "_" . $archivo_nombre;
 
-    // Mover el archivo a la carpeta de destino con el nuevo nombre
-    $ruta_destino = "foto_perfil/" . $nuevo_nombre;
+    // Definir la carpeta del usuario
+    $user_folder = __DIR__ . "/imagenes/$user_id";
+    
+    // Crear la carpeta para el usuario si no existe
+    if (!file_exists($user_folder)) {
+        mkdir($user_folder, 0777, true);
+    }
+
+    // Definir la ubicación de destino
+    $ruta_destino = $user_folder . "/" . $nuevo_nombre;
 
     // Verificar si es una imagen
     $permitidos = array("image/jpeg", "image/jpg", "image/png");
     if(in_array($archivo_tipo, $permitidos)) {
-        // Procesar la imagen
-        $ruta = "foto_perfil/" . $archivo_nombre; // Definir la ubicación de destino
-        move_uploaded_file($archivo_temporal, $ruta); // Mover la imagen a la carpeta destino
-
         // Conexión con la BD
         $server = "localhost";
         $server_user_name = "root";
         $server_password = "";
         $data_base_name = "eugenioya";
 
-        $conn = mysqli_connect($server,$server_user_name,$server_password,$data_base_name);
+        $conn = mysqli_connect($server, $server_user_name, $server_password, $data_base_name);
 
-        // Verificar que la cuenta con el correo exista dentro de la base de datos
-        $query_very = "SELECT foto_perfil FROM usuario WHERE id_usuario = '$user_id'";
-        $resultado = mysqli_query($conn, $query_very);
+        if ($conn) {
+            // Verificar si el usuario ya tiene una foto de perfil
+            $query_verificar = "SELECT foto_perfil FROM usuario WHERE id_usuario = '$user_id'";
+            $resultado_verificar = mysqli_query($conn, $query_verificar);
 
-        if ($resultado->num_rows > 0) {
-            // El usuario existe en la BD, por ende verificaremos las credenciales de acceso
-            $sql = "SELECT foto_perfil from usuario WHERE id_usuario = '$user_id'";
-            $resultado_foto = mysqli_query($conn, $sql);
+            if ($resultado_verificar->num_rows > 0) {
+                // El usuario ya tiene una foto de perfil, obtener la ruta anterior
+                $row = mysqli_fetch_assoc($resultado_verificar);
+                $ruta_anterior = __DIR__ . "/" . $row['foto_perfil'];
 
-            if ($resultado_foto->num_rows == 1) {
-                $query_update = "UPDATE usuario SET foto_perfil = '$ruta'";
-                $resultado_update = mysqli_query($conn,$query_update);
-                move_uploaded_file($archivo_temporal, $ruta_destino);
-                header("Location: configuraciones.php");
-            }else {
-                $query_insert = "INSERT INTO usuario (foto_perfil) VALUE ('$ruta')";
-                $sql_insert = mysqli_query($conn,$query_insert);
-                move_uploaded_file($archivo_temporal, $ruta_destino);
-                header("Location: configuraciones.php");
+                // Eliminar la imagen anterior si existe
+                if (file_exists($ruta_anterior)) {
+                    unlink($ruta_anterior);
+                }
+
+                // Actualizar la ruta en la base de datos
+                $query_update = "UPDATE usuario SET foto_perfil = 'imagenes/$user_id/$nuevo_nombre' WHERE id_usuario = '$user_id'";
+                mysqli_query($conn, $query_update);
+            } else {
+                $query_insert = "INSERT INTO usuario (id_usuario, foto_perfil) VALUES ('$user_id', 'imagenes/$user_id/$nuevo_nombre')";
+                mysqli_query($conn, $query_insert);
             }
+
+            // Mover el nuevo archivo a la carpeta de destino
+            if (move_uploaded_file($archivo_temporal, $ruta_destino)) {
+                // Redireccionar a la página de configuraciones
+                header("Location: configuraciones.php");
+                exit(); // Terminar el script después de la redirección
+            } else {
+                echo "Error al mover el archivo.";
+            }
+        } else {
+            echo "Error al conectar con la base de datos.";
         }
-    }else {
-        echo "Formato de imagen no válido. Por favor, sube una imagen JPEG, JPG o PNG.";
+    } else {
+        header("Location: configuraciones.php");
     }
 } else {
     echo "No se ha seleccionado ninguna imagen.";

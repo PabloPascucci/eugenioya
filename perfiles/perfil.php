@@ -73,7 +73,7 @@
             <ul class="barr_nav">
                 <!-- <img src="" title="Nombre" class="logo"> -->
                 <a href="" class="a_nav">Chat</a>
-                <a href="----" class="a_nav">Publicar Trabajo</a>
+                <a href="----" class="a_nav">Añadir Experiencia</a>
                 <a href="configuraciones.php" class="a_nav">Editar Perfil</a>
                 <a href="----" class="a_nav">Bolsa de Trabajo</a>
             </ul>
@@ -88,7 +88,13 @@
             <p class="user_category"><?php echo $user_profession ?></p>
             <div class="div_perfil">
                 <p class="user_area"><?php echo $user_area ?></p>
-                <p class="hours"><?php echo $hours ?></p>
+                <?php
+                    if($hours == '0') {
+                        echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
+                    } else {
+                        echo "<p class='hours'>24 hs</p>";
+                    }
+                ?>
             </div>
             <p class="about_user"><?php echo $about_user ?></p>
         </article>

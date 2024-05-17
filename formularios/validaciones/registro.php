@@ -43,7 +43,7 @@ if ($password === $confirm_password) {
         header("Location: ../iniciar.php?exist=1&correo=$correo");
     }else {
         // El usuario es nuevo
-        // Ejecutar la consulta
+        // Ejecutar la consulta y crear carpeta de imagenes
         if ($conn->query($query) === TRUE) {
             header("Location: ../iniciar.php?exist=2&nombre=$nombre");
         } else {
