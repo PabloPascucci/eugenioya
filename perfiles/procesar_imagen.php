@@ -11,7 +11,7 @@ if(isset($_FILES['foto_perfil'])) {
     $archivo_tamaño = $_FILES['foto_perfil']['size'];
 
     // Modificar el nombre del archivo con el $user_id
-    $nuevo_nombre = "perfil_" . $user_id . "_" . $archivo_nombre;
+    $nuevo_nombre = "perfil_de_usuario_" . $user_id . "_" . $archivo_nombre;
 
     // Definir la carpeta del usuario
     $user_folder = __DIR__ . "/imagenes/$user_id";
@@ -61,7 +61,7 @@ if(isset($_FILES['foto_perfil'])) {
             // Mover el nuevo archivo a la carpeta de destino
             if (move_uploaded_file($archivo_temporal, $ruta_destino)) {
                 // Redireccionar a la página de configuraciones
-                header("Location: configuraciones.php");
+                header("Location: perfil.php");
                 exit(); // Terminar el script después de la redirección
             } else {
                 echo "Error al mover el archivo.";

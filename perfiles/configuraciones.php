@@ -102,45 +102,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </nav>
     </div>
 
-    <header class="header_perfil">
-        <form action="procesar_imagen.php" enctype="multipart/form-data" method="post" class="art_perfil_configuracion">
-            <img src="<?php echo htmlspecialchars($user_photo); ?>" alt="" class="img_perfil">
-            <input type="file" name="foto_perfil">
-            <input type="submit" value="Actualizar Foto" class="inp_sub">
-        </form>
-        <article class="art_perfil_configuracion">
-            <p class="user_category"><?php echo htmlspecialchars($user_name); ?></p>
-            <form action="configuraciones.php" method="post" class="art_perfil_configuracion">
-                <input type="text" name="profesion" placeholder="<?php echo htmlspecialchars($user_profession); ?>" class="inp" autocomplete="off">
-                <label for="barrio" class="label">Elije tu zona</label>
-                <select name="barrio" class="inp">
-                    <option value="<?php echo $user_area ?>" id="ninguno"><?php echo $user_area ?></option>
-                    <option value="Zona Centro">Zona Centro</option>
-                    <option value="Cordones del Chapelco">Cordones del Chapelco</option>
-                    <option value="Vega Maipú">Vega Maipú</option>
-                    <option value="Rucha Hue">Rucha Hue</option>
-                    <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
-                    <option value="Villa Vega San Martín">Villa Vega San Martín</option>
-                    <option value="Altos del Cahpelco">Altos del Cahpelco</option>
-                    <option value="Lolog">Lolog</option>
-                    <option value="Rincón Radales">Rincón Radales</option>
-                    <option value="Alihuen Alto">Alihuen Alto</option>
-                    <option value="Alihuen">Alihuen</option>
-                    <option value="Villa Paur">Villa Paur</option>
-                    <option value="Kantec">Kantec</option>
-                    <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
-                    <option value="El Arenal">El Arenal</option>
-                    <option value="Los Radales">Los Radales</option>
-                    <option value="Intercultural">Intercultural</option>
-                    <option value="Buenos Aires Chico">Buenos Aires Chico</option>
-                </select>
-                <label for="horas" class="label">¿Estas disponible las 24 Horas?</label>
-                <input type="checkbox" name="horas" class="inp" <?php echo $hours ? 'checked' : ''; ?>>
-                <textarea name="sobre_mi" placeholder="<?php echo htmlspecialchars($about_user); ?>" class="inp_about" autocomplete="off"></textarea>
-                <input type="submit" value="Guardar Cambios" class="inp_sub">
-            </form>
-        </article>
-    </header>
+<?php
+    if($_SERVER['REQUEST_METHOD']=$_GET) {
+        $edicion = isset($_GET['edicion']) ? $_GET['edicion'] : '';
+        if($edicion === '1'){ ?>
+           <header class="header_perfil">
+           <form action="procesar_imagen.php" enctype="multipart/form-data" method="post" class="art_perfil_configuracion">
+               <img src="<?php echo htmlspecialchars($user_photo); ?>" alt="" class="img_perfil">
+               <input type="file" name="foto_perfil">
+               <input type="submit" value="Actualizar Foto" class="inp_sub">
+           </form>
+           <article class="art_perfil_configuracion">
+               <p class="user_category"><?php echo htmlspecialchars($user_name); ?></p>
+               <form action="configuraciones.php" method="post" class="art_perfil_configuracion">
+                   <input type="text" name="profesion" placeholder="<?php echo htmlspecialchars($user_profession); ?>" class="inp" autocomplete="off">
+                   <label for="barrio" class="label">Elije tu zona</label>
+                   <select name="barrio" class="inp">
+                       <option value="<?php echo $user_area ?>" id="ninguno"><?php echo $user_area ?></option>
+                       <option value="Zona Centro">Zona Centro</option>
+                       <option value="Cordones del Chapelco">Cordones del Chapelco</option>
+                       <option value="Vega Maipú">Vega Maipú</option>
+                       <option value="Rucha Hue">Rucha Hue</option>
+                       <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
+                       <option value="Villa Vega San Martín">Villa Vega San Martín</option>
+                       <option value="Altos del Cahpelco">Altos del Cahpelco</option>
+                       <option value="Lolog">Lolog</option>
+                       <option value="Rincón Radales">Rincón Radales</option>
+                       <option value="Alihuen Alto">Alihuen Alto</option>
+                       <option value="Alihuen">Alihuen</option>
+                       <option value="Villa Paur">Villa Paur</option>
+                       <option value="Kantec">Kantec</option>
+                       <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
+                       <option value="El Arenal">El Arenal</option>
+                       <option value="Los Radales">Los Radales</option>
+                       <option value="Intercultural">Intercultural</option>
+                       <option value="Buenos Aires Chico">Buenos Aires Chico</option>
+                   </select>
+                   <label for="horas" class="label">¿Estas disponible las 24 Horas?</label>
+                   <input type="checkbox" name="horas" class="inp" <?php echo $hours ? "checked" : ''; ?>>
+                   <textarea name="sobre_mi" placeholder="<?php echo htmlspecialchars($about_user); ?>" class="inp_about" autocomplete="off"></textarea>
+                   <input type="submit" value="Guardar Cambios" class="inp_sub">
+               </form>
+           </article>
+       </header>
+       <?php }
+            if($edicion === '2'){ ?>
+                <form action="procesar_publicacion.php" method="post" enctype="multipart/form-data">
+                    <h1>Agrega una publicación de tu trabajo</h1>
+                    <input type="text" name="nombre" placeholder="Titulo del Proyecto" class="inp" autocomplete="off" required>
+                    <input type="file" name="foto" required>
+                    <textarea name="descripcion" placeholder="Describe tu Proyecto" class="inp_about" autocomplete="off" required></textarea>
+                    <input type="submit" value="Publicar Proyecto">
+                </form>
+            <?php }
+    }
+    ?>
+
+    
     
     <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
 </body>

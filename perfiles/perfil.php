@@ -73,8 +73,8 @@
             <ul class="barr_nav">
                 <!-- <img src="" title="Nombre" class="logo"> -->
                 <a href="" class="a_nav">Chat</a>
-                <a href="----" class="a_nav">Añadir Experiencia</a>
-                <a href="configuraciones.php" class="a_nav">Editar Perfil</a>
+                <a href="configuraciones.php?edicion=2" class="a_nav">Añadir Experiencia</a>
+                <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
                 <a href="----" class="a_nav">Bolsa de Trabajo</a>
             </ul>
         </nav>
@@ -99,6 +99,37 @@
             <p class="about_user"><?php echo $about_user ?></p>
         </article>
     </header>
+
+    <section>
+    <?php
+    // Extraer los datos de las publicaciones
+    $sql_publicaciones = "SELECT * FROM publicacion WHERE id_usuario = '$user_id'";
+    $query_publicaciones = mysqli_query($conn, $sql_publicaciones);
+
+    if ($query_publicaciones->num_rows > 0) {
+        while ($row = mysqli_fetch_array($query_publicaciones)) { 
+            $nombre = $row['nombre_proyecto'];
+            $carpeta = $row['id_usuario'];
+            $nombre_imagen = $row['foto_proyecto'];
+            $ruta = $carpeta . "/" . $nombre_imagen;
+            $descripcion = $row['descripcion_proyecto'];
+            $fecha = $row['fecha_subida'];?>
+                <article>
+                    <div>
+                        <h5><?php echo $nombre ?></h5>
+                    </div>
+                    <div>
+                        <img src="imagenes/<?php echo $ruta ?>" alt="Imagen del proyecto">
+                        <p><?php echo $descripcion ?></p>
+                        <p><?php echo $fecha ?></p>
+                    </div>
+                </article>
+            <?php
+            }
+        }
+        mysqli_free_result($query_publicaciones);
+    ?>
+    </section>
     
     <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
     
