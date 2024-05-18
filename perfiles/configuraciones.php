@@ -147,12 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        </header>
        <?php }
             if($edicion === '2'){ ?>
-                <form action="procesar_publicacion.php" method="post" enctype="multipart/form-data">
-                    <h1>Agrega una publicación de tu trabajo</h1>
+                <form action="procesar_publicacion.php" method="post" enctype="multipart/form-data" class="form_publicacion">
+                    <h1 class="h1_form">Agrega una publicación de tu trabajo</h1>
                     <input type="text" name="nombre" placeholder="Titulo del Proyecto" class="inp" autocomplete="off" required>
-                    <input type="file" name="foto" required>
+                    <input type="file" name="foto" required class="inp">
                     <textarea name="descripcion" placeholder="Describe tu Proyecto" class="inp_about" autocomplete="off" required></textarea>
-                    <input type="submit" value="Publicar Proyecto">
+                    <input type="submit" value="Publicar Proyecto" class="inp_sub">
                 </form>
             <?php }
     }

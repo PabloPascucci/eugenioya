@@ -82,25 +82,25 @@
 
     <header class="header_perfil">
         <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
-        <article class="art_perfil">
+        <div class="div_perfil">
             <p class="user_name"><?php echo $user_name ?></p>
             <!-- Aca va la matricula con condicional -->
             <p class="user_category"><?php echo $user_profession ?></p>
-            <div class="div_perfil">
-                <p class="user_area"><?php echo $user_area ?></p>
-                <?php
-                    if($hours == '0') {
-                        echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
-                    } else {
-                        echo "<p class='hours'>24 hs</p>";
-                    }
-                ?>
+            <p class="user_area"><?php echo $user_area ?></p>
+            <?php
+                if($hours == '0') {
+                    echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
+                } else {
+                    echo "<p class='hours'>24 hs</p>";
+                }
+            ?>
             </div>
-            <p class="about_user"><?php echo $about_user ?></p>
-        </article>
     </header>
+    <article class="art_perfil">
+        <p class="about_user"><?php echo $about_user ?></p>
+    </article>
 
-    <section>
+    <section class="sec_publicaciones">
     <?php
     // Extraer los datos de las publicaciones
     $sql_publicaciones = "SELECT * FROM publicacion WHERE id_usuario = '$user_id'";
@@ -114,14 +114,14 @@
             $ruta = $carpeta . "/" . $nombre_imagen;
             $descripcion = $row['descripcion_proyecto'];
             $fecha = $row['fecha_subida'];?>
-                <article>
-                    <div>
-                        <h5><?php echo $nombre ?></h5>
+                <article class="art_publicaciones">
+                    <div class="div_titulo">
+                        <h5 class="h_titulo"><?php echo $nombre ?></h5>
                     </div>
-                    <div>
-                        <img src="imagenes/<?php echo $ruta ?>" alt="Imagen del proyecto">
-                        <p><?php echo $descripcion ?></p>
-                        <p><?php echo $fecha ?></p>
+                    <div class="div_info">
+                        <img src="imagenes/<?php echo $ruta ?>" alt="<?php echo $nombre ?>" title="<?php echo $nombre ?>" class="img_publicacion">
+                        <p class="des_publicacion"><?php echo $descripcion ?></p>
+                        <p class="fecha"><?php echo $fecha ?></p>
                     </div>
                 </article>
             <?php
