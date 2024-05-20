@@ -286,3 +286,16 @@
     font-weight: 400;
     color: var(--footer_color);
 }
+
+    /* ==>> Perfiles públicos <<== */
+
+.mensaje_btn {
+    font-size: 18px;
+    font-family: var(--title_font);
+    font-weight: 400;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 20px;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    color: #fff;
+}

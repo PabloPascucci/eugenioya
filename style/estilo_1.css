@@ -348,6 +348,9 @@
     #check:checked ~ ul {
         left: 0;
     }
+    #check:checked ~ .p_categoria_definida {
+        display: none;
+    }
     .logo {
         display: inline-block;
     }

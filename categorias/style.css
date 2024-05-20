@@ -28,3 +28,97 @@
     text-align: center;
     width: 1100px;
 }
+
+/* ==>> perfiles públicos <<== */
+
+.p_categoria_definida {
+    font-size: 18px;
+    font-family: var(--main_font);
+    font-style: var(--font_style);
+    font-weight: var(--font_weight);
+    color: #fff;
+}
+
+.sec_categorias_dinamico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 200px 0;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.art_publicaciones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_categoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.img_perfil {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.p1_usuario {
+    font-size: 18px;
+    font-family: var(--title_font);
+    font-weight: 300;
+    font-style: var(--font_style);
+    color: var(--main_color);
+}
+
+.p2_usuario {
+    font-size: 14px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--second_color);
+}
+
+.p3_usuario {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--second_color);
+}
+
+.p4_usuario {
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: 500;
+    color: #0c0;
+}
+
+.p1_usuario, .p2_usuario, .p3_usuario, .p4_usuario {
+    margin: 10px 0;
+}
+
+.a_usuario {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    padding: 5px;
+    margin: 5px;
+    color: var(--main_color);
+    text-decoration: underline;
+    transition: all .3s;
+}
+
+.a_usuario:hover {
+    background: var(--footer_color);
+    color: #fff;
+    text-decoration: underline;
+    font-size: 18px;
+    border-radius: 20px;
+}

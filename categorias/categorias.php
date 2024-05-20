@@ -1,39 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- === Etiquetas meta === -->
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="public">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="language" content="spanish">
-    <meta name="audience" content="all">
-    <meta name="category" content="service">
-    <meta name="keywords" content="electricistas, plomeros, fotografos, oficios, en san martin de los andes, gasistas">
-    <meta name="description" content="Encuentra en este indice el profesional que estas necesitando. EugenioYa.com">
-    <meta name="author" content="DpDesarrollos">
-    <meta name="copyright" content="EugenioYa">
-    <meta name="robots" content="noindex,follow">
-<!-- === Links === -->
-    <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../style/estilo_1.css">
-    <link rel="shortcout icon" href="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<!-- ==== Links - iconos ==== -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
-<!-- ==== Scripts ==== -->
-    <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-    <title><?php echo $profesion ?></title>
-</head>
-<body>
-    <?php
+<?php
     if($_SERVER['REQUEST_METHOD']=$_GET) {
         $categoria = $_GET['profesion'];
-        if($categoria == '2'){
+        }if($categoria == '2'){
             $categoria_definida = "Electricista";
         }elseif($categoria == '3'){
             $categoria_definida = "Plomerìa";
@@ -76,39 +44,136 @@
         }else{
             header("Location: indice.html");
         }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- === Etiquetas meta === -->
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="public">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="spanish">
+    <meta name="audience" content="all">
+    <meta name="category" content="service">
+    <meta name="keywords" content="electricistas, plomeros, fotografos, oficios, en san martin de los andes, gasistas">
+    <meta name="description" content="Encuentra en este indice el profesional que estas necesitando. EugenioYa.com">
+    <meta name="author" content="DpDesarrollos">
+    <meta name="copyright" content="EugenioYa">
+    <meta name="robots" content="noindex,follow">
+<!-- === Links === -->
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/estilo_1.css">
+    <link rel="shortcout icon" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<!-- ==== Links - iconos ==== -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+<!-- ==== Scripts ==== -->
+    <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
+    <title><?php echo $categoria_definida ?></title>
+</head>
+<body>
 
-        // Conectar con la BD de usuarios
-        $server = "localhost";
-        $user_server = "root";
-        $user_password = "";
-        $server_db_name = "eugenioya";
+    <div class="div_nav">
+        <nav class="nav">
+            <input type="checkbox" name="check" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+                <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
+            <ul class="barr_nav">
+                <!-- <img src="" title="Nombre" class="logo"> -->
+                <a href="../index.html" class="a_nav">Inicio</a>
+                <a href="indice.html" class="a_nav_1">Oficios</a>
+                <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
+                <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+            </ul>
+        </nav>
+    </div>
 
-        $conn = mysqli_connect($server,$user_server,$user_password,$server_db_name)
+        <section class="sec_categorias_dinamico">
+            <?php
+            // ====>> Conectar con la BD de usuarios
+            $server = "localhost";
+            $user_server = "root";
+            $user_password = "";
+            $server_db_name = "eugenioya";
 
-        // Query para extraer datos de los perfiles de los usuarios
-        $sql_perfil_publico = "SELECT * FROM usuario WHERE categoria = '$categoria'";
-        $query_perfil_publico = mysqli_query($conn,$sql_perfil_publico);
+            $conn = mysqli_connect($server,$user_server,$user_password,$server_db_name);
 
-        if($query_perfil_publico->num_rows > 0) { ?>
-        <section>
-        <?php
-            while ($row = mysqli_fetch_array($query_perfil_publico)) {
-                $usuario = $row['nombre'];
-                $profesion = $row['profesion'];
-                $sobre_usuario = $row['sobre_mi'];
-                $zona = $row['barrio'];
-                $ruta = $row['foto_perfil'];
-                $disponibilidad = $row['horas'];
-                ?>
+            // ====>> Query para extraer datos de los perfiles de los usuarios
+            $sql_perfil_publico = "SELECT * FROM usuario WHERE categoria = '$categoria'";
+            $query_perfil_publico = mysqli_query($conn,$sql_perfil_publico);
+
+            // ====>> Bucle para visualizar y leer los datos de los usuarios
+            if($query_perfil_publico->num_rows > 0) {
+                while ($row = mysqli_fetch_array($query_perfil_publico)) {
+                    $id_usuario = $row['id_usuario'];
+                    $usuario = $row['nombre'];
+                    $profesion = $row['profesion'];
+                    $zona = $row['barrio'];
+                    $ruta = $row['foto_perfil'];
+                    $disponibilidad = $row['horas'];
+                
+            ?>
                 <article class="art_publicaciones">
-                    <div class="div_titulo">
-                        <img src="../perfiles/imagenes/<?php echo $ruta ?>" alt="<?php echo $nombre ?>" title="<?php echo $nombre ?>" class="img_publicacion">
+                    <div class="div_categoria">
+                        <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
                     </div>
+                    <div class="div_categoria">
+                        <p class="p1_usuario"><?php echo $usuario ?></p>
+                        <p class="p2_usuario"><?php echo $profesion ?></p>
+                    </div>
+                    <div class="div_categoria">
+                        <!-- Aca irán las estrellas de puntuación -->
+                        <p class="p3_usuario"><?php echo $zona ?></p>
+                    </div>
+                    <div class="div_categoria">
+                        <?php 
+                            if($disponibilidad == '1') {
+                                echo "<p class='p4_usuario'>disponible las 24hs</p>";
+                            }else{
+                                echo "";
+                            }
+                        ?>
+                    </div>
+                    <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
                 </article>
-                <?php 
+            <?php
             }
+            mysqli_free_result($query_perfil_publico);
         }
-    }
-    ?>
+            ?>
         </section>
+
+        <footer class="footer">
+            <div class="div_footer">
+                <article class="art_div_footer">
+                    <!-- <img src="" alt=""> Logo -->
+                </article>
+                <article class="art_div_footer">
+                    <a href="----" class="a_footer">Sobre Eugenio</a>
+                    <a href="----" class="a_footer">Contacto</a>
+                    <a href="../formularios/registrar.php" class="a_footer">Crea una cuenta</a>
+                    <a href="../formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
+                    <a href="indice.html" class="a_footer">Oficios</a>
+                </article>
+                <article class="art_div_footer">
+                    <a href="----" class="a_footer">Política de Privacidad</a>
+                    <a href="----" class="a_footer">Requisitos para Unirte como Oficio</a>
+                    <a href="----" class="a_footer">Trabaja Junto a Nosotros</a>
+                </article>
+                <article class="art_div_footer">
+                    <!-- <img src="" alt=""> Imagen del avatar -->
+                </article>
+            </div>
+            <div class="div1_footer">
+                <p class="p_footer_ubi">San Martín de los Andes, Neuquen, Argentina</p>
+                <p class="p_footer_legal">EugenioYa © 2024 | Todos los Derechos Reservados</p>
+            </div>
+        </footer>
 </body>
