@@ -1,6 +1,12 @@
 <!-- ==> Perfiles públicos <== -->
 
 <?php
+    // corroborar que el usuario haya iniciado sesión
+    session_start();
+
+    // Traemos a través de session el id del usuario.
+    $user_id = isset($_SESSION['user_loged_id']) ? $_SESSION['user_loged_id'] : "";
+    
     // Corroborar que se exista el get
     if($_SERVER['REQUEST_METHOD']=$_GET) {
         // Traer el dato de la variable get
@@ -87,18 +93,31 @@
             <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
         <?php } ?>
         <div class="div_perfil">
-            <p class="user_name"><?php echo $user_name ?></p>
-            <!-- Aca va la matricula con condicional -->
-            <p class="user_category"><?php echo $user_profession ?></p>
-            <p class="user_area"><?php echo $user_area ?></p>
+            <div class="div_categorias">
+                <p class="user_name"><?php echo $user_name ?></p>
+            </div>
+            <!-- <div> -->
+                <!-- Aca va la matricula con condicional -->
+            <!-- </div> -->
+            <div class="div_categorias">
+                <span class="material-symbols-outlined">work</span>
+                <p class="user_category"><?php echo $user_profession ?></p>
+            </div>
+            <div class="div_categorias">
+                <span class="material-symbols-outlined">location_on</span>
+                <p class="user_area"><?php echo $user_area ?></p>
+            </div>
             <?php
                 if($hours == '0') {
                     echo "";
                 } else {
-                    echo "<p class='hours'>Está disponible las 24 hs</p>";
+                    echo "<div class='div_categorias'>
+                            <span class='material-symbols-outlined'>schedule</span>
+                            <p class='hours'>Está disponible las 24 hs</p>
+                        </div>";
                 }
             ?>
-            </div>
+        </div>
     </header>
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
@@ -135,6 +154,24 @@
         mysqli_free_result($query_publicaciones);
     ?>
     </section>
+
+    <form action="submit_rating.php" method="post" class="form">
+        <input type="hidden" name="user_id" value="<?php echo $user_id ?>"> <!-- ID del usuario -->
+        <input type="hidden" name="professional_id" value="<?php echo $id_usuario ?>"> <!-- ID del profesional a evaluar -->
+        <input type="hidden" name="rating" id="rating_value">
+        
+        <div class="rating">
+            <span class="star" data-value="5">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="1">&#9733;</span>
+        </div>
+        <textarea name="comment" placeholder="Escribe un comentario"></textarea>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script src="rating.js"></script>
     
     
 </body>

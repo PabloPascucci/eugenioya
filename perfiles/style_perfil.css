@@ -164,6 +164,24 @@
     margin: 15px;
 }
 
+    /* ==>> perfiles.php -> sección de perfiles públicos <<== */
+
+.div_categorias {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.material-symbols-outlined {
+    margin-right: 5px;
+}
+
+.star {
+    cursor: pointer;
+}
+
     /* ==>> Perfil.php -> sección de publicaciones <<== */
 
 .sec_publicaciones {

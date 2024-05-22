@@ -4,6 +4,7 @@
 
         // Traemos a través de session el id del usuario.
         $user_id = $_SESSION['user_loged_id'];
+        
         // Conexión con la BD
         $server = "localhost";
         $server_user_name = "root";
