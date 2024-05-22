@@ -95,14 +95,14 @@
                 if($hours == '0') {
                     echo "";
                 } else {
-                    echo "<p class='hours'>Esta disponible las 24 hs</p>";
+                    echo "<p class='hours'>Está disponible las 24 hs</p>";
                 }
             ?>
             </div>
     </header>
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
-        <a href="" class="mensaje_btn">Mandar mensaje</a>
+        <a href="" class="mensaje_btn">Enviar mensaje</a>
     </article>
 
     <section class="sec_publicaciones">

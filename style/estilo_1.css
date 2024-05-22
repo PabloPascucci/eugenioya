@@ -273,7 +273,7 @@
     font-size: 13px;
     font-family: var(--main_font);
     font-style: var(--font_style);
-    color: var(--second_color);
+    color: #fff;
     text-decoration: none;
     margin: 5px 0;
     transition: all .3s;
