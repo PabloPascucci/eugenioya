@@ -166,6 +166,18 @@
 
     /* ==>> perfiles.php -> sección de perfiles públicos <<== */
 
+.mensaje_btn {
+    font-size: 18px;
+    font-family: var(--title_font);
+    font-weight: 400;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 20px;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    color: #fff;
+    text-decoration: none;
+}
+
 .div_categorias {
     display: flex;
     flex-direction: row;
@@ -178,8 +190,134 @@
     margin-right: 5px;
 }
 
+.sec_rating {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    width: 290px;
+    margin: 10px 5px;
+    padding: 5px;
+}
+
+.h5_form_rating {
+    font-size: 18px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--main_color);
+    text-align: center;
+    margin: 10px 0;
+    padding: 5px;
+}
+
 .star {
     cursor: pointer;
+}
+
+.star:hover {
+    color: #f81;
+}
+
+.inp_comment {
+    margin: 10px 0;
+    width: 280px;
+    padding: 5px;
+    resize: none;
+}
+
+.comment_btn {
+    padding: 5px;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ==>> Perfiles públicos // comentarios realizados <<== */
+
+.sec_rating {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: self-start;
+}
+
+.div_comments_made {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 5px;
+}
+
+.h5_c_m {
+    font-size: 24px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--second_color);
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.art_comments_made {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: self-start;
+}
+
+.div_user_comments {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-bottom: 2px solid var(--main_color);
+    width: 290px;
+    margin: 5px 0;
+}
+
+.img_user_comments {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.user_name_comments {
+    font-size: 15px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+}
+
+.stars {
+    color: #f81;
+    font-size: 17px;
+}
+
+.rating_comment {
+    font-size: 17px;
+    font-family: var(--main_font);
+    font-style: var(--font_style);
+    color: #000;
+    text-wrap: wrap;
+    text-align: start;
+}
+
+.rating_date {
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--second_color);
 }
 
     /* ==>> Perfil.php -> sección de publicaciones <<== */
@@ -303,17 +441,4 @@
     font-family: var(--title_font);
     font-weight: 400;
     color: var(--footer_color);
-}
-
-    /* ==>> Perfiles públicos <<== */
-
-.mensaje_btn {
-    font-size: 18px;
-    font-family: var(--title_font);
-    font-weight: 400;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 20px;
-    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
-    color: #fff;
 }

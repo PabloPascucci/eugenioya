@@ -1,6 +1,5 @@
-<!-- ==> Perfiles públicos <== -->
-
 <?php
+    // ==> Perfiles públicos <==
     // corroborar que el usuario haya iniciado sesión
     session_start();
 
@@ -118,10 +117,15 @@
                 }
             ?>
         </div>
+        
     </header>
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
-        <a href="" class="mensaje_btn">Enviar mensaje</a>
+        <?php if(!$_SESSION) { ?>
+            <a href="--" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
+        <?php } else { ?>
+            <a href="--" class="mensaje_btn">Envíar Mensaje</a>
+        <?php } ?>
     </article>
 
     <section class="sec_publicaciones">
@@ -155,21 +159,86 @@
     ?>
     </section>
 
-    <form action="submit_rating.php" method="post" class="form">
-        <input type="hidden" name="user_id" value="<?php echo $user_id ?>"> <!-- ID del usuario -->
-        <input type="hidden" name="professional_id" value="<?php echo $id_usuario ?>"> <!-- ID del profesional a evaluar -->
-        <input type="hidden" name="rating" id="rating_value">
-        
-        <div class="rating">
-            <span class="star" data-value="5">&#9733;</span>
-            <span class="star" data-value="4">&#9733;</span>
-            <span class="star" data-value="3">&#9733;</span>
-            <span class="star" data-value="2">&#9733;</span>
-            <span class="star" data-value="1">&#9733;</span>
+    <section class="sec_rating">
+    <div class="div_comments_made">
+            <h5 class="h5_c_m">Comentarios al Profesional</h5>
+            <?php
+            // Verificar que la conexión a la base de datos esté activa
+            if (!$conn) {
+                die("Error de conexión: " . mysqli_connect_error());
+            }
+
+            // Extraer datos de la tabla de ratings de la BD
+            $stmt_rating_usuario = $conn->prepare("SELECT user_id, rating, comment, created_at FROM ratings WHERE professional_id = ?");
+            $stmt_rating_usuario->bind_param("i", $id_usuario);
+            $stmt_rating_usuario->execute();
+            $stmt_rating_usuario->store_result();
+
+            if ($stmt_rating_usuario->num_rows >= 1) {
+                // Vincular los resultados de la consulta a variables
+                $stmt_rating_usuario->bind_result($id_rating_user, $rating_star, $rating_comment, $rating_date);
+
+                while ($stmt_rating_usuario->fetch()) {
+                    // Localizar al perfil del usuario en la tabla usuarios
+                    $stmt_user_rater = $conn->prepare("SELECT foto_perfil, nombre FROM usuario WHERE id_usuario = ?");
+                    $stmt_user_rater->bind_param("i", $id_rating_user);
+                    $stmt_user_rater->execute();
+                    $stmt_user_rater->store_result();
+
+                    if ($stmt_user_rater->num_rows > 0) {
+                        $stmt_user_rater->bind_result($foto_perfil, $rater_name);
+                        while ($stmt_user_rater->fetch()) {
+                            ?>
+                            <article class="art_comments_made">
+                                <div class="div_user_comments">
+                                <?php 
+                                    if($foto_perfil != null){
+                                ?>
+                                    <img src="<?php echo $foto_perfil ?>" title="<?php echo $rater_name ?>" class="img_user_comments">
+                                <?php } else { ?>
+                                    <img src="../imagenes/user_icon.png" class="img_user_comments">
+                                <?php } ?>
+                                    <p class="user_name_comments"><?php echo $rater_name ?></p>
+                                    <span class="stars" data-value="<?php echo $rating_star ?>"></span>
+                                    <p class="rating_comment"><?php echo $rating_comment ?></p>
+                                    <p class="rating_date"><?php echo $rating_date ?></p>
+                                </div>
+                            </article>
+                            <?php
+                        }
+                        $stmt_user_rater->close();
+                    } else {
+                        echo "No se encontró el perfil del usuario.";
+                    }
+                }
+            } else {
+                echo "No hay comentarios para este profesional.";
+            }
+            $stmt_rating_usuario->close();
+            ?>
         </div>
-        <textarea name="comment" placeholder="Escribe un comentario"></textarea>
-        <input type="submit" value="Enviar">
-    </form>
+
+        <form action="procesar_rating.php" method="post" class="form">
+            <h5 class="h5_form_rating">Puntúa al Profesional</h5>
+            <input type="hidden" name="user_id" value="<?php echo $user_id ?>"> <!-- ID del usuario -->
+            <input type="hidden" name="professional_id" value="<?php echo $id_usuario ?>"> <!-- ID del profesional a evaluar -->
+            <input type="hidden" name="rating" id="rating_value">
+            
+            <div class="rating">
+                <span class="star" data-value="1">&#9734;</span>
+                <span class="star" data-value="2">&#9734;</span>
+                <span class="star" data-value="3">&#9734;</span>
+                <span class="star" data-value="4">&#9734;</span>
+                <span class="star" data-value="5">&#9734;</span>
+            </div>
+            <textarea class="inp_comment" name="comment" placeholder="Escribe un comentario" autocomplete="off"></textarea>
+            <?php if(!$_SESSION){ ?>
+                <a href="../formularios/iniciar.php" class="comment_btn">Inicia Sesión para Comentar</a>
+            <?php }else{ ?>
+                <input type="submit" value="Envíar Comentario" class="comment_btn">
+            <?php } ?>
+        </form>
+    </section>
 
     <script src="rating.js"></script>
     

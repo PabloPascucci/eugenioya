@@ -116,7 +116,7 @@
                     $usuario = $row['nombre'];
                     $profesion = $row['profesion'];
                     $zona = $row['barrio'];
-                    $ruta = $row['foto_perfil'];
+                    $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
                     $disponibilidad = $row['horas'];
                 
             ?>
