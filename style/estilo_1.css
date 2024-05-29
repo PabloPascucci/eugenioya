@@ -9,6 +9,7 @@
     --font_style: normal;
     --second_color: #999;
     --footer_color: #0056b3;
+    --a_footer_color: #ccc;
 }
 
 /* ==>> Barra de navegación <<== */
@@ -273,7 +274,7 @@
     font-size: 13px;
     font-family: var(--main_font);
     font-style: var(--font_style);
-    color: #fff;
+    color: var(--a_footer_color);
     text-decoration: none;
     margin: 5px 0;
     transition: all .3s;

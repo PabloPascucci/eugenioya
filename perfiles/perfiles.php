@@ -54,6 +54,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_perfil.css">
+    <link rel="stylesheet" href="../style/estilo_1.css">
     <link rel="shortcout icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,7 +125,7 @@
         <?php if(!$_SESSION) { ?>
             <a href="--" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
         <?php } else { ?>
-            <a href="--" class="mensaje_btn">Envíar Mensaje</a>
+            <a href="../mensajes/chat.php?professional=<?php echo $id_usuario ?>" class="mensaje_btn">Envíar Mensaje</a>
         <?php } ?>
     </article>
 
@@ -160,7 +161,27 @@
     </section>
 
     <section class="sec_rating">
-    <div class="div_comments_made">
+        <form action="procesar_rating.php" method="post" class="form">
+            <h5 class="h5_form_rating">Puntúa al Profesional</h5>
+            <input type="hidden" name="user_id" value="<?php echo $user_id ?>"> <!-- ID del usuario -->
+            <input type="hidden" name="professional_id" value="<?php echo $id_usuario ?>"> <!-- ID del profesional a evaluar -->
+            <input type="hidden" name="rating" id="rating_value">
+            
+            <div class="rating">
+                <span class="star" data-value="1">&#9734;</span>
+                <span class="star" data-value="2">&#9734;</span>
+                <span class="star" data-value="3">&#9734;</span>
+                <span class="star" data-value="4">&#9734;</span>
+                <span class="star" data-value="5">&#9734;</span>
+            </div>
+            <textarea class="inp_comment" name="comment" placeholder="Escribe un comentario" autocomplete="off"></textarea>
+            <?php if(!$_SESSION){ ?>
+                <a href="../formularios/iniciar.php" class="comment_btn">Inicia Sesión para Comentar</a>
+            <?php }else{ ?>
+                <input type="submit" value="Envíar Comentario" class="comment_btn">
+            <?php } ?>
+        </form>
+        <div class="div_comments_made">
             <h5 class="h5_c_m">Comentarios al Profesional</h5>
             <?php
             // Verificar que la conexión a la base de datos esté activa
@@ -217,31 +238,36 @@
             $stmt_rating_usuario->close();
             ?>
         </div>
-
-        <form action="procesar_rating.php" method="post" class="form">
-            <h5 class="h5_form_rating">Puntúa al Profesional</h5>
-            <input type="hidden" name="user_id" value="<?php echo $user_id ?>"> <!-- ID del usuario -->
-            <input type="hidden" name="professional_id" value="<?php echo $id_usuario ?>"> <!-- ID del profesional a evaluar -->
-            <input type="hidden" name="rating" id="rating_value">
-            
-            <div class="rating">
-                <span class="star" data-value="1">&#9734;</span>
-                <span class="star" data-value="2">&#9734;</span>
-                <span class="star" data-value="3">&#9734;</span>
-                <span class="star" data-value="4">&#9734;</span>
-                <span class="star" data-value="5">&#9734;</span>
-            </div>
-            <textarea class="inp_comment" name="comment" placeholder="Escribe un comentario" autocomplete="off"></textarea>
-            <?php if(!$_SESSION){ ?>
-                <a href="../formularios/iniciar.php" class="comment_btn">Inicia Sesión para Comentar</a>
-            <?php }else{ ?>
-                <input type="submit" value="Envíar Comentario" class="comment_btn">
-            <?php } ?>
-        </form>
     </section>
 
     <script src="rating.js"></script>
     
+    <footer class="footer">
+        <div class="div_footer">
+            <article class="art_div_footer">
+                <!-- <img src="" alt=""> Logo -->
+            </article>
+            <article class="art_div_footer">
+                <a href="----" class="a_footer">Sobre Eugenio</a>
+                <a href="----" class="a_footer">Contacto</a>
+                <a href="formularios/registrar.php" class="a_footer">Crea una cuenta</a>
+                <a href="formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
+                <a href="categorias/indice.html" class="a_footer">Oficios</a>
+            </article>
+            <article class="art_div_footer">
+                <a href="----" class="a_footer">Política de Privacidad</a>
+                <a href="----" class="a_footer">Requisitos para Unirte como Oficio</a>
+                <a href="----" class="a_footer">Trabaja Junto a Nosotros</a>
+            </article>
+            <article class="art_div_footer">
+                <!-- <img src="" alt=""> Imagen del avatar -->
+            </article>
+        </div>
+        <div class="div1_footer">
+            <p class="p_footer_ubi">San Martín de los Andes, Neuquén, Argentina</p>
+            <p class="p_footer_legal">EugenioYa © 2024 | Todos los Derechos Reservados</p>
+        </div>
+    </footer>
     
 </body>
 </html>

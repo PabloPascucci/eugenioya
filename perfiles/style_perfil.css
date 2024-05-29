@@ -259,6 +259,8 @@
     flex-direction: column;
     align-items: center;
     margin: 10px 5px;
+    height: 400px;
+    overflow-y: auto;
 }
 
 .h5_c_m {
