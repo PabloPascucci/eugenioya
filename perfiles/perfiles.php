@@ -177,7 +177,9 @@
             <textarea class="inp_comment" name="comment" placeholder="Escribe un comentario" autocomplete="off"></textarea>
             <?php if(!$_SESSION){ ?>
                 <a href="../formularios/iniciar.php" class="comment_btn">Inicia Sesión para Comentar</a>
-            <?php }else{ ?>
+            <?php }elseif($user_id ===  $id_usuario) { ?>
+                <p class="comment_btn">No puedes calificar tu propio perfil</p>
+            <?php } else{ ?>
                 <input type="submit" value="Envíar Comentario" class="comment_btn">
             <?php } ?>
         </form>

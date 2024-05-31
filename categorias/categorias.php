@@ -118,6 +118,24 @@
                     $zona = $row['barrio'];
                     $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
                     $disponibilidad = $row['horas'];
+
+                    // Consulta para obtener el total de rating_count del profesional
+                    $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
+                    $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
+                    $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
+                    $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
+
+                    // Consulta para obtener el promedio de puntuación del profesional
+                    $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
+                    $query_promedio = mysqli_query($conn, $sql_promedio);
+                    $row_promedio = mysqli_fetch_assoc($query_promedio);
+                    if ($row_promedio) {
+                        $promedio_rating = $row_promedio['average_rating'];
+                        $rating_count = $row_promedio['rating_count'];
+                    } else {
+                        $promedio_rating = 0; 
+                        $rating_count = 0;
+                    }
                 
             ?>
                 <article class="art_publicaciones">
@@ -129,7 +147,10 @@
                         <p class="p2_usuario"><?php echo $profesion ?></p>
                     </div>
                     <div class="div_categoria">
-                        <!-- Aca irán las estrellas de puntuación -->
+                        <div class="div_stars">
+                            <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
+                            <p class="p_stars"><?php echo $total_rating_count ?></p>
+                        </div>
                         <p class="p3_usuario"><?php echo $zona ?></p>
                     </div>
                     <div class="div_categoria">
@@ -149,6 +170,8 @@
         }
             ?>
         </section>
+        
+        <script src="rating.js"></script>
 
         <footer class="footer">
             <div class="div_footer">

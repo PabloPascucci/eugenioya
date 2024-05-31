@@ -122,3 +122,22 @@
     font-size: 18px;
     border-radius: 20px;
 }
+
+.div_stars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stars {
+    color: #f81;
+    font-size: 17px;
+}
+
+.p_stars {
+    margin-left: 2px;
+    font-size: 13px;
+    font-family: monospace;
+    color: var(--second_color);
+}
