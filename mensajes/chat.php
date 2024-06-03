@@ -134,7 +134,7 @@
             ?>
         </article>
         <article>
-            <!-- Acá irá el chat con un usuario seleccionado -->
+            <!-- Acá irá la estructura del chat. -->
         </article>
     </section>
     
