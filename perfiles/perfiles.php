@@ -26,8 +26,7 @@
         if($query_usuario->num_rows == 1){
             $row_user = mysqli_fetch_assoc($query_usuario);
             $user_name = $row_user['nombre'];
-            $user_photo = $row_user['foto_perfil'];
-            $user_photo_null = "../imagenes/user_icon.png";
+            $user_photo = isset($row_user['foto_perfil']) ? $row_user['foto_perfil'] : "../imagenes/user_icon.png";
             $user_profession = $row_user['profesion'];
             $user_area = isset($row_user['barrio']) ? $row_user['barrio'] : "";
             $hours = $row_user['horas'];
@@ -65,33 +64,46 @@
     
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-    <title><?php echo $user_name; ?></title>
+    <title><?php echo $user_name ?> - <?php echo $user_profession ?></title>
 </head>
 <body>
 
-    <div class="div_nav">
-        <nav class="nav">
-            <input type="checkbox" name="check" id="check">
-                <label for="check" class="checkbtn">
-                    <i class="fa-solid fa-bars"></i>
-                </label>
-            <ul class="barr_nav">
-                <!-- <img src="" title="Nombre" class="logo"> -->
-                <a href="../index.html" class="a_nav">Inicio</a>
-                <a href="../categorias/indice.html" class="a_nav_1">Oficios</a>
-                <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
-                <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
-                <a href="----" class="a_nav">Bolsa de Trabajo</a>
-            </ul>
-        </nav>
-    </div>
+    <?php if(!$_SESSION){ ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="../index.html" class="a_nav">Inicio</a>
+                    <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
+                    <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
+                    <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } else { ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="perfil.php" class="a_nav">Perfil</a>
+                    <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
+                    <a href="../mensajes/chat.php" class="a_nav">Chat</a>
+                    <a href="---" class="a_nav">Bolsa de Trabajo</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } ?>
 
     <header class="header_perfil">
-        <?php if($user_photo == 'null'){ ?> 
-            <img src="<?php echo $user_photo_null ?>" alt="" class="img_perfil">
-        <?php } else { ?>
-            <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
-        <?php } ?>
+            <img src="<?php echo $user_photo ?>" title="<?php echo $user_name ?>" class="img_perfil">
         <div class="div_perfil">
             <div class="div_categorias">
                 <p class="user_name"><?php echo $user_name ?></p>
@@ -254,7 +266,7 @@
                 <a href="----" class="a_footer">Contacto</a>
                 <a href="formularios/registrar.php" class="a_footer">Crea una cuenta</a>
                 <a href="formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
-                <a href="categorias/indice.html" class="a_footer">Oficios</a>
+                <a href="categorias/indice.php" class="a_footer">Oficios</a>
             </article>
             <article class="art_div_footer">
                 <a href="----" class="a_footer">Política de Privacidad</a>

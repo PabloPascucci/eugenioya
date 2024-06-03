@@ -148,6 +148,11 @@
 
 }
 
+.a_question {
+    text-decoration: none;
+    color: var(--footer_color);
+}
+
 .hours {
     font-size: 13px;
     font-family: var(--main_font);

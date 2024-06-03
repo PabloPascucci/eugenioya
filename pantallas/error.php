@@ -30,6 +30,40 @@
     <title>Ha ocurrido un error</title>
 </head>
 <body>
+
+    <?php if(!$_SESSION){ ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="index.html" class="a_nav">Inicio</a>
+                    <a href="categorias/indice.php" class="a_nav">Oficios</a>
+                    <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
+                    <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } else { ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="../perfiles/perfil.php" class="a_nav">Perfil</a>
+                    <a href="categorias/indice.php" class="a_nav">Oficios</a>
+                    <a href="../mensajes/chat.php" class="a_nav">Chat</a>
+                    <a href="---" class="a_nav">Bolsa de Trabajo</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } ?>
     
 </body>
 </html>

@@ -59,26 +59,26 @@
             <label for="rubro" class="a_form">Elije una Categoría</label>
             <select name="rubro" id="rubro" class="inp_form">
                 <option value="1" id="ninguno">Ninguna</option>
-                <option value="2">Electricista</option>
-                <option value="3">Plomería</option>
-                <option value="4">Gasista</option>
-                <option value="5">Reparación de Celulares y PC</option>
-                <option value="6">Fotógrafo</option>
-                <option value="7">Artista</option>
-                <option value="8">Construcción y Reformas</option>
-                <option value="9">Jardinería y Paisajismo</option>
-                <option value="10">Cuidado del Hogar y Limpieza</option>
-                <option value="11">Servicios de Catering y Eventos</option>
-                <option value="12">Educación y Tutoría</option>
-                <option value="13">Servicios de Marketing y Publicidad</option>
-                <option value="14">Belleza y Estética</option>
-                <option value="15">Transporte y Mudanza</option>
-                <option value="16">Servicios de Diseño Gráfico y Web</option>
+                <option value="2">Artistas</option>
+                <option value="3">Belleza y Estética</option>
+                <option value="4">Carpintería</option>
+                <option value="5">Cerrajería</option>
+                <option value="6">Construcción y Reformas</option>
+                <option value="7">Cuidado del Hogar y Limpieza</option>
+                <option value="8">Cuidado Infantil y Acompañamiento Hospitalario</option>
+                <option value="9">Educación y Tutoría</option>
+                <option value="10">Electricistas</option>
+                <option value="11">Fotógrafo</option>
+                <option value="12">Gasistas</option>
+                <option value="13">Jardinería y Paisajismo</option>
+                <option value="14">Plomería</option>
+                <option value="15">Reparación de Automóviles y Mecánica</option>
+                <option value="16">Reparación de Celulares y PC</option>
                 <option value="17">Reparación de Electrodomésticos</option>
-                <option value="18">Carpintería</option>
-                <option value="19">Reparación de Automóviles y Mecánica</option>
-                <option value="20">Cerrajería</option>
-                <option value="21">Ñineras/os</option>
+                <option value="18">Servicios de Catering y Eventos</option>
+                <option value="19">Servicios de Diseño Gráfico y Web</option>
+                <option value="20">Servicios de Marketing y Publicidad</option>
+                <option value="21">Transporte y Mudanzas</option>
             </select>
             <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled>
             <article class="art_form">

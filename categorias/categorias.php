@@ -1,48 +1,56 @@
 <?php
+    // Iniciamos Sesión
+    session_start();
+
+    // Traemos a través de session el id del usuario.
+    if($_SESSION){
+        $user_id = $_SESSION['user_loged_id'];
+    }
+    
     if($_SERVER['REQUEST_METHOD']=$_GET) {
         $categoria = $_GET['profesion'];
         }if($categoria == '2'){
-            $categoria_definida = "Electricista";
+            $categoria_definida = "Artistas";
         }elseif($categoria == '3'){
-            $categoria_definida = "Plomerìa";
-        }elseif($categoria == '4'){
-            $categoria_definida = "Gasista";
-        }elseif($categoria == '5'){
-            $categoria_definida = "Reparación de Celulares y PC";
-        }elseif($categoria == '6'){
-            $categoria_definida = "Fotógrafo";
-        }elseif($categoria == '7'){
-            $categoria_definida = "Artista";
-        }elseif($categoria == '8'){
-            $categoria_definida = "Construcción y Reformas";
-        }elseif($categoria == '9'){
-            $categoria_definida = "Jardinería y Paisajismo";
-        }elseif($categoria == '10'){
-            $categoria_definida = "Cuidado del Hogar y Limpieza";
-        }elseif($categoria == '11'){
-            $categoria_definida = "Servicios de Catering y Eventos";
-        }elseif($categoria == '12'){
-            $categoria_definida = "Educación y Tutoría";
-        }elseif($categoria == '13'){
-            $categoria_definida = "Servicios de Marketing y Publicidad";
-        }elseif($categoria == '14'){
             $categoria_definida = "Belleza y Estética";
+        }elseif($categoria == '4'){
+            $categoria_definida = "Carpintería";
+        }elseif($categoria == '5'){
+            $categoria_definida = "Cerrajería";
+        }elseif($categoria == '6'){
+            $categoria_definida = "Construcción y Reformas";
+        }elseif($categoria == '7'){
+            $categoria_definida = "Cuidado del Hogar y Limpieza";
+        }elseif($categoria == '8'){
+            $categoria_definida = "Cuidado Infantil y Acompañamiento Hospitalario";
+        }elseif($categoria == '9'){
+            $categoria_definida = "Educación y Tutoría";
+        }elseif($categoria == '10'){
+            $categoria_definida = "Electricistas";
+        }elseif($categoria == '11'){
+            $categoria_definida = "Fotógrafos";
+        }elseif($categoria == '12'){
+            $categoria_definida = "Gasistas";
+        }elseif($categoria == '13'){
+            $categoria_definida = "Jardinería y Paisajismo";
+        }elseif($categoria == '14'){
+            $categoria_definida = "Plomería";
         }elseif($categoria == '15'){
-            $categoria_definida = "Transporte y Mudanza";
+            $categoria_definida = "Reparación de Automóviles y Mecánica";
         }elseif($categoria == '16'){
-            $categoria_definida = "Servicios de Diseño Gráfico y Web";
+            $categoria_definida = "Reparación de Celulares y PC";
         }elseif($categoria == '17'){
             $categoria_definida = "Reparación de Electrodomésticos";
         }elseif($categoria == '18'){
-            $categoria_definida = "Carpintería";
+            $categoria_definida = "Servicios de Catering y Eventos";
         }elseif($categoria == '19'){
-            $categoria_definida = "Reparación de Automóviles y Mecánica";
+            $categoria_definida = "Servicios de Diseño Gráfico y Web";
         }elseif($categoria == '20'){
-            $categoria_definida = "Cerrajería";
+            $categoria_definida = "Servicios de Marketing y Publicidad";
         }elseif($categoria == '21'){
-            $categoria_definida = "Ñineras/os";
+            $categoria_definida = "Transporte y Mudanzas";
         }else{
-            header("Location: indice.html");
+            header("Location: indice.php");
         }
 ?>
 <!DOCTYPE html>
@@ -78,22 +86,41 @@
 </head>
 <body>
 
-    <div class="div_nav">
-        <nav class="nav">
-            <input type="checkbox" name="check" id="check">
-                <label for="check" class="checkbtn">
-                    <i class="fa-solid fa-bars"></i>
-                </label>
-                <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
-            <ul class="barr_nav">
-                <!-- <img src="" title="Nombre" class="logo"> -->
-                <a href="../index.html" class="a_nav">Inicio</a>
-                <a href="indice.html" class="a_nav_1">Oficios</a>
-                <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
-                <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
-            </ul>
-        </nav>
-    </div>
+    <?php if(!$_SESSION){ ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                    <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="index.html" class="a_nav">Inicio</a>
+                    <a href="indice.php" class="a_nav_1">Oficios</a>
+                    <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
+                    <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } else { ?>
+        <div class="div_nav">
+            <nav class="nav">
+                <input type="checkbox" name="check" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                    <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
+                <ul class="barr_nav">
+                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <a href="../perfiles/perfil.php" class="a_nav">Perfil</a>
+                    <a href="indice.php" class="a_nav_1">Oficios</a>
+                    <a href="../mensajes/chat.php" class="a_nav">Chat</a>
+                    <a href="---" class="a_nav">Bolsa de Trabajo</a>
+                </ul>
+            </nav>
+        </div>
+    <?php } ?>
 
         <section class="sec_categorias_dinamico">
             <?php
@@ -183,7 +210,7 @@
                     <a href="----" class="a_footer">Contacto</a>
                     <a href="../formularios/registrar.php" class="a_footer">Crea una cuenta</a>
                     <a href="../formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
-                    <a href="indice.html" class="a_footer">Oficios</a>
+                    <a href="indice.php" class="a_footer">Oficios</a>
                 </article>
                 <article class="art_div_footer">
                     <a href="----" class="a_footer">Política de Privacidad</a>

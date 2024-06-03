@@ -25,7 +25,7 @@
             $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "Agregá una presentación a tu perfil.";
             $user_area = isset($row['barrio']) ? $row['barrio'] : "Configura tu barrio";
             $hours = isset($row['horas']) ? $row['horas'] : "¿Trabajas las 24hs?";
-            $user_photo = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
+            $user_photo = $row['foto_perfil'];
         }
         if(!$_SESSION){
             header("Location: ../formularios/iniciar.php");
@@ -73,11 +73,11 @@
                 </label>
             <ul class="barr_nav">
                 <!-- <img src="" title="Nombre" class="logo"> -->
-                <a href="" class="a_nav">Chat</a>
+                <a href="../mensajes/chat.php" class="a_nav">Chat</a>
                 <a href="configuraciones.php?edicion=2" class="a_nav">Añadir Experiencia</a>
                 <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
                 <a href="----" class="a_nav">Bolsa de Trabajo</a>
-                <a href="../categorias/indice.html" class="a_nav">Oficios</a>
+                <a href="../categorias/indice.php" class="a_nav">Oficios</a>
             </ul>
         </nav>
     </div>
@@ -88,16 +88,21 @@
             <p class="user_name"><?php echo $user_name ?></p>
             <!-- Aca va la matricula con condicional -->
             <p class="user_category"><?php echo $user_profession ?></p>
-            <p class="user_area"><?php echo $user_area ?></p>
+            <p class="user_area"><?php echo $user_area ?> <a href="---" class="a_question"><span class="material-symbols-outlined">help</span></a></p>
             <?php
-                if($hours == '0') {
-                    echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
+                if ($user_category != 1) {
+                    if($hours == '0') {
+                        echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
+                    } else {
+                        echo "<p class='hours'>24 hs</p>";
+                    }
                 } else {
-                    echo "<p class='hours'>24 hs</p>";
+                    echo "";
                 }
             ?>
-            </div>
+        </div>
     </header>
+    
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
     </article>
