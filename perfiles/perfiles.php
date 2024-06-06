@@ -135,7 +135,9 @@
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
         <?php if(!$_SESSION) { ?>
-            <a href="--" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
+            <a href="../formularios/iniciar.php" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
+        <?php } elseif($user_id === $id_usuario) { ?>
+            <p class="comment_btn"></p>
         <?php } else { ?>
             <a href="../mensajes/chat.php?professional=<?php echo $id_usuario ?>" class="mensaje_btn">Envíar Mensaje</a>
         <?php } ?>

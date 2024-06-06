@@ -25,7 +25,7 @@
             $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "Agregá una presentación a tu perfil.";
             $user_area = isset($row['barrio']) ? $row['barrio'] : "Configura tu barrio";
             $hours = isset($row['horas']) ? $row['horas'] : "¿Trabajas las 24hs?";
-            $user_photo = $row['foto_perfil'];
+            $user_photo = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
         }
         if(!$_SESSION){
             header("Location: ../formularios/iniciar.php");
@@ -73,7 +73,6 @@
                 </label>
             <ul class="barr_nav">
                 <!-- <img src="" title="Nombre" class="logo"> -->
-                <a href="../mensajes/chat.php" class="a_nav">Chat</a>
                 <a href="configuraciones.php?edicion=2" class="a_nav">Añadir Experiencia</a>
                 <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
                 <a href="----" class="a_nav">Bolsa de Trabajo</a>
