@@ -33,6 +33,7 @@ if ($resultado_data->num_rows == 1) {
     $user_area = $row['barrio'] ?? "Configura tu barrio";
     $hours = $row['horas'] ?? "¿Trabajas las 24hs?";
     $user_photo = $row['foto_perfil'] ?? "../imagenes/user_icon.png";
+    $user_phone = $row['telefono'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $profesion = isset($_POST['profesion']) && $_POST['profesion'] !== "" ? $_POST['profesion'] : $user_profession;
     $zona = isset($_POST['barrio']) && $_POST['barrio'] !== "" ? $_POST['barrio'] : $user_area;
     $horas = isset($_POST['horas']) ? 1 : 0; // Checkbox debe ser tratado como booleano
+    $telefono = isset($_POST['telefono']) && $_POST['telefono'] !== "" ? $_POST['telefono'] : $user_phone;
     $sobre_usuario = isset($_POST['sobre_mi']) && $_POST['sobre_mi'] !== "" ? $_POST['sobre_mi'] : $about_user;
 
     // Escapar los datos para evitar inyecciones SQL
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sobre_usuario = mysqli_real_escape_string($conn, $sobre_usuario);
 
     // Query
-    $sql_update_data = "UPDATE usuario SET profesion = '$profesion', sobre_mi = '$sobre_usuario', barrio = '$zona', horas = '$horas' WHERE id_usuario = '$user_id'";
+    $sql_update_data = "UPDATE usuario SET profesion = '$profesion', sobre_mi = '$sobre_usuario', barrio = '$zona', horas = '$horas', telefono = '$telefono' WHERE id_usuario = '$user_id'";
     $query_update = mysqli_query($conn, $sql_update_data);
 
     if ($query_update) {
@@ -115,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            <article class="art_perfil_configuracion">
                <p class="user_category"><?php echo htmlspecialchars($user_name); ?></p>
                <form action="configuraciones.php" method="post" class="art_perfil_configuracion">
-                   <input type="text" name="profesion" placeholder="<?php echo htmlspecialchars($user_profession); ?>" class="inp" autocomplete="off">
+                   <input type="text" name="profesion" placeholder="<?php echo htmlspecialchars($user_profession) ? null : "Tu Profesión"; ?>" class="inp" autocomplete="off">
                    <label for="barrio" class="label">Elije tu zona</label>
                    <select name="barrio" class="inp">
                        <option value="<?php echo $user_area ?>" id="ninguno"><?php echo $user_area ?></option>
@@ -140,6 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                    </select>
                    <label for="horas" class="label">¿Estas disponible las 24 Horas?</label>
                    <input type="checkbox" name="horas" class="inp" <?php echo $hours ? "checked" : ''; ?>>
+                   <label for="telefono" class="label">Coloca tu número de Contacto</label>
+                   <input type="number" name="telefono" class="inp" placeholder="Por ejemplo: 2604265786">
                    <textarea name="sobre_mi" placeholder="<?php echo htmlspecialchars($about_user); ?>" class="inp_about" autocomplete="off"></textarea>
                    <input type="submit" value="Guardar Cambios" class="inp_sub">
                </form>

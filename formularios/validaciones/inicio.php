@@ -34,8 +34,12 @@ if ($resultado->num_rows > 0) {
                 $row_id = mysqli_fetch_assoc($result_id);
                 $id_usuario = $row_id['id_usuario'];
                 $_SESSION['user_loged_id'] = $id_usuario;
+                if($id_usuario === '1') {
+                    header("Location: ../../admin/admin.php");
+                }else {
+                    header("Location: ../../perfiles/perfil.php");
+                }
             }
-            header("Location: ../../perfiles/perfil.php");
         } else {
             // La contraseña es incorrecta
             header("Location: ../iniciar.php?wrong=1");

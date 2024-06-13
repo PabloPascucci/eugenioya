@@ -6,6 +6,7 @@ $password = $_POST['password'];
 $confirm_password = $_POST['password_1'];
 $categoria = $_POST['rubro'];
 $profesion = isset($_POST['oficio']) ? $_POST['oficio'] : 'usuario';
+$contacto = isset($_POST['telefono']) ? $_POST['telefono'] : 0;
 
 // Validar que la contraseña sea similar
 if ($password === $confirm_password) {
@@ -30,9 +31,10 @@ if ($password === $confirm_password) {
     $correo = mysqli_real_escape_string($conn, $correo);
     $categoria = mysqli_real_escape_string($conn, $categoria);
     $profesion = mysqli_real_escape_string($conn, $profesion);
+    $telefono = mysqli_real_escape_string($conn, $telefono);
 
     // Prepara la consulta SQL
-    $query = "INSERT INTO usuario (nombre, correo, acceso, categoria, profesion) VALUES ('$nombre', '$correo', '$hashed_password', '$categoria', '$profesion')";
+    $query = "INSERT INTO usuario (nombre, correo, acceso, categoria, profesion, telefono) VALUES ('$nombre', '$correo', '$hashed_password', '$categoria', '$profesion', '$telefono')";
 
     // ==> Verificar que la cuenta con el correo sea nueva y no repetida <==
     $query_very = "SELECT * FROM usuario WHERE correo = '$correo'";

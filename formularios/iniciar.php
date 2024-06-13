@@ -32,7 +32,7 @@
 <body>
 <?php session_start();
     if(!$_SESSION){?>
-        <header class="header_inicio">
+    <header class="header_inicio">
         <img src="" alt="">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
