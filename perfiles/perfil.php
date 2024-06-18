@@ -75,7 +75,7 @@
                 <!-- <img src="" title="Nombre" class="logo"> -->
                 <a href="configuraciones.php?edicion=2" class="a_nav">Añadir Experiencia</a>
                 <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
-                <a href="----" class="a_nav">Bolsa de Trabajo</a>
+                <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 <a href="../categorias/indice.php" class="a_nav">Oficios</a>
             </ul>
         </nav>

@@ -99,7 +99,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="fa-solid fa-bars"></i>
                 </label>
             <ul class="barr_nav">
-                <a href="perfil.php" class="a_nav">Volver</a>
+            <?php if ($user_id === '1') {?>
+                        <a href="../admin/admin.php" class="a_nav">Volver</a>
+                    <?php } else { ?>
+                        <a href="perfil.php" class="a_nav">Volver</a>
+                    <?php } ?>
             </ul>
         </nav>
     </div>

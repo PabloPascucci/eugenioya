@@ -81,6 +81,7 @@
                     <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
                     <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+                    <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 </ul>
             </nav>
         </div>
@@ -95,8 +96,7 @@
                     <!-- <img src="" title="Nombre" class="logo"> -->
                     <a href="perfil.php" class="a_nav">Perfil</a>
                     <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
-                    <a href="../mensajes/chat.php" class="a_nav">Chat</a>
-                    <a href="---" class="a_nav">Bolsa de Trabajo</a>
+                    <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 </ul>
             </nav>
         </div>

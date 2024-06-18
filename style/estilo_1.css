@@ -247,6 +247,151 @@
         color: var(--main_color);
     }
 
+/* ==>> Estilos de la bolsa de trabajo <<== */
+.sec_bolsa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    height: 500px;
+    overflow-y: auto;
+}
+
+.art_bolsa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 0;
+    width: 300px;
+}
+
+.h5_bolsa {
+    font-size: 20px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+    text-wrap: wrap;
+}
+
+.cuerpo_bolsa {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+    text-wrap: wrap;
+}
+
+.fecha_bolsa {
+    font-size: 13px;
+    font-family: monospace;
+    font-weight: 200;
+    color: var(--second_color);
+}
+
+.art_empty {
+    margin: 20px 0;
+}
+
+.p_bolsa {
+    font-size: 20px;
+    font-family: var(--title_font);
+    font-weight: 300;
+    color: #000;
+}
+
+.span_bolsa {
+    font-size: 20px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--main_color);
+}
+
+/* ==>> Estilos de la política de Privacidad y los Términos y Condiciones <<== */
+.sec {
+    padding: 10px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 900px;
+}
+
+.titulo {
+    font-family: var(--main_font);
+    font-size: 32px;
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+}
+
+.p_intro {
+    font-size: 22px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+    margin: 10px 0;
+}
+
+.span_eugenio_into {
+    color: var(--main_color);
+}
+
+.titluo_secciones {
+    font-size: 20px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+    margin: 30px 0 5px 0;
+}
+
+.p_info {
+    font-size: 16px;
+    font-family: sans-serif;
+    color: #000;
+}
+
+.art_items {
+    margin: 2px 0 0 20px;
+}
+
+.span_item {
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #000;
+}
+
+.span_eugenio {
+    color: var(--main_color);
+}
+
+.p_fecha {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000;
+    margin: 20px 0;
+}
+
+.a_politica_termino {
+    font-size: 16px;
+    font-family: var(--title_font);
+    font-weight: var(--font_weight);
+    color: var(--footer_color);
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.a_politica_termino:hover {
+    text-decoration: underline;
+}
+
 /* ==>> Footer <<==*/
 .footer {
     display: flex;

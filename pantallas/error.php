@@ -44,6 +44,7 @@
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
                     <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
+                    <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 </ul>
             </nav>
         </div>
@@ -56,10 +57,13 @@
                     </label>
                 <ul class="barr_nav">
                     <!-- <img src="" title="Nombre" class="logo"> -->
-                    <a href="../perfiles/perfil.php" class="a_nav">Perfil</a>
+                    <?php if ($user_id === '1') {?>
+                        <a href="../admin/admin.php" class="a_nav">Perfil</a>
+                    <?php } else { ?>
+                        <a href="../perfiles/perfil.php" class="a_nav">Perfil</a>
+                    <?php } ?>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
-                    <a href="../mensajes/chat.php" class="a_nav">Chat</a>
-                    <a href="---" class="a_nav">Bolsa de Trabajo</a>
+                    <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 </ul>
             </nav>
         </div>

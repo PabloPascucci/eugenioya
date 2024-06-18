@@ -76,9 +76,9 @@
                 <a href="https://analytics.google.com/analytics/web/provision/?hl=es#/p445202277/reports/intelligenthome" class="a_nav" target="_BLANK">Google Analytics</a>
                 <a href="https://search.google.com/search-console?resource_id=https%3A%2F%2Feugenioya.com%2F" class="a_nav" target="_BLANK">Google Search Console</a>
                 <a href="banner.php" class="a_nav">Ver Banners</a>
-                <a href="bolsa-de-trabajo.php" class="a_nav">Editar Bolsa de trabajo</a>
-                <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
-                <a href="----" class="a_nav">Bolsa de Trabajo</a>
+                <a href="bolsa-de-trabajo.php" class="a_nav">Editar Bolsa de Trabajo</a>
+                <a href="../perfiles/configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
+                <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
                 <a href="../categorias/indice.php" class="a_nav">Oficios</a>
             </ul>
         </nav>
