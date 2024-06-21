@@ -24,6 +24,13 @@
     z-index: 1;
 }
 
+.logo_nav {
+    width: 50px;
+    position: absolute;
+    left: 40px;
+    top: 15px;
+}
+
 .checkbtn {
     font-size: 30px;
     color: #fff;
@@ -436,6 +443,18 @@
     margin-top: 20px;
 }
 
+.logo_footer {
+    width: 50px;
+}
+
+.genio {
+    width: 300px;
+}
+
+.genio_footer {
+    width: 150px;
+}
+
 .p_footer_ubi {
     font-family: var(--title_font);
     font-size: 13px;
@@ -447,6 +466,20 @@
     font-size: 13px;
     font-family: var(--title_font);
     color: #000;
+}
+
+    /* ==>> Estilos de la página "nosotros" <<== */
+.titulo_about {
+    font-size: 26px;
+    font-family: var(--title_font);
+    font-weight: 400;
+    color: var(--footer_color);
+    margin: 15px 0 5px 0;
+}
+
+.img_about {
+    width: 300px;
+    margin: 30px auto;
 }
 
         /* ==>> Responsive <<== */
