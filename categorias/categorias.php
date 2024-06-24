@@ -72,7 +72,7 @@
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../style/estilo_1.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -88,6 +88,7 @@
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
+            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
@@ -95,17 +96,19 @@
                     </label>
                     <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
                 <ul class="barr_nav">
-                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <img src="../imagenes/logo/logo_nav.png" title="Nombre" class="logo">
                     <a href="../index.html" class="a_nav">Inicio</a>
                     <a href="indice.php" class="a_nav_1">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
                     <a href="../formularios/registrar.php" class="a_nav">Regístrate</a>
                     <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
+                    <a href="../nosotros.html" class="a_nav">Contacto</a>
                 </ul>
             </nav>
         </div>
     <?php } else { ?>
         <div class="div_nav">
+        <img src="../imagenes/logo/logo_nav.png" alt="EugenioYa.com" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
@@ -113,7 +116,7 @@
                     </label>
                     <p class="p_categoria_definida" id="<?php echo $categoria_definida ?>"><?php echo $categoria_definida ?></p>
                 <ul class="barr_nav">
-                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <?php if ($user_id === '1') {?>
                         <a href="../admin/admin.php" class="a_nav">Perfil</a>
                     <?php } else { ?>
@@ -129,12 +132,9 @@
         <section class="sec_categorias_dinamico">
             <?php
             // ====>> Conectar con la BD de usuarios
-            $server = "localhost";
-            $user_server = "root";
-            $user_password = "";
-            $server_db_name = "eugenioya";
+            require_once("../server_.php");
 
-            $conn = mysqli_connect($server,$user_server,$user_password,$server_db_name);
+            $conn = mysqli_connect($server,$user,$password,$db_name);
 
             // ====>> Query para extraer datos de los perfiles de los usuarios
             $sql_perfil_publico = "SELECT * FROM usuario WHERE categoria = '$categoria'";
@@ -207,22 +207,21 @@
         <footer class="footer">
             <div class="div_footer">
                 <article class="art_div_footer">
-                    <!-- <img src="" alt=""> Logo -->
+                    <img src="../imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
                 </article>
                 <article class="art_div_footer">
-                    <a href="----" class="a_footer">Sobre Eugenio</a>
-                    <a href="----" class="a_footer">Contacto</a>
+                    <a href="../nosotros.html" class="a_footer">Sobre Eugenio</a>
+                    <a href="../nosotros.html" class="a_footer">Contacto</a>
                     <a href="../formularios/registrar.php" class="a_footer">Crea una cuenta</a>
                     <a href="../formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
                     <a href="indice.php" class="a_footer">Oficios</a>
                 </article>
                 <article class="art_div_footer">
-                    <a href="----" class="a_footer">Política de Privacidad</a>
-                    <a href="----" class="a_footer">Requisitos para Unirte como Oficio</a>
-                    <a href="----" class="a_footer">Trabaja Junto a Nosotros</a>
+                    <a href="../politicas-de-privacidad.html" class="a_footer">Política de Privacidad</a>
+                    <a href="../terminos-y-condiciones.html" class="a_footer">Trabaja Junto a Nosotros</a>
                 </article>
                 <article class="art_div_footer">
-                    <!-- <img src="" alt=""> Imagen del avatar -->
+                    <img src="../imagenes/avatar/eugenio_footer.png" alt="EugenioYa.com" title="EuGENIO" class="genio_footer">
                 </article>
             </div>
             <div class="div1_footer">

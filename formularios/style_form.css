@@ -16,6 +16,11 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
+    }
+
+    .img {
+        width: 300px;
     }
     
     .h1_inicio {
@@ -44,7 +49,7 @@
         flex-direction: column;
         align-items: center;
         align-content: center;
-        margin-top: 100px;
+        margin: 50px 0;
     }
     
     .form {
@@ -55,6 +60,7 @@
         border: 2px solid var(--main_color);
         border-radius: 20px;
         width: 290px;
+        margin-bottom: 20px;
     }
     
     .h2_form {

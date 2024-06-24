@@ -17,7 +17,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_form.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -32,25 +32,25 @@
 <body>
 
     <header class="header_inicio">
-        <img src="" alt="">
+        <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
     <script src="registro.js"></script>
     <section class="sec_inicio">
         <form action="validaciones/registro.php" method="post" class="form">
-        <?php
-            if($_SERVER['REQUEST_METHOD']=$_GET) {
-                if(isset($_GET['wrong'])){
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if (isset($_GET['wrong'])) {
                     echo "<p class='wrong'>Las contraseñas no coinciden</p>";
                 }
             }
-            if($_SERVER['REQUEST_METHOD']=$_GET){
-                if(isset($_GET['new'])){
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if (isset($_GET['new'])) {
                     echo "<p class='wrong'>Debes registrarte</p>";
                 }
             }
-        ?>
+            ?>
             <h2 class="h2_form">Crea una Cuenta</h2>
             <input type="text" name="nombre" placeholder="Nombre" required class="inp_form" autocomplete="off">
             <input type="email" name="correo" placeholder="Correo Electrónico" required class="inp_form" autocomplete="off">
@@ -81,18 +81,19 @@
                 <option value="21">Transporte y Mudanzas</option>
             </select>
             <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled>
-            <input type="number" name="telefono" class="inp_form" placeholder="Tu Número de Contacto" autocomplete="off">
+            <input type="number" name="telefono" id="telefono" class="inp_disabled" placeholder="Tu Número de Contacto" autocomplete="off">
             <article class="art_form">
-                <label for="check" class="p_check">Estoy de acuerdo con la <a href="----" class="a_form">Política de Privacidad</a></label>
-            <input type="checkbox" name="check" id="check_1" class="check">
+                <label for="check" class="p_check">Estoy de acuerdo con la <a href="../politicas-de-privacidad.html" class="a_form">Política de Privacidad</a></label>
+                <input type="checkbox" name="check" id="check_1" class="check">
             </article>
             <article class="art_form">
-                <label for="check" class="p_check">Estoy de acuerdo con los <a href="----" class="a_form">Terminos y Condiciones</a></label>
-            <input type="checkbox" name="check" id="check_2" class="check">
+                <label for="check" class="p_check">Estoy de acuerdo con los <a href="../terminos-y-condiciones" class="a_form">Terminos y Condiciones</a></label>
+                <input type="checkbox" name="check" id="check_2" class="check">
             </article>
-            <input type="submit" value="REGISTRAR" id="btn_registro" class="btn_disabled" class="inp_sub" disabled>
+            <input type="submit" value="REGISTRAR" id="btn_registro" class="btn_disabled" disabled>
         </form>
-        <a href="iniciar.php" class="a_form">Inicia Sesión</a>
+    <a href="iniciar.php" class="a_form">Inicia Sesión</a>
+    <script src="path/to/your/banner.js"></script>
     </section>
     
 </body>

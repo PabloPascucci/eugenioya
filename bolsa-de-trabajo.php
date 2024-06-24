@@ -26,7 +26,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/estilo_1.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -71,13 +71,14 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
+            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <?php if ($user_id === '1') {?>
                         <a href="admin/admin.php" class="a_nav">Perfil</a>
                     <?php } else { ?>
@@ -92,13 +93,14 @@
 
     <section class="sec_bolsa">
         <?php
+            $url_redirect = urlencode("../bolsa-de-trabajo.php");
             // Conectar a la BD
             require_once("server_.php");
             $conn = new mysqli($server, $user, $password, $db_name);
             
             // Interceptar errores de conexión
             if($conn->connect_error) {
-                header("Location: pantallas/error.php?e=error-bolsa-de-trabajo-connect&url-redirect-user=../categorias/indice.php");
+                header("Location: pantallas/error.php?e=db-connect-error&url-redirect-user=$url_redirect");
                 exit();
             }
 
@@ -134,8 +136,8 @@
                 <img src="imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
-                <a href="----" class="a_footer">Sobre Eugenio</a>
-                <a href="----" class="a_footer">Contacto</a>
+                <a href="nosotros.html" class="a_footer">Sobre Eugenio</a>
+                <a href="nosotros.html" class="a_footer">Contacto</a>
                 <a href="formularios/registrar.php" class="a_footer">Crea una cuenta</a>
                 <a href="formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
                 <a href="categorias/indice.php" class="a_footer">Oficios</a>

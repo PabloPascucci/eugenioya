@@ -12,12 +12,9 @@
         $id_usuario = $_GET['profesional'];
 
         // conectar con las bases de datos
-        $server = "localhost";
-        $user_server = "root";
-        $password_server = "";
-        $name_db_server = "eugenioya";
+        require_once("../server_.php");
 
-        $conn = mysqli_connect($server,$user_server,$password_server,$name_db_server);
+        $conn = mysqli_connect($server,$user,$password,$db_name);
         
         // Extraer los datos del usuario de acuerdo con el id del usuario.
         $sql_usuario = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
@@ -54,7 +51,7 @@
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_perfil.css">
     <link rel="stylesheet" href="../style/estilo_1.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -70,13 +67,14 @@
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
+            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <a href="../index.html" class="a_nav">Inicio</a>
                     <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
@@ -87,13 +85,14 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
+            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <!-- <img src="" title="Nombre" class="logo"> -->
+                    <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <a href="perfil.php" class="a_nav">Perfil</a>
                     <a href="../categorias/indice.php" class="a_nav_1">Oficios</a>
                     <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>
@@ -261,22 +260,21 @@
     <footer class="footer">
         <div class="div_footer">
             <article class="art_div_footer">
-                <!-- <img src="" alt=""> Logo -->
+                <img src="../imagenes/logo/logo_footer.png" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
-                <a href="----" class="a_footer">Sobre Eugenio</a>
-                <a href="----" class="a_footer">Contacto</a>
+                <a href="../nosotros.html" class="a_footer">Sobre Eugenio</a>
+                <a href="../nosotros.html" class="a_footer">Contacto</a>
                 <a href="formularios/registrar.php" class="a_footer">Crea una cuenta</a>
                 <a href="formularios/iniciar.php" class="a_footer">Inicia Sesión</a>
                 <a href="categorias/indice.php" class="a_footer">Oficios</a>
             </article>
             <article class="art_div_footer">
-                <a href="----" class="a_footer">Política de Privacidad</a>
-                <a href="----" class="a_footer">Requisitos para Unirte como Oficio</a>
-                <a href="----" class="a_footer">Trabaja Junto a Nosotros</a>
+                <a href="../politicas-de-privacidad.html" class="a_footer">Política de Privacidad</a>
+                <a href="terminos-y-condiciones" class="a_footer">Términos y Condiciones</a>
             </article>
             <article class="art_div_footer">
-                <!-- <img src="" alt=""> Imagen del avatar -->
+                <img src="../imagenes/avatar/eugeni_footer.png" title="EuGENIO" class="genio_footer">
             </article>
         </div>
         <div class="div1_footer">

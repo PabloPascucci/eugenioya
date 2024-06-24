@@ -9,12 +9,9 @@ if (!isset($_SESSION['user_loged_id'])) {
 
 $user_id = $_SESSION['user_loged_id'];
 // Conexión con la BD
-$server = "localhost";
-$server_user_name = "root";
-$server_password = "";
-$data_base_name = "eugenioya";
+require_once("../server_.php");
 
-$conn = mysqli_connect($server, $server_user_name, $server_password, $data_base_name);
+$conn = mysqli_connect($server, $user, $password, $db_name);
 
 if (!$conn) {
     die("Conexión fallida: " . mysqli_connect_error());
@@ -79,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_perfil.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">

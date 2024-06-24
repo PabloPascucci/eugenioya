@@ -17,7 +17,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_form.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
 <?php session_start();
     if(!$_SESSION){?>
     <header class="header_inicio">
-        <img src="" alt="">
+        <img src="../imagenes/avatar/eugenio.png" title="EugenioYa" class="img">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
@@ -62,7 +62,7 @@
             <input type="submit" value="INGRESAR" class="inp_sub">
         </form>
         <a href="registrar.php" class="a_form">Crea una Cuenta</a>
-        <a href="----" class="a_form">¿Has olvidado tu contraseña?</a>
+        <a href="reset_password.php" class="a_form">¿Has olvidado tu contraseña?</a>
     </section><?php
     }else{
         header("Location: ../perfiles/perfil.php");

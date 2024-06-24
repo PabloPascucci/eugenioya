@@ -11,12 +11,9 @@ $contacto = isset($_POST['telefono']) ? $_POST['telefono'] : 0;
 // Validar que la contraseña sea similar
 if ($password === $confirm_password) {
     // Conectar con la base de datos
-    $server = "localhost";
-    $server_user = "root";
-    $server_password = "";
-    $server_db_name = "eugenioya";
+    require_once("../../server_.php");
 
-    $conn = mysqli_connect($server,$server_user,$server_password,$server_db_name);
+    $conn = mysqli_connect($server,$user,$password,$db_name);
     
     // Verificar la conexión
     if ($conn->connect_error){

@@ -8,7 +8,7 @@
     $db_name = "eugenioya";
 
     // Credenciales en "Producción"
-    $server = "localhost";
+    // $server = "localhost";
     // $user = "";
     // $password = "";
     // $db_name = "";

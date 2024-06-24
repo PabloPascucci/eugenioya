@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_loged_id'])) {
 
 // Traemos a través de session el id del usuario.
 $user_id = $_SESSION['user_loged_id'];
+$url_redirect = urlencode("../perfiles/perfil.php");
 
 // Seteo de la hora y fecha
 date_default_timezone_set("America/Argentina/Buenos_Aires");
@@ -49,12 +50,9 @@ if(isset($_FILES['foto'])) {
     $permitidos = array("image/jpeg", "image/jpg", "image/png");
     if(in_array($archivo_tipo, $permitidos)) {
         // Conectar a la base de datos
-        $server = "localhost";
-        $server_user = "root";
-        $server_pass = "";
-        $server_db_name = "eugenioya";
+        require_once("../server_.php");
 
-        $conn = mysqli_connect($server, $server_user, $server_pass, $server_db_name);
+        $conn = mysqli_connect($server, $user, $password, $db_name);
 
         if ($conn) {
             // Escapar los datos para evitar inyecciones SQL
@@ -74,19 +72,23 @@ if(isset($_FILES['foto'])) {
                     header("Location: perfil.php");
                     exit(); // Terminar el script después de la redirección
                 } else {
-                    echo "Error al mover el archivo.";
+                    header("Location: ../pantallas/error.php?e=fatal-error-files&url-redirect-user=$url_redirect");
+                    exit();
                 }
             } else {
-                echo "Error al insertar los datos: " . mysqli_error($conn);
+                header("Location: ../pantallas/error.php?e=insert-error&url-redirect-user=$url_redirect");
+                exit();
             }
         } else {
-            echo "No se pudo conectar con la base de datos: " . mysqli_connect_error();
+            header("Location: ../pantallas/error.php?e=connect-server-error&url-redirect-user=$url_redirect");
+            exit();
         }
     } else {
-        echo "Formato de archivo no permitido.";
+        header("Location: ../pantallas/error.php?e=wrong-image-type&url-redirect-user=$url_redirect");
+        exit();
     }
 } else {
-    echo "Por favor, complete todos los campos de nombre y descripción.";
+    header("Location: perfil.php");
 }
-echo "Por favor, seleccione una imagen.";
+header("Location: perfil.php");
 ?>

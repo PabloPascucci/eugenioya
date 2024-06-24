@@ -6,12 +6,9 @@
         $user_id = $_SESSION['user_loged_id'];
         
         // Conexión con la BD
-        $server = "localhost";
-        $server_user_name = "root";
-        $server_password = "";
-        $data_base_name = "eugenioya";
+        require_once("../server_.php");
 
-        $conn = mysqli_connect($server,$server_user_name,$server_password,$data_base_name);
+        $conn = mysqli_connect($server,$user,$password,$db_name);
         
         // Recuperando datos relacionados al usuario que inicio sesión
         $query_data = "SELECT * from usuario WHERE id_usuario = '$user_id'";
@@ -51,7 +48,8 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_perfil.css">
-    <link rel="shortcout icon" href="">
+    <link rel="stylesheet" href="../style/estilo_1.css">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -66,13 +64,14 @@
 <body>
 
     <div class="div_nav">
+        <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
         <nav class="nav">
             <input type="checkbox" name="check" id="check">
                 <label for="check" class="checkbtn">
                     <i class="fa-solid fa-bars"></i>
                 </label>
             <ul class="barr_nav">
-                <!-- <img src="" title="Nombre" class="logo"> -->
+                <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                 <a href="configuraciones.php?edicion=2" class="a_nav">Añadir Experiencia</a>
                 <a href="configuraciones.php?edicion=1" class="a_nav">Editar Perfil</a>
                 <a href="../bolsa-de-trabajo.php" class="a_nav">Bolsa de Trabajo</a>

@@ -1,0 +1,39 @@
+:root {
+    --main_color: #007BFF;
+    --title_font: "Poetsen One", sans-serif;
+    --main_font: "Roboto", sans-serif;
+    --font_weight: 500;
+    --font_style: normal;
+    --second_color: #999;
+    --footer_color: #0056b3;
+    --a_footer_color: #ccc;
+}
+
+.contendor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+    height: 60vh;
+}
+
+.img {
+    width: 250px;
+}
+
+.h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    font-family: var(--title_font);
+    font-weight: 300;
+    color: var(--main_color);
+}
+
+.p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--footer_color);
+}

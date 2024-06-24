@@ -9,20 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url_redirect_rating = urlencode("../perfiles/perfiles.php?profesional=$professional_id");
 
     if (!is_numeric($rating_star) || $rating_star < 1 || $rating_star > 5) {
-        header("Location: ../pantallas/error.php?e=rating&url-redirect-rating-numeric=$url_redirect_rating");
+        header("Location: ../pantallas/error.php?e=rating-type&url-redirect-user=$url_redirect_rating");
         exit();
     }
 
     // Conectar a la Base de Datos
-    $server = "localhost";
-    $user_server = "root";
-    $password_server = "";
-    $db_name_server = "eugenioya";
+    require_once("../server_.php");
 
-    $conn = new mysqli($server, $user_server, $password_server, $db_name_server);
+    $conn = new mysqli($server, $user, $password, $db_name);
 
     if ($conn->connect_error) {
-        header("Location: ../pantallas/error.php?e=connect_rating&url-redirect-rating-db-connect=$url_redirect_rating");
+        header("Location: ../pantallas/error.php?e=db-connect-error&url-redirect-user=$url_redirect_rating");
         exit();
     }
 
@@ -49,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             header("Location: ../perfiles/perfiles.php?profesional=$professional_id");
         } else {
-            header("Location: ../pantallas/error.php?e=rating-update&url-redirect-rating-update-error=$url_redirect_rating");
+            header("Location: ../pantallas/error.php?e=rating&url-redirect-user=$url_redirect_rating");
         }
 
         $update_stmt->close();
@@ -66,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             header("Location: ../perfiles/perfiles.php?profesional=$professional_id");
         } else {
-            header("Location: ../pantallas/error.php?e=rating-insert&url-redirect-rating-insert-error=$url_redirect_rating");
+            header("Location: ../pantallas/error.php?e=rating&url-redirect-user=$url_redirect_rating");
         }
 
         $insert_stmt->close();

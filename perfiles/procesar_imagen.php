@@ -1,6 +1,7 @@
 <?php
 session_start();
 $user_id = $_SESSION['user_loged_id'];
+$url_redirect = urlencode("../perfiles/perfil.php");
 // Verificar si se envió una imagen
 if(isset($_FILES['foto_perfil'])) {
 
@@ -28,12 +29,9 @@ if(isset($_FILES['foto_perfil'])) {
     $permitidos = array("image/jpeg", "image/jpg", "image/png");
     if(in_array($archivo_tipo, $permitidos)) {
         // Conexión con la BD
-        $server = "localhost";
-        $server_user_name = "root";
-        $server_password = "";
-        $data_base_name = "eugenioya";
+        require_once("../server_.php");
 
-        $conn = mysqli_connect($server, $server_user_name, $server_password, $data_base_name);
+        $conn = mysqli_connect($server, $user, $password, $db_name);
 
         if ($conn) {
             // Verificar si el usuario ya tiene una foto de perfil
@@ -67,12 +65,14 @@ if(isset($_FILES['foto_perfil'])) {
                 echo "Error al mover el archivo.";
             }
         } else {
-            echo "Error al conectar con la base de datos.";
+            header("Location: ../pantallas/error.php?e=db-connect-error&url-redirect-user=$url_redirect");
+            exit();
         }
     } else {
-        header("Location: configuraciones.php");
+        header("Location: ../pantallas/error.php?e=wrong-image-type&url-redirect-user=$url_redirect");
+        exit();
     }
 } else {
-    echo "No se ha seleccionado ninguna imagen.";
+    header("Location: perfil.php");
 }
 ?>

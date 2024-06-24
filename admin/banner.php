@@ -75,12 +75,13 @@
         $sql_banner_propios = "SELECT * FROM banner WHERE tipo_banner = 'propio'";
         $query_banner_propios = mysqli_query($conn, $sql_banner_propios);
 
-        if ($query_banner_propios->num_rows > 0) {
-            while ($row_propios = mysqli_fetch_array($query_banner_propios)) {
+        if ($query_banner_propios->num_rows > 0) { ?>
+            <p>Banners Propios</p>
+            <?php while ($row_propios = mysqli_fetch_array($query_banner_propios)) {
                 $id = $row_propios['id'];
                 $url = $row_propios['url_banner']; ?>
                 <article>
-                    <img src="<?php echo $url ?>" alt="Banner Propio">
+                    <img src="<?php echo $url ?>" title="Banner Propio" class="img">
                     <a href="php/delete_banner.php?id=<?php echo $id ?>&url=<?php echo urlencode($url) ?>">Eliminar Banner</a>
                 </article>
             <?php }
@@ -92,12 +93,13 @@
         $sql_ad_banner = "SELECT * FROM banner WHERE tipo_banner = 'advertisement'";
         $query_ad_banner = mysqli_query($conn, $sql_ad_banner);
 
-        if ($query_ad_banner->num_rows > 0) {
-            while ($row_ad = mysqli_fetch_array($query_ad_banner)) {
+        if ($query_ad_banner->num_rows > 0) { ?>
+            <p>Banners Publicitarios</p>
+            <?php while ($row_ad = mysqli_fetch_array($query_ad_banner)) {
                 $id_ad = $row_ad['id'];
                 $url_ad = $row_ad['url_banner']; ?>
                 <article>
-                    <img src="<?php echo $url_ad ?>" alt="Banner Publicitario">
+                    <img src="<?php echo $url_ad ?>" title="Banner Publicitario" class="img">
                     <a href="php/delete_banner.php?id=<?php echo $id_ad ?>&url=<?php echo urlencode($url_ad) ?>">Eliminar Banner</a>
                 </article>
             <?php }
