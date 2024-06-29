@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     bannerContainer.appendChild(bannerDiv);
                 });
             } else {
-                bannerContainer.innerHTML = '<p>No hay banners disponibles.</p>';
+                bannerContainer.innerHTML = '';
             }
         })
         .catch(error => {

@@ -106,6 +106,10 @@
         justify-content: center;
     }
 
+    option {
+        text-wrap: wrap;
+    }
+
     .p_check {
         font-size: 13px;
         font-family: var(--main_font);
@@ -140,4 +144,23 @@
         text-decoration: underline;
     }
 
-    /* ==>> Responsive <<== */
+        /* ==>> Responsive <<== */
+@media screen and (max-width:520px) {
+    
+}
+
+@media screen and (max-width:450px) {
+    
+}
+
+@media screen and (max-width: 425px) {
+    
+}
+
+@media screen and (max-width: 375px) {
+    
+}
+
+@media screen and (max-width: 320px) {
+    
+}

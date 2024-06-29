@@ -37,3 +37,17 @@
     font-style: var(--font_style);
     color: var(--footer_color);
 }
+
+.a_redirect {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: #000000;
+    transition: all .3s;
+}
+
+.a_redirect:hover {
+    color: var(--footer_color);
+    text-decoration: none;
+}

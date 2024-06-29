@@ -64,85 +64,98 @@
 
     <?php if($_SERVER['REQUEST_METHOD'] === 'GET') {
         $error = $_GET['e'];
-        $url = $_GET['url-redirect-user'];
+        if($user_id === 1) {
+            $url = "../admin/admin.php";
+        } else {
+            $url = $_GET['url-redirect-user'];
+        }
 
         // Pantallazos breves para el admin (sabe como reparar el error)
         if($error === 'banner-error-admin') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un Error en la conexión con la base de datos, verificar línea 37</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'banner-error-admin-ad') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un Error en la conexión con la base de datos, verificar línea 79</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
-        if($error === 'error-conect-bolsa-de-trabajo' || 'error-insert-bolsa-de-trabajo' || 'error-delete-bolsa-de-trabajo') { ?>
+        if($error === 'error-conect-bolsa-de-trabajo') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error en la sección de "Bolsa de Trabajo" por favor, verifica, que la carga y/o la eliminación de clasificados sea hecha de la manera correcta.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
+        <?php }if($error === 'error-insert-bolsa-de-trabajo') { ?>
+            <p class="h1">e=> <?php echo $error ?></p>
+            <p class="p">Ocurrio un error con la inserción de clasificados al registro.</p>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
+        <?php }
+        if($error === 'error-delete-bolsa-de-trabajo') { ?>
+            <p class="h1">e=> <?php echo $error ?></p>
+            <p class="p">Ocurrio un error con la eliminación de un clasificado del registro.</p>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'error-connect-banner') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error en la sección de "Delete Banner" por favor, verifica la conexión a la BD.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'error-delete-banner') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error en la sección de "Delete Banner", el banner no fue eliminado de la BD.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'cantidad-de-usuarios') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error con el botón que permite ver la cantidad de usuarios, por favor, verifica la conexión con la BD.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'error-show-banner') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error en la sección "banner" por favor verifica la conexión a la BD.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'error-conect-bolsa-de-trabajo') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
             <p class="p">Ocurrio un error en la sección "bolsa-de-trabajo" por favor verifica la conexión a la BD.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
 
         // << Pantallas para los usuarios >>
         if($error === 'db-connect-error') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error, conectando con el servidor. Por favor, intente nuevamente.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'wrong-image-type') { ?>
             <p class="h1">Error 404 Not Found => <?php echo $error ?></p>
             <p class="p">El tipo de imagen que quieres introducir, no es el permitido. Los permitidos son los siguientes tipos de imagen: jpeg, jpg o png. Intenta cargar esos tipos de imágenes nuevamente.</p>
-            <a href="<?php echo $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'fatal-error-files') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error con el servidor y su manejo de ficheros, por favor comunicarlo a soporte a traves del correo <span>soporte@eugenioya.com</span>, adjuntar en el correo tu nombre de perfil.</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'insert-error') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error en el manejo de inserción de datos. Intentalo más tarde, si el problema persiste, comunicarse con soporte a: <span>soporte@eugenioya.com</span></p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'connect-server-error') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error de conexión con el servidor. Intentalo más tarde, si el problema persiste, comunicarse con soporte a: <span>soporte@eugenioya.com</span></p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'rating-type') { ?>
             <p class="h1">Error 404 Not Found=> <?php echo $error ?></p>
             <p class="p">El tipo de puntuación no es el permitdo, trata de puntar de los rangos establecidos entre 1 (una) estrella y 5 (cinco) estrellas</p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'rating') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error al actualizar o insertar tu comentario y puntuación, por favor, intente más tarde. Si el error persiste comunicarlo a soporte a través del correo: <span>soporte@eugenioya.com</span></p>
-            <a href="<?php $url ?>">Click aquí para volver atrás</a>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
     }
     ?>

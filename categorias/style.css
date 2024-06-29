@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     margin: 150px auto;
     padding: 20px;
 }
@@ -140,4 +141,65 @@
     font-size: 13px;
     font-family: monospace;
     color: var(--second_color);
+}
+
+        /* ==>> Responsive <<== */
+@media screen and (max-width:520px) {
+    .div2_header_indice {
+        flex-direction: column;
+    }
+    .p2_header_indice {
+        width: 70vw;
+    }
+    .art_publicaciones {
+        border: 2px solid var(--footer_color);
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .checkbtn {
+        display: inline-block;
+        margin: auto;
+    }
+    .barr_nav{
+        background: var(--main_color);
+        margin: 0px 0px 20px 0px;
+        padding: 20px;
+        width: 100vw;
+        top: 50px;
+        text-align: center;
+        display: block;
+        position: fixed;
+        height: 100%;
+        left: -100%;
+        transition: all .5s;
+    }
+    #check:checked ~ ul {
+        left: 0;
+    }
+    #check:checked ~ .p_categoria_definida {
+        display: none;
+    }
+    .logo {
+        display: inline-block;
+    }
+    .barr_nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    
+}
+
+@media screen and (max-width: 375px) {
+    
+}
+
+@media screen and (max-width: 320px) {
+    
 }

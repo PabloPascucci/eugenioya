@@ -60,13 +60,13 @@ if ($resultado->num_rows > 0) {
             $stmt_id->execute();
             $result_id = $stmt_id->get_result();
 
-            if ($result_id->num_rows == 1) {
+            if ($result_id->num_rows === 1) {
                 $row_id = $result_id->fetch_assoc();
                 $id_usuario = $row_id['id_usuario'];
                 $_SESSION['user_loged_id'] = $id_usuario;
 
                 // Redirigir según el usuario
-                if ($id_usuario === '1') {
+                if ($id_usuario === 1) {
                     header("Location: ../../admin/admin.php");
                 } else {
                     header("Location: ../../perfiles/perfil.php");

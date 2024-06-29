@@ -4,7 +4,7 @@
 
         // Traemos a través de session el id del usuario.
         $admin = $_SESSION['user_loged_id'];
-        if($admin !== '1') {
+        if($admin !== 1) {
             header("Location: ../categorias/indice.php");
         }
         
