@@ -487,7 +487,7 @@
 }
 
 .img_about {
-    width: 300px;
+    width: 250px;
     margin: 30px auto;
 }
 
@@ -514,6 +514,11 @@
     }
     .div_categorias {
         margin: 10px;
+    }
+    /* ==>> Políticas de Privacidad y Términos y Condiciones <<== */
+    .sec {
+        width: auto;
+        padding: 5px;
     }
 }
 

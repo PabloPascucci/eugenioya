@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $zona = isset($_POST['barrio']) && $_POST['barrio'] !== "" ? $_POST['barrio'] : $user_area;
     $horas = isset($_POST['horas']) ? 1 : 0; // Checkbox debe ser tratado como booleano
     $telefono = isset($_POST['telefono']) && $_POST['telefono'] !== "" ? $_POST['telefono'] : $user_phone;
-    $sobre_usuario = isset($_POST['sobre_mi']) && $_POST['sobre_mi'] !== "" ? $_POST['sobre_mi'] : $about_user;
+    $sobre_usuario = isset($_POST['sobre_mi']) && $_POST['sobre_mi'] !== "" ? $_POST['sobre_mi'] : "";
 
     // Escapar los datos para evitar inyecciones SQL
     $profesion = mysqli_real_escape_string($conn, $profesion);
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            <article class="art_perfil_configuracion">
                <p class="user_category"><?php echo htmlspecialchars($user_name); ?></p>
                <form action="configuraciones.php" method="post" class="art_perfil_configuracion">
-                   <input type="text" name="profesion" placeholder="<?php echo htmlspecialchars($user_profession) ? null : "Tu Profesión"; ?>" class="inp" autocomplete="off">
+                   <input type="text" name="profesion" placeholder="<?php echo $user_profession ?>" class="inp" autocomplete="off">
                    <label for="barrio" class="label">Elije tu zona</label>
                    <select name="barrio" class="inp">
                        <option value="<?php echo $user_area ?>" id="ninguno"><?php echo $user_area ?></option>
@@ -163,8 +163,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     ?>
 
-    
-    
-    <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
 </body>
 </html>

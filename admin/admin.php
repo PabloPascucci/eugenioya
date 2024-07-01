@@ -54,13 +54,6 @@
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
 <!-- ==>> Scripts de Google <<== -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B9S4R8L22"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'G-6B9S4R8L22');
-    </script>
     <title>EugenioYa</title>
 </head>
 <body>

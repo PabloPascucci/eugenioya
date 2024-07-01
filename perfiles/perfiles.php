@@ -20,7 +20,7 @@
         $sql_usuario = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario'";
         $query_usuario = mysqli_query($conn,$sql_usuario);
 
-        if($query_usuario->num_rows == 1){
+        if($query_usuario->num_rows === 1){
             $row_user = mysqli_fetch_assoc($query_usuario);
             $user_name = $row_user['nombre'];
             $user_photo = isset($row_user['foto_perfil']) ? $row_user['foto_perfil'] : "../imagenes/user_icon.png";
@@ -28,6 +28,8 @@
             $user_area = isset($row_user['barrio']) ? $row_user['barrio'] : "";
             $hours = $row_user['horas'];
             $about_user = isset($row_user['sobre_mi']) ? $row_user['sobre_mi'] : "";
+            $matricula = isset($row_user['matricula']) ? $row_user['matricula'] : "";
+            $telefono = isset($row_user['telefono']) ? $row_user['telefono'] : "";
         }
     }
 ?>
@@ -62,8 +64,41 @@
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
     <title><?php echo $user_name ?> - <?php echo $user_profession ?></title>
+
+    <!-- ==== Cookie GA ==== -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+    </script>
+
+    <script>
+        function acceptCookies() {
+            document.cookie = "consent=true; max-age=31536000; path=/";
+            gtag('js', new Date());
+            gtag('config', 'G-6B9S4R8L22');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        function checkConsent() {
+            return document.cookie.split(';').some((item) => item.trim().startsWith('consent='));
+        }
+
+        window.onload = function() {
+            if (!checkConsent()) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            } else {
+                gtag('js', new Date());
+                gtag('config', 'G-6B9S4R8L22');
+            }
+        }
+    </script>
 </head>
 <body>
+
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; width:100%; background:#000; color:#fff; text-align:center; padding:10px;">
+        Este sitio utiliza cookies para mejorar tu experiencia. <a href="tu_politica_de_privacidad.html" style="color:#fff; text-decoration:underline;">Más información</a>.
+        <button onclick="acceptCookies()" style="margin-left: 20px; padding: 5px 10px; background: #007BFF; color: #fff; border: none; cursor: pointer;">Aceptar</button>
+    </div>
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
@@ -107,9 +142,12 @@
             <div class="div_categorias">
                 <p class="user_name"><?php echo $user_name ?></p>
             </div>
-            <!-- <div> -->
-                <!-- Aca va la matricula con condicional -->
-            <!-- </div> -->
+            <?php if($matricula != null) { ?>
+                <div class="div_categorias">
+                    <span class="material-symbols-outlined">contract</span>
+                    <p class="user_area">Matricula: <?php echo $matricula ?></p>
+                </div>
+            <?php } ?>
             <div class="div_categorias">
                 <span class="material-symbols-outlined">work</span>
                 <p class="user_category"><?php echo $user_profession ?></p>
@@ -135,10 +173,10 @@
         <p class="about_user"><?php echo $about_user ?></p>
         <?php if(!$_SESSION) { ?>
             <a href="../formularios/iniciar.php" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
-        <?php } elseif($user_id === $id_usuario) { ?>
-            <p class="comment_btn"></p>
+        <?php } elseif($user_id != $id_usuario) { ?>
+            <a href="https://wa.me/+54<?php echo $telefono ?>" class="mensaje_btn">Envíar Mensaje</a>
         <?php } else { ?>
-            <a href="../mensajes/chat.php?professional=<?php echo $id_usuario ?>" class="mensaje_btn">Envíar Mensaje</a>
+            <p class="comment_btn"></p>
         <?php } ?>
     </article>
 
@@ -173,6 +211,8 @@
     ?>
     </section>
 
+    <!-- Sección para el puntaje -->
+
     <section class="sec_rating">
         <form action="procesar_rating.php" method="post" class="form">
             <h5 class="h5_form_rating">Puntúa al Profesional</h5>
@@ -190,10 +230,10 @@
             <textarea class="inp_comment" name="comment" placeholder="Escribe un comentario" autocomplete="off"></textarea>
             <?php if(!$_SESSION){ ?>
                 <a href="../formularios/iniciar.php" class="comment_btn">Inicia Sesión para Comentar</a>
-            <?php }elseif($user_id ===  $id_usuario) { ?>
-                <p class="comment_btn">No puedes calificar tu propio perfil</p>
-            <?php } else{ ?>
+            <?php }elseif($id_usuario != $user_id) { ?>
                 <input type="submit" value="Envíar Comentario" class="comment_btn">
+            <?php } else{ ?>
+                <p class="comment_btn">No puedes calificar tu propio perfil</p>
             <?php } ?>
         </form>
         <div class="div_comments_made">
@@ -233,8 +273,13 @@
                                     <img src="<?php echo $foto_perfil ?>" title="<?php echo $rater_name ?>" class="img_user_comments">
                                 <?php } else { ?>
                                     <img src="../imagenes/user_icon.png" class="img_user_comments">
-                                <?php } ?>
-                                    <p class="user_name_comments"><?php echo $rater_name ?></p>
+                                <?php } 
+                                    if($id_rating_user === 1) { ?>
+                                        <p class="user_name_comments"><?php echo $rater_name ?> [admin]</p>
+                                    <?php } else { ?>
+                                        <p class="user_name_comments"><?php echo $rater_name ?></p>
+                                    <?php }
+                                    ?>
                                     <span class="stars" data-value="<?php echo $rating_star ?>"></span>
                                     <p class="rating_comment"><?php echo $rating_comment ?></p>
                                     <p class="rating_date"><?php echo $rating_date ?></p>
@@ -274,7 +319,7 @@
                 <a href="terminos-y-condiciones" class="a_footer">Términos y Condiciones</a>
             </article>
             <article class="art_div_footer">
-                <img src="../imagenes/avatar/eugeni_footer.png" title="EuGENIO" class="genio_footer">
+                <img src="../imagenes/avatar/eugenio_footer.png" title="EuGENIO" class="genio_footer">
             </article>
         </div>
         <div class="div1_footer">

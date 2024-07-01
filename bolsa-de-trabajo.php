@@ -38,22 +38,46 @@
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-<!-- ==>> Scripts de Google <<== -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B9S4R8L22"></script>
+    <title>Bolsa de Trabajo</title>
+
+    <!-- ==== Cookie GA ==== -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'G-6B9S4R8L22');
     </script>
-    <title>Bolsa de Trabajo</title>
+
+    <script>
+        function acceptCookies() {
+            document.cookie = "consent=true; max-age=31536000; path=/";
+            gtag('js', new Date());
+            gtag('config', 'G-6B9S4R8L22');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        function checkConsent() {
+            return document.cookie.split(';').some((item) => item.trim().startsWith('consent='));
+        }
+
+        window.onload = function() {
+            if (!checkConsent()) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            } else {
+                gtag('js', new Date());
+                gtag('config', 'G-6B9S4R8L22');
+            }
+        }
+    </script>
 </head>
 <body>
 
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; width:100%; background:#000; color:#fff; text-align:center; padding:10px;">
+        Este sitio utiliza cookies para mejorar tu experiencia. <a href="tu_politica_de_privacidad.html" style="color:#fff; text-decoration:underline;">Más información</a>.
+        <button onclick="acceptCookies()" style="margin-left: 20px; padding: 5px 10px; background: #007BFF; color: #fff; border: none; cursor: pointer;">Aceptar</button>
+    </div>
+
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
-            <img src="imagenes/logo/logo_nav.png" alt="EugenioYa.com" title="EugenioYa" class="logo_nav">
+            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
@@ -72,7 +96,7 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
-            <img src="imagenes/logo/logo_nav.png" alt="EugenioYa.com" title="EugenioYa" class="logo_nav">
+            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
@@ -80,10 +104,8 @@
                     </label>
                 <ul class="barr_nav">
                     <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
-                    <a href="index.html" class="a_nav">Inicio</a>
+                    <a href="perfiles/perfil.php" class="a_nav">Perfil</a>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
-                    <a href="formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
-                    <a href="formularios/registrar.php" class="a_nav">Regístrate</a>
                     <a href="bolsa-de-trabajo.php" class="a_nav_1">Bolsa de Trabajo</a>
                     <a href="nosotros.html" class="a_nav">Contacto</a>
                 </ul>
