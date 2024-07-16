@@ -1,4 +1,4 @@
-<?php
+    <?php
         // Iniciamos Sesión
         session_start();
 
@@ -9,12 +9,9 @@
         }
         
         // Conexión con la BD
-        $server = "localhost";
-        $server_user_name = "root";
-        $server_password = "";
-        $data_base_name = "eugenioya";
+        require_once("../server_.php");
 
-        $conn = mysqli_connect($server,$server_user_name,$server_password,$data_base_name);
+        $conn = new mysqli($server, $user, $password, $db_name);
 
         if(!$_SESSION){
             header("Location: ../formularios/iniciar.php");

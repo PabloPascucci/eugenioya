@@ -80,8 +80,8 @@
                 <option value="20">Servicios de Marketing y Publicidad</option>
                 <option value="21">Transporte y Mudanzas</option>
             </select>
-            <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled>
-            <input type="number" name="telefono" id="telefono" class="inp_disabled" placeholder="Tu Número de Contacto" autocomplete="off">
+            <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled required>
+            <input type="number" name="telefono" id="telefono" class="inp_disabled" placeholder="Tu Número de Contacto" autocomplete="off" required>
             <article class="art_form">
                 <label for="check" class="p_check">Estoy de acuerdo con la <a href="../politicas-de-privacidad.html" class="a_form">Política de Privacidad</a></label>
                 <input type="checkbox" name="check" id="check_1" class="check">

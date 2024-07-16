@@ -122,6 +122,10 @@
         <?php }
 
         // << Pantallas para los usuarios >>
+        if($error === 'pasword') { ?>
+            <p class="p">Se ha enviado un enlace para restablecer la contraseña a tu correo electrónico</p>
+            <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
+        <?php }
         if($error === 'db-connect-error') { ?>
             <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error, conectando con el servidor. Por favor, intente nuevamente.</p>

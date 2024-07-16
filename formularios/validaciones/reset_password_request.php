@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $reset_link = "https://eugenioya.com/formularios/reset_password_form.php?token=" . $token;
         $subject = "Restablecimiento de contraseña";
         $message = "Haz clic en el siguiente enlace para restablecer tu contraseña: " . $reset_link;
-        $headers = 'From: no-reply@yourdomain.com' . "\r\n" .
-                   'Reply-To: no-reply@yourdomain.com' . "\r\n" .
+        $headers = 'From: no-reply@eugenioya.com' . "\r\n" .
+                   'Reply-To: no-reply@eugenioya.com' . "\r\n" .
                    'X-Mailer: PHP/' . phpversion();
 
         mail($email, $subject, $message, $headers);
 
-        echo "Se ha enviado un enlace de restablecimiento de contraseña a tu correo electrónico.";
+        header("Location: ../../pantallas/error.php?e=pasword&url-redirect-user=../index.html");
     } else {
         echo "No se encontró una cuenta con ese correo electrónico.";
     }

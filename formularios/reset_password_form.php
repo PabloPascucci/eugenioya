@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </head>
     <body>
         <section class="sec_inicio">
-            <form action="reset_password_process.php" method="post" class="form">
+            <form action="validaciones/reset_password_process.php" method="post" class="form">
                 <input type="hidden" name="token" value="<?php echo $token; ?>">
                 <h2 class="h2_form">Nueva Contraseña</h2>
                 <input type="password" name="new_password" placeholder="Nueva Contraseña" required class="inp_form" autocomplete="off">
