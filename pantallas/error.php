@@ -78,7 +78,7 @@
         <?php }
         if($error === 'banner-error-admin-ad') { ?>
             <p class="h1">e=> <?php echo $error ?></p>
-            <p class="p">Ocurrio un Error en la conexión con la base de datos, verificar línea 79</p>
+            <p class="p">Ocurrio un Error en la conexión con la base de datos, verificar la línea en donde esta la conexión a la Base de Datos.</p>
             <a href="<?php echo $url ?>" class="a_redirect">Click aquí para volver atrás</a>
         <?php }
         if($error === 'error-conect-bolsa-de-trabajo') { ?>

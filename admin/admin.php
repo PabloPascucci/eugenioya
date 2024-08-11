@@ -75,7 +75,7 @@
     </div>
 
     <header class="header_perfil">
-        <img src="../imagenes/user_icon.png" class="img_perfil">
+        <img src="../imagenes/avatar/eugenio.png" class="img_perfil">
         <div class="div_perfil">
             <p class="user_name">EugenioYa</p>
             <p class="user_category">Perfil de Admin</p>
@@ -83,13 +83,13 @@
     </header>
 
     <!-- Sección para configuraciones de la página -->
-    <section>
-        <article>
-            <div id="cant_user"></div>
+    <section class="sec">
+        <article class="art_config">
+            <div id="cant_user">Usuarios Registrados: </div>
             <button id="userCountButton">Usuarios Registrados</button>
         </article>
-        <article>
-            <form action="php/banners.php" method="post" enctype="multipart/form-data">
+        <article class="art_config">
+            <form action="php/banners.php" method="post" enctype="multipart/form-data" class="form_admin">
                 <fieldset>
                     <legend>Banners Propios</legend>
                     <input type="file" name="banner_eugenio">
@@ -98,24 +98,59 @@
                     <legend>Banners Publicitarios</legend>
                     <input type="file" name="banner_ads">
                 </fieldset>
-                <input type="submit" value="Cargar Banner">
+                <input type="submit" value="Cargar Banner" class="button_admin">
             </form>
         </article>
-        <article>
-            <form action="php/bolsa-de-trabajo.php" method="post">
-                <fieldset>
+        <article class="art_config">
+            <form action="php/bolsa-de-trabajo.php" method="post" class="form_admin">
+                <fieldset class="field_admin">
                     <legend>Agregar trabajo a la bolsa</legend>
-                    <input type="text" name="titulo" placeholder="Titulo" automplete="off">
-                    <textarea name="cuerpo" placeholder="Cuerpo del Clasificado"></textarea>
-                    <input type="submit" value="Cargar">
+                    <input type="text" name="titulo" placeholder="Titulo" automplete="off" class="input_admin">
+                    <textarea name="cuerpo" placeholder="Cuerpo del Clasificado" class="text_admin"></textarea>
                 </fieldset>
+                <input type="submit" value="Cargar" class="button_admin">
             </form>
         </article>
     </section>
+
+    <form action="php/mail.php" method="post" enctype="multipart/form-data" class="form_admin">
+        <fieldset class="field_admin">
+            <legend>Destinatario</legend>
+            <select name="destinatario">
+                <option value="1">Usuarios</option>
+                <option value="2">Artistas</option>
+                <option value="3">Belleza y Estética</option>
+                <option value="4">Carpintería</option>
+                <option value="5">Cerrajería</option>
+                <option value="6">Construcción y Reformas</option>
+                <option value="7">Cuidado del Hogar y Limpieza</option>
+                <option value="8">Cuidado Infantil y Acomp. Hospitalario</option>
+                <option value="9">Educación y Tutoría</option>
+                <option value="10">Electricistas</option>
+                <option value="11">Fotógrafo</option>
+                <option value="12">Gasistas</option>
+                <option value="13">Jardinería y Paisajismo</option>
+                <option value="14">Plomería</option>
+                <option value="15">Reparación de Automóviles y Mecánica</option>
+                <option value="16">Reparación de Celulares y PC</option>
+                <option value="17">Reparación de Electrodomésticos</option>
+                <option value="18">Servicios de Catering y Eventos</option>
+                <option value="19">Servicios de Diseño Gráfico y Web</option>
+                <option value="20">Servicios de Marketing y Publicidad</option>
+                <option value="21">Transporte y Mudanzas</option>
+                <option value="prueba">Correo de Prueba</option>
+            </select>
+            <input type="text" name="asunto" placeholder="Asunto" class="inp_asunto" autocomplete="off">
+            <input type="text" name="cuerpo_1" placeholder="Encabezado" class="inp_encabezado" autocomplete="off">
+            <input type="file" name="banner_1">
+            <input type="text" name="cuerpo_2" placeholder="cuerpo del mensaje" class="cuerpo" autocomplete="off">
+        </fieldset>
+        <input type="submit" value="ENVIAR" class="button_admin">
+    </form>
     
     <script src="js/admin.js" defer></script>
     
-    <a href="../formularios/validaciones/inicio.php?session=1">Cerrar Sesión</a>
+    <a href="../formularios/validaciones/inicio.php?session=1" class="button_admin">Cerrar Sesión</a>
     
     
 </body>
