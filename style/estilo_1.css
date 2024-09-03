@@ -130,6 +130,23 @@
     align-items: center;
 }
 
+.art1__h_i_row {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+}
+
+.svg, .svg_1 {
+    background: var(--main_color);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.svg_1 {
+    margin: 20px 0 20px 0;
+}
+
 .h1_index {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
@@ -212,26 +229,32 @@
     }
     .div_categorias {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 10px 150px;
     }
     .p_categoria {
-        font-size: 20px;
+        font-size: 16px;
         font-family: var(--main_font);
         font-weight: var(--font_weight);
         font-style: var(--font_style);
         padding: 5px;
         width: 200px;
+        text-align: center;
         color: #000;
         transition: all .5s;
     }
-    .p_categoria:hover{
+    /* .p_categoria:hover{
         font-size: 22px;
         color: var(--main_color);
         text-decoration: none;
         transition: all .5s;
+    } */
+    .a_categoria {
+        background-color: var(--footer_color);
+        padding: 20px;
+        border-radius: 20px;
     }
     .icon {
         width: 30px;
@@ -457,7 +480,7 @@
 }
 
 .genio {
-    width: 300px;
+    width: 220px;
 }
 
 .genio_footer {
