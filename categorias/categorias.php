@@ -2,6 +2,8 @@
     // Iniciamos Sesión
     session_start();
 
+    $url_redirect_categoria = urlencode("../categorias/indice.php");
+
     // Traemos a través de session el id del usuario.
     if($_SESSION){
         $user_id = $_SESSION['user_loged_id'];
@@ -49,8 +51,10 @@
             $categoria_definida = "Servicios de Marketing y Publicidad";
         }elseif($categoria == '21'){
             $categoria_definida = "Transporte y Mudanzas";
+        }elseif($categoria == '22'){
+            $categoria_definida = "Mascotas";
         }else{
-            header("Location: indice.php");
+            header("Location: ../pantallas/error.php?e=categoria-inexistente&url-redirect-user=$url_redirect_categoria");
         }
 ?>
 <!DOCTYPE html>

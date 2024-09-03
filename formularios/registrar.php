@@ -71,6 +71,7 @@
                 <option value="11">Fotógrafo</option>
                 <option value="12">Gasistas</option>
                 <option value="13">Jardinería y Paisajismo</option>
+                <option value="22">Mascotas</option>
                 <option value="14">Plomería</option>
                 <option value="15">Reparación de Automóviles y Mecánica</option>
                 <option value="16">Reparación de Celulares y PC</option>

@@ -137,6 +137,7 @@
                     </span>
             </div>
         </article>
+
         <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=4" class="p_categoria">Carpintería</a>
@@ -151,6 +152,7 @@
                     </span>
             </div>
         </article>
+
         <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=6" class="p_categoria">Construcción y Reformas</a>
@@ -165,6 +167,7 @@
                     </span>
             </div>
         </article>
+
         <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=8" class="p_categoria">Cuidado Infantil y Acompañamiento Hospitalario</a>
@@ -179,6 +182,7 @@
                     </span>
             </div>
         </article>
+        
         <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=10" class="p_categoria">Electricistas</a>
@@ -193,6 +197,7 @@
                     </span>
             </div>
         </article>
+
         <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=12" class="p_categoria">Gasistas</a>
@@ -207,61 +212,75 @@
                     </span>
             </div>
         </article>
+        
         <article class="art_categorias">
+            <div class="div_categorias">
+                <a href="categorias.php?profesion=22" class="p_categoria">Mascotas</a>
+                <span class="material-symbols-outlined">
+                    pets
+                </span>
+            </div>
             <div class="div_categorias">
                 <a href="categorias.php?profesion=14" class="p_categoria">Plomería</a>
                 <span class="material-symbols-outlined">
                     water_drop
                     </span>
             </div>
+        </article>
+
+        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=15" class="p_categoria">Reparación de Automóviles y Mecánica</a>
                 <span class="material-symbols-outlined">
                     car_repair
                     </span>
             </div>
-        </article>
-        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=16" class="p_categoria">Reparación de Celulares y PC</a>
                 <span class="material-symbols-outlined">
                     devices
                     </span>
             </div>
+        </article>
+
+        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=17" class="p_categoria">Reparación de Electrodomésticos</a>
                 <span class="material-symbols-outlined">
                     coffee_maker
                     </span>
             </div>
-        </article>
-        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=18" class="p_categoria">Servicios de Catering y Eventos</a>
                 <span class="material-symbols-outlined">
                     event
                     </span>
             </div>
+        </article>
+        
+        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=19" class="p_categoria">Servicios de Diseño Gráfico y Web</a>
                 <span class="material-symbols-outlined">
                     space_dashboard
                     </span>
             </div>
-        </article><article class="art_categorias">
             <div class="div_categorias">
-                <a href="categorias.php?profesion=18" class="p_categoria">Servicios de Marketing y Publicidad</a>
+                <a href="categorias.php?profesion=20" class="p_categoria">Servicios de Marketing y Publicidad</a>
                 <span class="material-symbols-outlined">
                     ad
                     </span>
             </div>
+        </article>
+        <article class="art_categorias">
             <div class="div_categorias">
-                <a href="categorias.php?profesion=19" class="p_categoria">Transporte y Mudanza</a>
+                <a href="categorias.php?profesion=21" class="p_categoria">Transporte y Mudanza</a>
                 <span class="material-symbols-outlined">
                     local_shipping
                     </span>
-            </div>
+            </div>            
         </article>
+
         <?php if(!$_SESSION){ ?>
             <a href="../formularios/registrar.php" class="call_to_action">¡Registrate Ahora!</a>
         <?php } ?>
@@ -294,4 +313,7 @@
     </footer>
     
 </body>
+
+<!-- La última Categoría es la número 22 -->
+
 </html>
