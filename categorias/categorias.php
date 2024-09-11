@@ -235,7 +235,14 @@
             <?php
             }
             mysqli_free_result($query_perfil_publico);
-        }
+        } else { ?>
+            <article class="art_empty">
+                <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?></span>.</h3>
+                <p class="p_empty">Parece que todavía no contamos con expertos en este servicio en tu área, pero eso puede cambiar pronto. ¿Eres un profesional que ofrece este servicio?</p>
+                <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
+                <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
+            </article>
+        <?php }
             ?>
         </section>
         
@@ -263,7 +270,7 @@
             </div>
             <div class="div1_footer">
                 <p class="p_footer_ubi">San Martín de los Andes, Neuquén, Argentina</p>
-                <p class="p_footer_legal">EugenioYa © 2024 | Todos los Derechos Reservados</p>
+                <p class="p_footer_legal">EugenioYa © 2024 | V 1.4.0 | Todos los Derechos Reservados</p>
             </div>
         </footer>
 </body>

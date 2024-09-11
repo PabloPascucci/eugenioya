@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- === Etiquetas meta === -->
+<!-- === Etiquetas meta === -->
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="public">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,21 +41,29 @@
         <form action="validaciones/registro.php" method="post" class="form">
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                if (isset($_GET['wrong'])) {
-                    echo "<p class='wrong'>Las contraseñas no coinciden</p>";
+                if (isset($_GET['error'])) {
+                    if ($_GET['error'] === "password-mismatch") {
+                        echo "<p class='wrong'>LAS CONTRASEÑAS NO COINCIDEN</p>";
+                    }
+                    if($_GET['error'] === "empty-input") {
+                        echo "<p class='wrong'>PARA REGISTRARTE DEBERÁS COMPLETAR TODO EL FORMULARIO</p>";
+                    }
                 }
-            }
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if (isset($_GET['new'])) {
-                    echo "<p class='wrong'>Debes registrarte</p>";
+                    echo "<p class='wrong'>DEBES REGISTRARTE</p>";
                 }
             }
             ?>
             <h2 class="h2_form">Crea una Cuenta</h2>
-            <input type="text" name="nombre" placeholder="Nombre" required class="inp_form" autocomplete="off">
-            <input type="email" name="correo" placeholder="Correo Electrónico" required class="inp_form" autocomplete="off">
-            <input type="password" name="password" placeholder="Contraseña" required class="inp_form">
-            <input type="password" name="password_1" placeholder="Confirma tu Contraseña" required class="inp_form">
+            <input type="text" name="nombre" placeholder="Nombre" class="inp_form" autocomplete="off">
+            <input type="email" name="correo" placeholder="Correo Electrónico" class="inp_form" autocomplete="off">
+            <input type="password" name="password" placeholder="Contraseña" class="inp_form">
+            <input type="password" name="password_1" placeholder="Confirma tu Contraseña" class="inp_form">
+            <label for="city" class="a_form">Elije tu Localidad</label>
+            <select name="city" id="city" class="inp_form">
+                <option value="1">San Martín de los Andes</option>
+                <!-- <option value="2">Neuquén</option> -->
+            </select>
             <label for="rubro" class="a_form">Elije una Categoría</label>
             <select name="rubro" id="rubro" class="inp_form">
                 <option value="1" id="ninguno">Ninguna</option>
@@ -81,8 +89,8 @@
                 <option value="20">Servicios de Marketing y Publicidad</option>
                 <option value="21">Transporte y Mudanzas</option>
             </select>
-            <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled required>
-            <input type="number" name="telefono" id="telefono" class="inp_disabled" placeholder="Tu Número de Contacto" autocomplete="off" required>
+            <input type="text" name="oficio" id="oficio" placeholder="Profesión/Oficio" class="inp_disabled" autocomplete="off" disabled>
+            <input type="number" name="telefono" id="telefono" class="inp_disabled" placeholder="Tu Número de Contacto" autocomplete="off">
             <article class="art_form">
                 <label for="check" class="p_check">Estoy de acuerdo con la <a href="../politicas-de-privacidad.html" class="a_form">Política de Privacidad</a></label>
                 <input type="checkbox" name="check" id="check_1" class="check">

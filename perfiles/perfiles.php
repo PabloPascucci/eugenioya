@@ -324,7 +324,7 @@
         </div>
         <div class="div1_footer">
             <p class="p_footer_ubi">San Martín de los Andes, Neuquén, Argentina</p>
-            <p class="p_footer_legal">EugenioYa © 2024 | Todos los Derechos Reservados</p>
+            <p class="p_footer_legal">EugenioYa © 2024| V 1.4.0 | Todos los Derechos Reservados</p>
         </div>
     </footer>
     
