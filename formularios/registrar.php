@@ -17,6 +17,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_form.css">
+    <link rel="stylesheet" href="../style/estilo_1.css">
     <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,6 +85,7 @@
                 <option value="15">Reparación de Automóviles y Mecánica</option>
                 <option value="16">Reparación de Celulares y PC</option>
                 <option value="17">Reparación de Electrodomésticos</option>
+                <option value="23">Salud y Bienestar</option>
                 <option value="18">Servicios de Catering y Eventos</option>
                 <option value="19">Servicios de Diseño Gráfico y Web</option>
                 <option value="20">Servicios de Marketing y Publicidad</option>
@@ -104,6 +106,12 @@
     <a href="iniciar.php" class="a_form">Inicia Sesión</a>
     <script src="path/to/your/banner.js"></script>
     </section>
+
+    <div class="div1_footer">
+        <p class="p_footer_ubi" id="footer_ubi"></p>
+        <p class="p_footer_legal" id="footer_legal"></p>
+    </div>
+    <script src="../JS/version.js"></script>
     
 </body>
 </html>

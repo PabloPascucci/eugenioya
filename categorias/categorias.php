@@ -53,6 +53,8 @@
             $categoria_definida = "Transporte y Mudanzas";
         }elseif($categoria == '22'){
             $categoria_definida = "Mascotas";
+        }elseif($categoria == '23'){
+            $categoria_definida = "Salud y Bienestar";
         }else{
             header("Location: ../pantallas/error.php?e=categoria-inexistente&url-redirect-user=$url_redirect_categoria");
         }
@@ -269,8 +271,9 @@
                 </article>
             </div>
             <div class="div1_footer">
-                <p class="p_footer_ubi">San Martín de los Andes, Neuquén, Argentina</p>
-                <p class="p_footer_legal">EugenioYa © 2024 | V 1.4.0 | Todos los Derechos Reservados</p>
+                <p class="p_footer_ubi" id="footer_ubi"></p>
+                <p class="p_footer_legal" id="footer_legal"></p>
             </div>
+            <script src="../JS/version.js"></script>
         </footer>
 </body>

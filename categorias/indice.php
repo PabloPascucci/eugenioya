@@ -201,7 +201,7 @@
                 <p class="p_categoria">Reparación de Automóviles y Mecánica</p>
             </div>
             <div class="div_categorias">
-                <a href="categorias.php?profesion=15" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M74.02-154.02v-98.13h80v-485.7q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h624.07v68.37H222.15v485.7h235.7v98.13H74.02Zm477.89 0q-14.42 0-24.24-9.82-9.82-9.82-9.82-24.25v-455.69q0-14.43 9.82-24.25t24.24-9.82h300q14.4 0 24.35 9.82 9.96 9.82 9.96 24.25v455.69q0 14.43-9.96 24.25-9.95 9.82-24.35 9.82h-300Zm30.72-98.13h238.8V-613.3h-238.8v361.15Zm0 0h238.8-238.8Z"/></svg></a>
+                <a href="categorias.php?profesion=16" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M74.02-154.02v-98.13h80v-485.7q0-28.45 19.89-48.41 19.89-19.96 48.24-19.96h624.07v68.37H222.15v485.7h235.7v98.13H74.02Zm477.89 0q-14.42 0-24.24-9.82-9.82-9.82-9.82-24.25v-455.69q0-14.43 9.82-24.25t24.24-9.82h300q14.4 0 24.35 9.82 9.96 9.82 9.96 24.25v455.69q0 14.43-9.96 24.25-9.95 9.82-24.35 9.82h-300Zm30.72-98.13h238.8V-613.3h-238.8v361.15Zm0 0h238.8-238.8Z"/></svg></a>
                 <p class="p_categoria">Reparación de Celulares y PC</p>
             </div>
         </article>
@@ -212,22 +212,26 @@
                 <p class="p_categoria">Reparación de Electrodomésticos</p>
             </div>
             <div class="div_categorias">
-                <a href="categorias.php?profesion=18" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M596.82-220Q556-220 528-248.18q-28-28.19-28-69Q500-358 528.18-386q28.19-28 69-28Q638-414 666-385.82q28 28.19 28 69Q694-276 665.82-248q-28.19 28-69 28ZM182.15-74.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-615.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34H245v-60h69.07v60h331.86v-60H715v60h62.85q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v615.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13h595.7V-570h-595.7v427.85Zm0-487.85h595.7v-127.85h-595.7V-630Zm0 0v-127.85V-630Z"/></svg></a>
-                <p class="p_categoria">Servicios de Catering y Eventos</p>
+                <a href="categorias.php?profesion=23" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M480-480Zm0 360q-18 0-34.5-6.5T416-146L148-415q-35-35-51.5-80T80-589q0-103 67-177t167-74q48 0 90.5 19t75.5 53q32-34 74.5-53t90.5-19q100 0 167.5 74T880-590q0 49-17 94t-51 80L543-146q-13 13-29 19.5t-34 6.5Zm40.29-510q7.71 0 13.71 4 6 4 11 10l71 106h188.13q7.94-19.43 11.9-39.43 3.97-20 3.97-40.57 0-77-49.95-133.5Q720.11-780 645.19-780q-35.19 0-67.69 14.5T521-725l-27 29q-3 3-6 5t-8 2q-5 0-8.64-1.88-3.63-1.89-6.36-5.12l-27-29q-24.27-25.82-56.64-40.41Q349-780 314-780q-74.57 0-124.29 56.44Q140-667.12 140-590q0 20.72 4 40.86T155.65-510H360q7.58 0 14.39 3.61 6.82 3.61 10.61 9.39l46 70 60-182q3.08-9 11.18-15 8.09-6 18.11-6Zm8.71 97-61 182q-2.97 9-11.15 15T439-330q-8 0-14-4t-10-10l-71-106H198l261 261q5 5 9.8 7 4.8 2 11.2 2 6.4 0 11.2-2 4.8-2 9.8-7l260-261H600q-8 0-14-4t-11-10l-46-69Z"/></svg></a>
+                <p class="p_categoria">Salud y Bienestar</p>
             </div>
         </article>
         
         <article class="art_categorias">
             <div class="div_categorias">
+                <a href="categorias.php?profesion=18" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M596.82-220Q556-220 528-248.18q-28-28.19-28-69Q500-358 528.18-386q28.19-28 69-28Q638-414 666-385.82q28 28.19 28 69Q694-276 665.82-248q-28.19 28-69 28ZM182.15-74.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-615.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34H245v-60h69.07v60h331.86v-60H715v60h62.85q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v615.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13h595.7V-570h-595.7v427.85Zm0-487.85h595.7v-127.85h-595.7V-630Zm0 0v-127.85V-630Z"/></svg></a>
+                <p class="p_categoria">Servicios de Catering y Eventos</p>
+            </div>
+            <div class="div_categorias">
                 <a href="categorias.php?profesion=19" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M182.15-114.02q-27.6 0-47.86-20.27-20.27-20.26-20.27-47.86v-595.7q0-27.7 20.27-48.03 20.26-20.34 47.86-20.34h595.7q27.7 0 48.03 20.34 20.34 20.33 20.34 48.03v595.7q0 27.6-20.34 47.86-20.33 20.27-48.03 20.27h-595.7Zm0-68.13H450v-595.7H182.15v595.7Zm327.85 0h267.85V-481H510v298.85ZM510-541h267.85v-236.85H510V-541Z"/></svg></a>
                 <p class="p_categoria">Servicios de Diseño Gráfico y Web</p>
             </div>
+        </article>
+        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=20" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M469.43-231.87q-100.06-4.28-168.81-75.79t-68.75-172.43q0-103.41 72.27-175.85 72.27-72.43 175.86-72.43 100.74 0 172.29 68.99 71.56 68.99 76.08 170.05L659.63-511q-10.76-65.2-60.72-108.41-49.95-43.22-119.01-43.22-76 0-129.27 53.22-53.26 53.21-53.26 129.35 0 68.17 43.22 118.43 43.21 50.26 108.17 61.26l20.67 68.5ZM518.15-71q-9.54 1-18.95 1.5-9.42.5-19.2.5-85.15 0-160.18-32.31-75.02-32.32-130.61-87.9-55.58-55.59-87.9-130.61Q69-394.85 69-480t32.31-160.18q32.32-75.02 87.9-130.61 55.59-55.58 130.61-87.9Q394.85-891 480-891t160.18 32.31q75.02 32.32 130.61 87.9 55.58 55.59 87.9 130.61Q891-565.15 891-480q0 9.8-.5 19.36-.5 9.55-1.5 19.03l-63.5-19.51V-480q0-144.07-100.73-244.78Q624.03-825.5 479.94-825.5q-144.09 0-244.77 100.73Q134.5-624.03 134.5-479.94q0 144.09 100.72 244.77Q335.93-134.5 480-134.5h18.72L518.15-71Zm305.48 16.5-172.3-172.43L601.2-75.46 480-480l404.54 121.2-151.47 50.13 172.43 172.3-81.87 81.87Z"/></svg></a>
                 <p class="p_categoria">Servicios de Marketing y Publicidad</p>
             </div>
-        </article>
-        <article class="art_categorias">
             <div class="div_categorias">
                 <a href="categorias.php?profesion=21" class="a_categoria"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M225.55-155.5q-49.59 0-84.81-34.18-35.22-34.17-35.7-83.82H34.5v-463.87q0-27.6 20.27-47.86 20.26-20.27 47.86-20.27h579v164.13h103.33L925.5-454.02v180.52h-73.87q-.72 49.65-35.82 83.82-35.1 34.18-84.69 34.18-49.6 0-84.82-34.18-35.21-34.17-35.69-83.82H345.83q-.72 49.24-35.7 83.62-34.98 34.38-84.58 34.38Zm-.12-62.87q24 0 41-17t17-41q0-24-17-41t-41-17q-24 0-41 17t-17 41q0 24 17 41t41 17Zm-122.8-123.26h23.04q16.92-25.8 42.46-41.09Q193.66-398 224.45-398t56.81 15.63q26.01 15.64 42.78 40.74H613.5v-395.74H102.63v395.74ZM731-218.37q24 0 41-17t17-41q0-24-17-41t-41-17q-24 0-41 17t-17 41q0 24 17 41t41 17ZM681.63-425h180.26l-111-148h-69.26v148ZM358.57-529Z"/></svg></a>
                 <p class="p_categoria">Transporte y Mudanzas</p>
@@ -260,9 +264,10 @@
             </article>
         </div>
         <div class="div1_footer">
-            <p class="p_footer_ubi">San Martín de los Andes, Neuquén, Argentina</p>
-            <p class="p_footer_legal">EugenioYa © 2024 | Todos los Derechos Reservados</p>
+            <p class="p_footer_ubi" id="footer_ubi"></p>
+            <p class="p_footer_legal" id="footer_legal"></p>
         </div>
+        <script src="../JS/version.js"></script>
     </footer>
     
 </body>
