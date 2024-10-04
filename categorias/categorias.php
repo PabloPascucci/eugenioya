@@ -1,4 +1,9 @@
 <?php
+    // ====>> Conectar con la BD de usuarios
+    require_once("../server_.php");
+
+    $conn = mysqli_connect($server,$user,$password,$db_name);
+
     // Iniciamos Sesión
     session_start();
 
@@ -7,6 +12,23 @@
     // Traemos a través de session el id del usuario.
     if($_SESSION){
         $user_id = $_SESSION['user_loged_id'];
+
+        // ===>> Extraemos la ciudad del usuario que busca el servicio
+        $sql_ubicacion = "SELECT ciudad, barrio FROM usuario WHERE id_usuario = '$user_id'";
+        $query_ubicacion = mysqli_query($conn,$sql_ubicacion);
+
+        // ===>> Guardamos la ciudad
+        if($query_ubicacion->num_rows > 0) {
+            $resultado_ciudad = mysqli_fetch_assoc($query_ubicacion);
+            
+            $barrio_cliente = $resultado_ciudad['barrio'];
+            $ciudad_usuario = $resultado_ciudad['ciudad'];
+            if($ciudad_usuario === '1') {
+                $ciudad_definidda = "San Martín de los Andes";
+            } elseif ($ciudad_usuario === '2') {
+                $ciudad_definidda = "Ciudad de Neuquén";
+            }
+        }
     }
     
     if($_SERVER['REQUEST_METHOD']=$_GET) {
@@ -168,87 +190,343 @@
         </div>
     <?php } ?>
 
-        <section class="sec_categorias_dinamico">
-            <?php
-            // ====>> Conectar con la BD de usuarios
-            require_once("../server_.php");
+        <!-- Configuramos los profesionales según: Zona, e inicio de sesión -->
+         <?php 
+            if(!$_SESSION) { ?>
+                <!-- NO EXISTE UNA SESIÓN -->
+            <section class="sec_categorias_dinamico">
+                <?php
+                // ====>> Query para extraer datos de los perfiles de los usuarios con la zona del cliente
 
-            $conn = mysqli_connect($server,$user,$password,$db_name);
+                $sql_perfil_sma = "SELECT * FROM usuario WHERE categoria = '$categoria' AND ciudad = 1";
+                $query_perfil_sma = mysqli_query($conn,$sql_perfil_sma);
 
-            // ====>> Query para extraer datos de los perfiles de los usuarios
-            $sql_perfil_publico = "SELECT * FROM usuario WHERE categoria = '$categoria'";
-            $query_perfil_publico = mysqli_query($conn,$sql_perfil_publico);
+                // ====>> Query para extraer datos de los perfiles de los usuarios de otras zonas
+                $sql_perfil_nqn = "SELECT * FROM usuario WHERE categoria = '$categoria' AND ciudad = 2";
+                $query_perfil_nqn = mysqli_query($conn, $sql_perfil_nqn);
 
-            // ====>> Bucle para visualizar y leer los datos de los usuarios
-            if($query_perfil_publico->num_rows > 0) {
-                while ($row = mysqli_fetch_array($query_perfil_publico)) {
-                    $id_usuario = $row['id_usuario'];
-                    $usuario = $row['nombre'];
-                    $profesion = $row['profesion'];
-                    $zona = $row['barrio'];
-                    $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
-                    $disponibilidad = $row['horas'];
+                // ====>> Bucle para visualizar y leer los datos de los usuarios SMA
+                if($query_perfil_sma->num_rows > 0) { ?>
+                    <p class="p_ciudad">Profesionales en San Martín de los Andes</p>
+                    <?php
+                    while ($row = mysqli_fetch_array($query_perfil_sma)) {
+                        $id_usuario = $row['id_usuario'];
+                        $usuario = $row['nombre'];
+                        $profesion = $row['profesion'];
+                        $zona = $row['barrio'];
+                        $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
+                        $disponibilidad = $row['horas'];
 
-                    // Consulta para obtener el total de rating_count del profesional
-                    $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
-                    $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
-                    $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
-                    $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
+                        // Consulta para obtener el total de rating_count del profesional
+                        $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
+                        $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
+                        $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
+                        $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
 
-                    // Consulta para obtener el promedio de puntuación del profesional
-                    $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
-                    $query_promedio = mysqli_query($conn, $sql_promedio);
-                    $row_promedio = mysqli_fetch_assoc($query_promedio);
-                    if ($row_promedio) {
-                        $promedio_rating = $row_promedio['average_rating'];
-                        $rating_count = $row_promedio['rating_count'];
-                    } else {
-                        $promedio_rating = 0; 
-                        $rating_count = 0;
+                        // Consulta para obtener el promedio de puntuación del profesional
+                        $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
+                        $query_promedio = mysqli_query($conn, $sql_promedio);
+                        $row_promedio = mysqli_fetch_assoc($query_promedio);
+                        if ($row_promedio) {
+                            $promedio_rating = $row_promedio['average_rating'];
+                            $rating_count = $row_promedio['rating_count'];
+                        } else {
+                            $promedio_rating = 0; 
+                            $rating_count = 0;
+                        }
+                    
+                ?>
+                    <section>
+                        <article class="art_publicaciones">
+                            <div class="div_categoria">
+                                <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
+                            </div>
+                            <div class="div_categoria">
+                                <p class="p1_usuario"><?php echo $usuario ?></p>
+                                <p class="p2_usuario"><?php echo $profesion ?></p>
+                            </div>
+                            <div class="div_categoria">
+                                <div class="div_stars">
+                                    <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
+                                    <p class="p_stars"><?php echo $total_rating_count ?></p>
+                                </div>
+                                <p class="p3_usuario"><?php echo $zona ?></p>
+                            </div>
+                            <div class="div_categoria">
+                                <?php 
+                                    if($disponibilidad == '1') {
+                                        echo "<p class='p4_usuario'>disponible las 24hs</p>";
+                                    }else{
+                                        echo "";
+                                    }
+                                ?>
+                            </div>
+                            <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
+                        </article>
+                        <article class="art_publicaciones">
+                            <p class="p3_usuario">San Martín de los Andes</p>
+                        </article>
+                    </section>
+                            
+            <?php }
+                }
+
+                 // ====>> Bucle para visualizar y leer los datos de los usuarios NQN
+                 if($query_perfil_nqn->num_rows > 0) { ?>
+                    <p class="p_ciudad">Profesionales en Ciudad de Neuquén</p>
+                    <?php
+                    while ($row = mysqli_fetch_array($query_perfil_nqn)) {
+                        $id_usuario = $row['id_usuario'];
+                        $usuario = $row['nombre'];
+                        $profesion = $row['profesion'];
+                        $zona = $row['barrio'];
+                        $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
+                        $disponibilidad = $row['horas'];
+
+                        // Consulta para obtener el total de rating_count del profesional
+                        $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
+                        $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
+                        $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
+                        $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
+
+                        // Consulta para obtener el promedio de puntuación del profesional
+                        $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
+                        $query_promedio = mysqli_query($conn, $sql_promedio);
+                        $row_promedio = mysqli_fetch_assoc($query_promedio);
+                        if ($row_promedio) {
+                            $promedio_rating = $row_promedio['average_rating'];
+                            $rating_count = $row_promedio['rating_count'];
+                        } else {
+                            $promedio_rating = 0; 
+                            $rating_count = 0;
+                        }
+                    
+                ?>
+                    <section>
+                        <article class="art_publicaciones">
+                            <div class="div_categoria">
+                                <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
+                            </div>
+                            <div class="div_categoria">
+                                <p class="p1_usuario"><?php echo $usuario ?></p>
+                                <p class="p2_usuario"><?php echo $profesion ?></p>
+                            </div>
+                            <div class="div_categoria">
+                                <div class="div_stars">
+                                    <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
+                                    <p class="p_stars"><?php echo $total_rating_count ?></p>
+                                </div>
+                                <p class="p3_usuario"><?php echo $zona ?></p>
+                            </div>
+                            <div class="div_categoria">
+                                <?php 
+                                    if($disponibilidad == '1') {
+                                        echo "<p class='p4_usuario'>disponible las 24hs</p>";
+                                    }else{
+                                        echo "";
+                                    }
+                                ?>
+                            </div>
+                            <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
+                        </article>
+                        <article class="art_publicaciones">
+                            <p class="p3_usuario">Ciudad de Neuquén</p>
+                        </article>
+                    </section> <?php
                     }
-                
-            ?>
-                <article class="art_publicaciones">
-                    <div class="div_categoria">
-                        <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
-                    </div>
-                    <div class="div_categoria">
-                        <p class="p1_usuario"><?php echo $usuario ?></p>
-                        <p class="p2_usuario"><?php echo $profesion ?></p>
-                    </div>
-                    <div class="div_categoria">
-                        <div class="div_stars">
-                            <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
-                            <p class="p_stars"><?php echo $total_rating_count ?></p>
-                        </div>
-                        <p class="p3_usuario"><?php echo $zona ?></p>
-                    </div>
-                    <div class="div_categoria">
-                        <?php 
-                            if($disponibilidad == '1') {
-                                echo "<p class='p4_usuario'>disponible las 24hs</p>";
-                            }else{
-                                echo "";
-                            }
-                        ?>
-                    </div>
-                    <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
-                </article>
-            <?php
-            }
-            mysqli_free_result($query_perfil_publico);
-        } else { ?>
-            <article class="art_empty">
-                <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?></span>.</h3>
-                <p class="p_empty">Parece que todavía no contamos con expertos en este servicio en tu área, pero eso puede cambiar pronto. ¿Eres un profesional que ofrece este servicio?</p>
-                <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
-                <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
-            </article>
-        <?php }
-            ?>
+                }
+                    // === MENSAJE PARA SMA
+                if($query_perfil_sma->num_rows == 0 && $query_perfil_nqn->num_rows > 0) {
+                    ?>
+                    <article class="art_empty">
+                        <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?> </span> en San Martín de los Andes.</h3>
+                        <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
+                        <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
+                    </article>
+                    <?php
+                }
+
+                    // === MENSAJE PARA NEUQUÉN
+                if($query_perfil_nqn->num_rows == 0 && $query_perfil_sma->num_rows > 0) {
+                    ?>
+                    <article class="art_empty">
+                        <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?> </span> en Ciudad de Neuquén.</h3>
+                        <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
+                        <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
+                    </article>
+                    <?php
+                }
+
+                if($query_perfil_sma->num_rows == 0 && $query_perfil_nqn->num_rows == 0) { 
+                    ?>
+                    <!-- <<< Si no hay profesionales >>> -->
+                    <article class="art_empty">
+                        <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?></span>.</h3>
+                        <p class="p_empty">Parece que todavía no contamos con expertos en este servicio en tu área, pero eso puede cambiar pronto. ¿Eres un profesional que ofrece este servicio?</p>
+                        <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
+                        <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
+                    </article>
         </section>
+            <?php }
+            mysqli_free_result($query_perfil_sma);
+            mysqli_free_result($query_perfil_nqn);
+            } else { ?>
+                <!-- SESIÓN INICIADA -->
+                <!-- >>> Acá iran los profesiones que estan en tu zona. -->
+                <section class="sec_categorias_dinamico">
+                    <?php
+
+                    // ====>> Query para extraer datos de los perfiles de los usuarios con la zona del cliente
+                    $sql_perfil_publico = "SELECT * FROM usuario WHERE categoria = '$categoria' AND barrio = '$barrio_cliente' AND ciudad = '$ciudad_usuario'";
+                    $query_perfil_publico = mysqli_query($conn,$sql_perfil_publico);
+
+                    // ====>> Query para extraer datos de los perfiles de los usuarios de otras zonas
+                    $sql_perfil_publico_general = "SELECT * FROM usuario WHERE categoria = '$categoria' AND barrio != '$barrio_cliente' AND ciudad = '$ciudad_usuario'";
+                    $query_perfil_publico_general = mysqli_query($conn, $sql_perfil_publico_general);
+
+                    // ====>> Bucle para visualizar y leer los datos de los usuarios
+                    if($query_perfil_publico->num_rows > 0) { ?>
+                        <p class="p_ciudad">Profesionales en tu zona</p>
+                        <?php
+                        while ($row = mysqli_fetch_array($query_perfil_publico)) {
+                            $id_usuario = $row['id_usuario'];
+                            $usuario = $row['nombre'];
+                            $profesion = $row['profesion'];
+                            $zona = $row['barrio'];
+                            $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
+                            $disponibilidad = $row['horas'];
+
+                            // Consulta para obtener el total de rating_count del profesional
+                            $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
+                            $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
+                            $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
+                            $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
+
+                            // Consulta para obtener el promedio de puntuación del profesional
+                            $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
+                            $query_promedio = mysqli_query($conn, $sql_promedio);
+                            $row_promedio = mysqli_fetch_assoc($query_promedio);
+                            if ($row_promedio) {
+                                $promedio_rating = $row_promedio['average_rating'];
+                                $rating_count = $row_promedio['rating_count'];
+                            } else {
+                                $promedio_rating = 0; 
+                                $rating_count = 0;
+                            }
+                        
+                    ?>
+                        <section>
+                            <article class="art_publicaciones">
+                                <div class="div_categoria">
+                                    <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
+                                </div>
+                                <div class="div_categoria">
+                                    <p class="p1_usuario"><?php echo $usuario ?></p>
+                                    <p class="p2_usuario"><?php echo $profesion ?></p>
+                                </div>
+                                <div class="div_categoria">
+                                    <div class="div_stars">
+                                        <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
+                                        <p class="p_stars"><?php echo $total_rating_count ?></p>
+                                    </div>
+                                    <p class="p3_usuario"><?php echo $zona ?></p>
+                                </div>
+                                <div class="div_categoria">
+                                    <?php 
+                                        if($disponibilidad == '1') {
+                                            echo "<p class='p4_usuario'>disponible las 24hs</p>";
+                                        }else{
+                                            echo "";
+                                        }
+                                    ?>
+                                    <p class="p2_usuario"><?php echo $ciudad_definidda ?></p>
+                                </div>
+                                <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
+                            </article>
+                        </section>
+                        <?php
+                        }
+                } 
+                
+                if($query_perfil_publico_general->num_rows > 0) { ?>
+                            <p class="p_ciudad">Profesionales en otras zonas</p>
+                            <?php
+                            while ($row = mysqli_fetch_array($query_perfil_publico_general)) {
+                                $id_usuario = $row['id_usuario'];
+                                $usuario = $row['nombre'];
+                                $profesion = $row['profesion'];
+                                $zona = $row['barrio'];
+                                $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
+                                $disponibilidad = $row['horas'];
+
+                                // Consulta para obtener el total de rating_count del profesional
+                                $sql_total_rating_count = "SELECT SUM(rating_count) AS total_rating_count FROM average WHERE professional_id = $id_usuario";
+                                $query_total_rating_count = mysqli_query($conn, $sql_total_rating_count);
+                                $row_total_rating_count = mysqli_fetch_assoc($query_total_rating_count);
+                                $total_rating_count = $row_total_rating_count['total_rating_count'] ? $row_total_rating_count['total_rating_count'] : 0;
+
+                                // Consulta para obtener el promedio de puntuación del profesional
+                                $sql_promedio = "SELECT average_rating, rating_count FROM average WHERE professional_id = $id_usuario";
+                                $query_promedio = mysqli_query($conn, $sql_promedio);
+                                $row_promedio = mysqli_fetch_assoc($query_promedio);
+                                if ($row_promedio) {
+                                    $promedio_rating = $row_promedio['average_rating'];
+                                    $rating_count = $row_promedio['rating_count'];
+                                } else {
+                                    $promedio_rating = 0; 
+                                    $rating_count = 0;
+                                }
+                            
+                        ?>
+                            <article class="art_publicaciones">
+                                <div class="div_categoria">
+                                    <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
+                                </div>
+                                <div class="div_categoria">
+                                    <p class="p1_usuario"><?php echo $usuario ?></p>
+                                    <p class="p2_usuario"><?php echo $profesion ?></p>
+                                </div>
+                                <div class="div_categoria">
+                                    <div class="div_stars">
+                                        <span class="stars" data-value="<?php echo $promedio_rating ?>"></span>
+                                        <p class="p_stars"><?php echo $total_rating_count ?></p>
+                                    </div>
+                                    <p class="p3_usuario"><?php echo $zona ?></p>
+                                </div>
+                                <div class="div_categoria">
+                                    <?php 
+                                        if($disponibilidad == '1') {
+                                            echo "<p class='p4_usuario'>disponible las 24hs</p>";
+                                        }else{
+                                            echo "";
+                                        }
+                                    ?>
+                                    <p class="p2_usuario"><?php echo $ciudad_definidda ?></p>
+                                </div>
+                                <a href="../perfiles/perfiles.php?profesional=<?php echo $id_usuario ?>" class="a_usuario">Ver Perfil</a>
+                            </article>
+                        <?php
+                    }
+                }
+                if($query_perfil_publico_general->num_rows == 0 && $query_perfil_publico->num_rows == 0) { 
+                    ?>
+                    <!-- <<< Si no hay profesionales >>> -->
+                    <article class="art_empty">
+                        <h3 class="h3_empty">¡Lo sentimos! Aún no hay profesionales en <span class="span_empty"><?php echo $categoria_definida ?></span>.</h3>
+                        <p class="p_empty">Parece que todavía no contamos con expertos en este servicio en tu área, pero eso puede cambiar pronto. ¿Eres un profesional que ofrece este servicio?</p>
+                        <p class="p_empty">¡Regístrate ahora y sé el primero en conectar con nuevos clientes!</p>
+                        <a href="../formularios/registrar.php" class="call_to_action">Regístrate Aquí</a>
+                    </article>
+            <?php }
+            mysqli_free_result($query_perfil_publico_general);
+            mysqli_free_result($query_perfil_publico);
+                }
+                ?>
+                </section>
+            <?php
+         ?>
         
-        <script src="rating.js"></script>
+    <script src="rating.js"></script>
 
         <footer class="footer">
             <div class="div_footer">

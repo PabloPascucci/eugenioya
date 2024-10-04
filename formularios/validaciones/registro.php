@@ -55,10 +55,10 @@ $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
 // Ejecutar la consulta y crear carpeta de imagenes
                 if ($conn->query($query) === TRUE) {
                     if($profesion === "usuario") {
-                        header("Location: zone_register.php?category=user&email=$correo&name=$nombre");
+                        header("Location: zone_register.php?category=user&email=$correo&name=$nombre&location=$localidad");
                         exit();
                     } else {
-                        header("Location: zone_register.php?category=proffessional&email=$correo&name=$nombre");
+                        header("Location: zone_register.php?category=professional&email=$correo&name=$nombre&location=$localidad");
                         exit();
                     }
                 } else {

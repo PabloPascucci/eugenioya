@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 200px 0;
+    margin: 30px 0 255px 0;
     padding: 10px;
     border-radius: 30px;
 }
@@ -68,6 +68,17 @@
 .img_perfil {
     width: 150px;
     border-radius: 50%;
+}
+
+.p_ciudad {
+    font-size: 26px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    color: var(--footer_color);
+    margin: 100px 0 20px 0;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .p1_usuario {

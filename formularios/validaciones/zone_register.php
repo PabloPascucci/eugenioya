@@ -60,6 +60,7 @@
         $nombre = $_GET['name'];
         $categoria = $_GET['category'];
         $correo = $_GET['email'];
+        $location = $_GET['location'];
     ?>
 
     <header class="header_inicio">
@@ -74,33 +75,97 @@
         </article>
     </header>
     
-    <section class="sec_inicio">
-            <form action="zone_register.php" method="post" class="form">
-                <input type="hidden" name="nombre_usuario" value="<?php echo $nombre ?>">
-                <input type="hidden" name="correo_usuario" value="<?php echo $correo ?>">
-                <select name="zona" id="zona">
-                    <option value="Zona Centro">Zona Centro</option>
-                    <option value="Cordones del Chapelco">Cordones del Chapelco</option>
-                    <option value="Vega Maipú">Vega Maipú</option>
-                    <option value="Rucha Hue">Rucha Hue</option>
-                    <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
-                    <option value="Villa Vega San Martín">Villa Vega San Martín</option>
-                    <option value="Altos del Cahpelco">Altos del Cahpelco</option>
-                    <option value="Lolog">Lolog</option>
-                    <option value="Rincón Radales">Rincón Radales</option>
-                    <option value="Alihuen Alto">Alihuen Alto</option>
-                    <option value="Alihuen">Alihuen</option>
-                    <option value="Villa Paur">Villa Paur</option>
-                    <option value="Kantec">Kantec</option>
-                    <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
-                    <option value="El Arenal">El Arenal</option>
-                    <option value="Los Radales">Los Radales</option>
-                    <option value="Intercultural">Intercultural</option>
-                    <option value="Buenos Aires Chico">Buenos Aires Chico</option>
-                </select>
-                <input type="submit" value="CARGAR" class="inp_sub">
-            </form>
-    </section>
+    <?php
+        // Zonas para San Martín de los Andes
+        if($location === '1') { ?>
+            <section class="sec_inicio">
+                <form action="zone_register.php" method="post" class="form">
+                    <input type="hidden" name="nombre_usuario" value="<?php echo $nombre ?>">
+                    <input type="hidden" name="correo_usuario" value="<?php echo $correo ?>">
+                    <select name="zona" id="zona">
+                        <option value="Zona Centro">Zona Centro</option>
+                        <option value="Cordones del Chapelco">Cordones del Chapelco</option>
+                        <option value="Vega Maipú">Vega Maipú</option>
+                        <option value="Rucha Hue">Rucha Hue</option>
+                        <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
+                        <option value="Villa Vega San Martín">Villa Vega San Martín</option>
+                        <option value="Altos del Cahpelco">Altos del Cahpelco</option>
+                        <option value="Lolog">Lolog</option>
+                        <option value="Rincón Radales">Rincón Radales</option>
+                        <option value="Alihuen Alto">Alihuen Alto</option>
+                        <option value="Alihuen">Alihuen</option>
+                        <option value="Villa Paur">Villa Paur</option>
+                        <option value="Kantec">Kantec</option>
+                        <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
+                        <option value="El Arenal">El Arenal</option>
+                        <option value="Los Radales">Los Radales</option>
+                        <option value="Intercultural">Intercultural</option>
+                        <option value="Buenos Aires Chico">Buenos Aires Chico</option>
+                    </select>
+                    <input type="submit" value="CARGAR" class="inp_sub">
+                </form>
+            </section>
+        <?php
+        } elseif ($location === '2') { ?>
+            <section class="sec_inicio">
+                <form action="zone_register.php" method="post" class="form">
+                    <input type="hidden" name="nombre_usuario" value="<?php echo $nombre ?>">
+                    <input type="hidden" name="correo_usuario" value="<?php echo $correo ?>">
+                    <select name="zona" id="zona">
+                        <option value="14 de Octubre">14 de Octubre</option>
+                        <option value="Alta Barda">Alta Barda</option>
+                        <option value="Altos del Limay">Altos del Limay</option>
+                        <option value="Área Centro Este">Área Centro Este</option>
+                        <option value="Área Centro Oeste">Área Centro Oeste</option>
+                        <option value="Área Centro Sur">Área Centro Sur</option>
+                        <option value="Bardas Soleadas">Bardas Soleadas</option>
+                        <option value="Barrio Nuevo">Barrio Nuevo</option>
+                        <option value="Belgrano">Belgrano</option>
+                        <option value="Bouquet Roldán">Bouquet Roldán</option>
+                        <option value="Canal V">Canal V</option>
+                        <option value="Ciudad Industrial Jaime de Nevares">Ciudad Industrial Jaime de Nevares</option>
+                        <option value="Colonia Nueva Esperanza">Colonia Nueva Esperanza</option>
+                        <option value="Confluencia Rural">Confluencia Rural</option>
+                        <option value="Confluencia Urbana">Confluencia Urbana</option>
+                        <option value="Cumelén">Cumelén</option>
+                        <option value="Cuenca XV">Cuenca XV</option>
+                        <option value="Don Bosco II">Don Bosco II</option>
+                        <option value="Don Bosco III">Don Bosco III</option>
+                        <option value="El Progreso">El Progreso</option>
+                        <option value="Esfuerzo">Esfuerzo</option>
+                        <option value="Gran Neuquén Norte">Gran Neuquén Norte</option>
+                        <option value="Gran Neuquén Sur">Gran Neuquén Sur</option>
+                        <option value="Gregorio Álvarez">Gregorio Álvarez</option>
+                        <option value="Hipódromo Barrio Parque">Hipódromo Barrio Parque</option>
+                        <option value="Huilliches">Huilliches</option>
+                        <option value="Islas Malvinas">Islas Malvinas</option>
+                        <option value="La Sirena">La Sirena</option>
+                        <option value="Limay">Limay</option>
+                        <option value="Mariano Moreno">Mariano Moreno</option>
+                        <option value="Melipal">Melipal</option>
+                        <option value="Barrio Militar">Barrio Militar</option>
+                        <option value="Provincias Unidas">Provincias Unidas</option>
+                        <option value="Rincón de Emilio">Rincón de Emilio</option>
+                        <option value="Río Grande">Río Grande</option>
+                        <option value="San Lorenzo Norte">San Lorenzo Norte</option>
+                        <option value="San Lorenzo Sur">San Lorenzo Sur</option>
+                        <option value="Santa Genoveva">Santa Genoveva</option>
+                        <option value="Sapere">Sapere</option>
+                        <option value="Terrazas Neuquén">Terrazas Neuquén</option>
+                        <option value="Unión de Mayo">Unión de Mayo</option>
+                        <option value="Valentina Norte Rural">Valentina Norte Rural</option>
+                        <option value="Valentina Norte Urbana">Valentina Norte Urbana</option>
+                        <option value="Valentina Sur Rural">Valentina Sur Rural</option>
+                        <option value="Valentina Sur Urbana">Valentina Sur Urbana</option>
+                        <option value="Villa Ceferino">Villa Ceferino</option>
+                        <option value="Villa Farrell">Villa Farrell</option>
+                        <option value="Villa Florencia">Villa Florencia</option>
+                        <option value="Villa María">Villa María</option>
+                    </select>
+                    <input type="submit" value="CARGAR" class="inp_sub">
+                </form>
+            </section>
+        <?php } ?>
 
 </body>
 </html>

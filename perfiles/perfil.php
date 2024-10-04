@@ -126,11 +126,11 @@
                     <p class="user_area">Matricula: <?php echo $matricula ?></p>
             <?php } ?>
             <p class="user_category"><?php echo $user_profession ?></p>
-            <p class="user_area"><?php echo $user_area ?> <a href="" class="a_question"><span class="material-symbols-outlined">help</span></a></p>
+            <p class="user_area"><?php echo $user_area ?></p>
             <?php
                 if ($user_category != 1) {
                     if($hours == '0') {
-                        echo "<p class='hours'>¿Trabajas las 24 horas?</p>";
+                        echo "<p class='hours'>¿Trabajas las 24 horas? <a href='configuraciones.php?edicion=1' class='a_question'><span class='material-symbols-outlined'>help</span></a></p>";
                     } else {
                         echo "<p class='hours'>24 hs</p>";
                     }

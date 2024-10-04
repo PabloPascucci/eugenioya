@@ -63,7 +63,7 @@
             <label for="city" class="a_form">Elije tu Localidad</label>
             <select name="city" id="city" class="inp_form">
                 <option value="1">San Martín de los Andes</option>
-                <!-- <option value="2">Neuquén</option> -->
+                <option value="2">Ciudad de Neuquén</option>
             </select>
             <label for="rubro" class="a_form">Elije una Categoría</label>
             <select name="rubro" id="rubro" class="inp_form">
