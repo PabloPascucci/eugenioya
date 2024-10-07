@@ -83,24 +83,33 @@
                     <input type="hidden" name="nombre_usuario" value="<?php echo $nombre ?>">
                     <input type="hidden" name="correo_usuario" value="<?php echo $correo ?>">
                     <select name="zona" id="zona">
-                        <option value="Zona Centro">Zona Centro</option>
-                        <option value="Cordones del Chapelco">Cordones del Chapelco</option>
-                        <option value="Vega Maipú">Vega Maipú</option>
-                        <option value="Rucha Hue">Rucha Hue</option>
-                        <option value="Faldeos del Chapelco">Faldeos del Chapelco</option>
-                        <option value="Villa Vega San Martín">Villa Vega San Martín</option>
-                        <option value="Altos del Cahpelco">Altos del Cahpelco</option>
-                        <option value="Lolog">Lolog</option>
-                        <option value="Rincón Radales">Rincón Radales</option>
-                        <option value="Alihuen Alto">Alihuen Alto</option>
-                        <option value="Alihuen">Alihuen</option>
-                        <option value="Villa Paur">Villa Paur</option>
-                        <option value="Kantec">Kantec</option>
-                        <option value="Gobernadores Neuquinos">Gobernadores Neuquinos</option>
-                        <option value="El Arenal">El Arenal</option>
-                        <option value="Los Radales">Los Radales</option>
-                        <option value="Intercultural">Intercultural</option>
-                        <option value="Buenos Aires Chico">Buenos Aires Chico</option>
+                    <option value="Alihuen Alto">Alihuen Alto</option>
+                       <option value="Alihuen Bajo">Alihuen Bajo</option>
+                       <option value="Barrio El Arenal">Barrio El Arenal</option>
+                       <option value="Barrio Intercultural">Barrio Intercultural</option>
+                       <option value="Barrio Kaleuche">Barrio Kaleuche</option>
+                       <option value="Barrio Las Rosas">Barrio Las Rosas</option>
+                       <option value="Barrio Los Robles">Barrio Los Robles</option>
+                       <option value="Barrio Militar">Barrio Militar</option>
+                       <option value="Barrio Parque Los Radales">Barrio Parque Los Radales</option>
+                       <option value="Bickel">Bickel</option>
+                       <option value="Callejón de Bello">Callejón de Bello</option>
+                       <option value="Centro">Centro</option>
+                       <option value="Chacra 2">Chacra 2</option>
+                       <option value="Chacra 4">Chacra 4</option>
+                       <option value="Chacra 28">Chacra 28</option>
+                       <option value="Cordones del Chapelco">Cordones del Chapelco</option>
+                       <option value="El Oasis">El Oasis</option>
+                       <option value="La Cascada">La Cascada</option>
+                       <option value="Las Pendientes">Las Pendientes</option>
+                       <option value="Los Riscos">Los Riscos</option>
+                       <option value="Rincón Radales">Rincón Radales</option>
+                       <option value="Ruca Hue">Ruca Hue</option>
+                       <option value="San Fernando">San Fernando</option>
+                       <option value="Valle Alto">Valle Alto</option>
+                       <option value="Vega Chica">Vega Chica</option>
+                       <option value="Vega Maipú">Vega Maipú</option>
+                       <option value="Villa Paur">Villa Paur</option>
                     </select>
                     <input type="submit" value="CARGAR" class="inp_sub">
                 </form>
@@ -112,6 +121,7 @@
                     <input type="hidden" name="nombre_usuario" value="<?php echo $nombre ?>">
                     <input type="hidden" name="correo_usuario" value="<?php echo $correo ?>">
                     <select name="zona" id="zona">
+                        <option value="Ciudad de Neuquén">Ciudad de Neuquén</option>
                         <option value="14 de Octubre">14 de Octubre</option>
                         <option value="Alta Barda">Alta Barda</option>
                         <option value="Altos del Limay">Altos del Limay</option>
