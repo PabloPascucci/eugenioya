@@ -26,7 +26,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../style/estilo_1.css">
+    <link rel="stylesheet" href="../style/estilo_halloween.css">
     <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,14 +76,14 @@
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
-            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
+            <!-- <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
+                    <!-- <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
                     <a href="../index.html" class="a_nav">Inicio</a>
                     <a href="indice.php" class="a_nav_1">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
@@ -95,14 +95,14 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
-            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
+            <!-- <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
+                    <!-- <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
                     <?php if ($user_id === '1') {?>
                         <a href="../admin/admin.php" class="a_nav">Perfil</a>
                     <?php } else { ?>
@@ -246,7 +246,8 @@
     <footer class="footer">
         <div class="div_footer">
             <article class="art_div_footer">
-                <img src="../imagenes/logo/logo_footer.png" title="EugenioYa" class="logo_footer">
+                <!-- <img src="../imagenes/logo/logo_footer.png" title="EugenioYa" class="logo_footer"> -->
+                <img src="../imagenes/especial/logo-footer-halloween.png" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
                 <a href="../nosotros.html" class="a_footer">Sobre Eugenio</a>
@@ -260,14 +261,15 @@
                 <a href="../terminos-y-condiciones.html" class="a_footer">Términos y Condiciones</a>
             </article>
             <article class="art_div_footer">
-                <img src="../imagenes/avatar/eugenio_footer.png" title="EuGENIO" class="genio_footer">
+                <!-- <img src="../imagenes/avatar/eugenio_footer.png" title="EuGENIO" class="genio_footer"> -->
+                <img src="../imagenes/especial/genio-footer-halloween.png" title="EuGENIO" class="genio_footer">
             </article>
         </div>
         <div class="div1_footer">
             <p class="p_footer_ubi" id="footer_ubi"></p>
             <p class="p_footer_legal" id="footer_legal"></p>
         </div>
-        <script src="../JS/version.js"></script>
+        <script src="../JS/version_1_7.js"></script>
     </footer>
     
 </body>

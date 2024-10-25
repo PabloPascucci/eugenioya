@@ -17,7 +17,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="style_form.css">
-    <link rel="stylesheet" href="../style/estilo_1.css">
+    <link rel="stylesheet" href="../style/estilo_halloween.css">
     <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,8 @@
 <body>
 
     <header class="header_inicio">
-        <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img">
+        <!-- <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img"> -->
+        <img src="../imagenes/especial/genio-halloween.png" alt="EugenioYa.com" title="EuGENIO" class="img">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
@@ -111,7 +112,7 @@
         <p class="p_footer_ubi" id="footer_ubi"></p>
         <p class="p_footer_legal" id="footer_legal"></p>
     </div>
-    <script src="../JS/version.js"></script>
+    <script src="../JS/version_1_7.js"></script>
     
 </body>
 </html>

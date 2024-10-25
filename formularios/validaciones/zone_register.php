@@ -42,6 +42,7 @@
 <!-- === Links === -->
     <link rel="stylesheet" href="../../style/normalize.css">
     <link rel="stylesheet" href="../style_form.css">
+    <link rel="stylesheet" href="../../style/estilo_halloween.css">
     <link rel="shortcout icon" href="../../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,8 @@
     ?>
 
     <header class="header_inicio">
-        <img src="../../imagenes/avatar/eugenio.png" title="EuGENIO" class="img">
+        <!-- <img src="../../imagenes/avatar/eugenio.png" title="EuGENIO" class="img"> -->
+        <img src="../../imagenes/especial/genio-halloween.png" title="geni Eugenio" class="img">
         <article class="art_z">
             <p class="h1_inicio">¿Por qué es importante cargar tu zona?</p>
             <?php if ($categoria === "user") { ?>
