@@ -1,19 +1,12 @@
 /* ==>> Variables <<== */
 :root {
-    /* --main_color: #007BFF;
+    --main_color: #007BFF;
     --title_font: "Poetsen One", sans-serif;
     --main_font: "Roboto", sans-serif;
     --font_weight: 500;
     --font_style: normal;
     --second_color: #999;
     --footer_color: #0056b3;
-    --third_color: #444; */
-    --main_color: #FF8C00; /* Naranja oscuro, típico de Halloween */
-    --second_color: #FF4500; /* Rojo anaranjado, añade un toque festivo */
-    --footer_color: #6A0DAD; /* Púrpura oscuro, que complementa el tema */
-    --third_color: #333; /* Gris oscuro, para mantener algo de neutralidad */
-    --accent_color: #FFFFFF; /* Blanco, para contrastar y hacer que resalten los elementos */
-    --background_color: #0c0c0c; /* Negro o gris muy oscuro, para el fondo */
 }   
    
    /* ==>> Formularios <<== */
@@ -108,7 +101,7 @@
     }
 
     .btn_disabled {
-        /* background-color: var(--second_color); */
+        background-color: var(--second_color);
         cursor: not-allowed;
         color: #fff;
     }
@@ -121,10 +114,6 @@
 
     option {
         text-wrap: wrap;
-    }
-
-    #check_1 {
-        color: var(--main_color);
     }
 
     .p_check {
@@ -140,8 +129,7 @@
         font-family: var(--main_font);
         font-weight: var(--font_weight);
         font-style: var(--font_style);
-        /* color: var(--footer_color); */
-        color: #fff;
+        color: var(--footer_color);
         text-decoration: none;
         transition: all .3s;
     }

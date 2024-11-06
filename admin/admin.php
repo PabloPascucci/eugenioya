@@ -37,9 +37,9 @@
 
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="../perfiles/style_perfil.css">
+    <link rel="stylesheet" href="../perfiles/style_perfil_1_7.css">
     <link rel="stylesheet" href="estilo.css">
-    <link rel="shortcout icon" href="">
+    <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
                     <i class="fa-solid fa-bars"></i>
                 </label>
             <ul class="barr_nav">
-                <!-- <img src="" title="Nombre" class="logo"> -->
+                <img src="" title="Nombre" class="logo">
                 <a href="https://analytics.google.com/analytics/web/provision/?hl=es#/p445202277/reports/intelligenthome" class="a_nav" target="_BLANK">Google Analytics</a>
                 <a href="https://search.google.com/search-console?resource_id=https%3A%2F%2Feugenioya.com%2F" class="a_nav" target="_BLANK">Google Search Console</a>
                 <a href="banner.php" class="a_nav">Ver Banners</a>

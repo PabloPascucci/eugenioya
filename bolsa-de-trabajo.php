@@ -25,7 +25,7 @@
 
 <!-- === Links === -->
     <link rel="stylesheet" href="style/normalize.css">
-    <link rel="stylesheet" href="style/estilo_halloween.css">
+    <link rel="stylesheet" href="style/estilo_1_7.css">
     <link rel="shortcout icon" href="imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,14 +77,14 @@
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
-            <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
+            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
+                    <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <a href="index.html" class="a_nav">Inicio</a>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
                     <a href="formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
@@ -96,14 +96,14 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
-            <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
+            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
+                    <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
                     <a href="perfiles/perfil.php" class="a_nav">Perfil</a>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
                     <a href="bolsa-de-trabajo.php" class="a_nav_1">Bolsa de Trabajo</a>
@@ -155,8 +155,7 @@
     <footer class="footer">
         <div class="div_footer">
             <article class="art_div_footer">
-                <!-- <img src="imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer"> -->
-                <img src="imagenes/especial/logo-footer-halloween.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
+                <img src="imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
                 <a href="nosotros.html" class="a_footer">Sobre Eugenio</a>
@@ -170,8 +169,7 @@
                 <a href="terminos-y-condiciones.html" class="a_footer">Términos y Condiciones</a>
             </article>
             <article class="art_div_footer">
-                <!-- <img src="imagenes/avatar/eugenio_footer.png" alt="EugenioYa.com" title="EuGENIO" class="genio_footer"> -->
-                <img src="imagenes/especial/genio-footer-halloween.png" alt="EugenioYa.com" title="EuGENIO" class="genio_footer">
+                <img src="imagenes/avatar/eugenio_footer.png" alt="EugenioYa.com" title="EuGENIO" class="genio_footer">
             </article>
         </div>
         <div class="div1_footer">

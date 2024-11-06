@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="style_perfil.css">
+    <link rel="stylesheet" href="style_perfil_1_7.css">
     <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

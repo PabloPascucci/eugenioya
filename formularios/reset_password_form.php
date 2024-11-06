@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <meta name="robots" content="noindex">
         <!-- === Links === -->
         <link rel="stylesheet" href="../style/normalize.css">
-        <link rel="stylesheet" href="style_form.css">
+        <link rel="stylesheet" href="style_form_1_7.css">
         <link rel="shortcut icon" href="../imagenes/logo/icon.ico">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

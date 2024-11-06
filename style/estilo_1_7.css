@@ -2,26 +2,17 @@
 
 /* ==>> Variables <<== */
 :root {
-    /* --main_color: #007BFF;
+    --main_color: #007BFF;
     --title_font: "Poetsen One", sans-serif;
     --main_font: "Roboto", sans-serif;
     --font_weight: 500;
     --font_style: normal;
     --second_color: #999;
     --footer_color: #0056b3;
-    --third_color: #444; */
-    --main_color: #FF8C00; /* Naranja oscuro, típico de Halloween */
-    --second_color: #FF4500; /* Rojo anaranjado, añade un toque festivo */
-    --footer_color: #6A0DAD; /* Púrpura oscuro, que complementa el tema */
-    --third_color: #333; /* Gris oscuro, para mantener algo de neutralidad */
-    --accent_color: #FFFFFF; /* Blanco, para contrastar y hacer que resalten los elementos */
-    --background_color: #0c0c0c; /* Negro o gris muy oscuro, para el fondo */
+    --a_footer_color: #ccc;
 }
 
 /* ==>> Barra de navegación <<== */
-html {
-    background-color: var(--background_color);
-}
 .logo {
     display: none;
 }
@@ -181,7 +172,6 @@ html {
     font-weight: 400;
     font-style: var(--font_style);
     text-align: center;
-    color: var(--accent_color); 
     /* width: 765px; */
 }
 
@@ -252,8 +242,7 @@ html {
         padding: 5px;
         width: 200px;
         text-align: center;
-        /* color: #000; */
-        color: var(--accent_color);
+        color: #000;
         transition: all .5s;
     }
     /* .p_categoria:hover{
@@ -289,7 +278,7 @@ html {
     }
 
 #banner-container {
-    width: 500px;
+    width: 400px;
     margin: 10px auto;
 }
 
@@ -317,8 +306,7 @@ html {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: var(--footer_color); */
-    color: var(--main_color);
+    color: var(--footer_color);
     text-wrap: wrap;
     border-bottom: 1px solid var(--second_color);
     margin-bottom: 5px;
@@ -329,8 +317,7 @@ html {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
     text-wrap: wrap;
 }
 
@@ -349,8 +336,7 @@ html {
     font-size: 20px;
     font-family: var(--title_font);
     font-weight: 300;
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
     padding: 2px;
 }
 
@@ -377,8 +363,7 @@ html {
     font-size: 32px;
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
 }
 
 .p_intro {
@@ -386,8 +371,7 @@ html {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
     margin: 10px 0;
 }
 
@@ -400,16 +384,14 @@ html {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
     margin: 30px 0 5px 0;
 }
 
 .p_info {
     font-size: 16px;
     font-family: sans-serif;
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
 }
 
 .art_items {
@@ -420,8 +402,7 @@ html {
     font-size: 16px;
     font-family: sans-serif;
     font-weight: 700;
-    /* color: #000; */
-    color: var(--second_color);
+    color: #000;
 }
 
 .span_eugenio {
@@ -433,8 +414,7 @@ html {
     font-family: var(--main_font);
     font-weight: var(--font_weight);
     font-style: var(--font_style);
-    /* color: #000; */
-    color: var(--accent_color);
+    color: #000;
     margin: 20px 0;
 }
 
@@ -442,8 +422,7 @@ html {
     font-size: 16px;
     font-family: var(--title_font);
     font-weight: var(--font_weight);
-    /* color: var(--footer_color); */
-    color: var(--second_color);
+    color: var(--footer_color);
     text-decoration: none;
     transition: all .3s;
 }
@@ -483,7 +462,6 @@ html {
     text-decoration: none;
     margin: 5px 0;
     transition: all .3s;
-    color: var(--main_color);
 }
     .a_footer:hover{
         text-decoration: underline;
@@ -512,16 +490,14 @@ html {
 .p_footer_ubi {
     font-family: var(--title_font);
     font-size: 13px;
-    /* color: var(--second_color); */
-    color: var(--main_color);
+    color: var(--second_color);
     margin: 5px 0;
 }
 
 .p_footer_legal {
     font-size: 13px;
     font-family: var(--title_font);
-    /* color: #000; */
-    color: var(--main_color);
+    color: #000;
 }
 
     /* ==>> Estilos de la página "nosotros" <<== */

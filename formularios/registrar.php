@@ -16,8 +16,8 @@
 
 <!-- === Links === -->
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="style_form.css">
-    <link rel="stylesheet" href="../style/estilo_halloween.css">
+    <link rel="stylesheet" href="style_form_1_7.css">
+    <link rel="stylesheet" href="../style/estilo_1_7.css">
     <link rel="shortcout icon" href="../imagenes/logo/icon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,8 +33,7 @@
 <body>
 
     <header class="header_inicio">
-        <!-- <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img"> -->
-        <img src="../imagenes/especial/genio-halloween.png" alt="EugenioYa.com" title="EuGENIO" class="img">
+        <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
@@ -99,13 +98,13 @@
                 <input type="checkbox" name="check" id="check_1" class="check">
             </article>
             <article class="art_form">
-                <label for="check" class="p_check">Estoy de acuerdo con los <a href="../terminos-y-condiciones" class="a_form">Terminos y Condiciones</a></label>
+                <label for="check" class="p_check">Estoy de acuerdo con los <a href="../terminos-y-condiciones.html" class="a_form">Terminos y Condiciones</a></label>
                 <input type="checkbox" name="check" id="check_2" class="check">
             </article>
             <input type="submit" value="REGISTRAR" id="btn_registro" class="btn_disabled" disabled>
         </form>
     <a href="iniciar.php" class="a_form">Inicia Sesión</a>
-    <script src="path/to/your/banner.js"></script>
+    <!-- <script src="path/to/your/banner.js"></script> -->
     </section>
 
     <div class="div1_footer">

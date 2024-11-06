@@ -12,13 +12,6 @@ if (!isset($_SESSION['user_loged_id'])) {
 $user_id = $_SESSION['user_loged_id'];
 $url_redirect = urlencode("../perfiles/perfil.php");
 
-// Seteo de la hora y fecha
-date_default_timezone_set("America/Argentina/Buenos_Aires");
-setlocale(LC_TIME,'spanish');
-
-// Fecha y hora
-$fechaHora = date('d-m-Y');
-
 // Importamos los datos del formulario
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
 $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
@@ -61,8 +54,8 @@ if(isset($_FILES['foto'])) {
             $nuevo_nombre = mysqli_real_escape_string($conn, $nuevo_nombre);
 
             // Insertar los datos en la base de datos
-            $sql_insert = "INSERT INTO publicacion (id_publicacion, id_usuario, nombre_proyecto, foto_proyecto, descripcion_proyecto, fecha_subida) 
-                           VALUES (DEFAULT, '$user_id', '$nombre', '$nuevo_nombre', '$descripcion', '$fechaHora')";
+            $sql_insert = "INSERT INTO publicacion (id_publicacion, id_usuario, nombre_proyecto, foto_proyecto, descripcion_proyecto) 
+                           VALUES (DEFAULT, '$user_id', '$nombre', '$nuevo_nombre', '$descripcion')";
             $query_insert = mysqli_query($conn, $sql_insert);
 
             if ($query_insert) {
