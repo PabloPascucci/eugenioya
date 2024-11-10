@@ -57,6 +57,7 @@
             ?>
             <h2 class="h2_form">Crea una Cuenta</h2>
             <input type="text" name="nombre" placeholder="Nombre" class="inp_form" autocomplete="off">
+            <input type="text" name="apellido" placeholder="Apellido" class="inp_form" autocomplete="off">
             <input type="email" name="correo" placeholder="Correo Electrónico" class="inp_form" autocomplete="off">
             <input type="password" name="password" placeholder="Contraseña" class="inp_form">
             <input type="password" name="password_1" placeholder="Confirma tu Contraseña" class="inp_form">
@@ -70,6 +71,7 @@
                 <option value="1" id="ninguno">Ninguna</option>
                 <option value="2">Artistas</option>
                 <option value="3">Belleza y Estética</option>
+                <option value="24">Cadetería</option>
                 <option value="4">Carpintería</option>
                 <option value="5">Cerrajería</option>
                 <option value="6">Construcción y Reformas</option>

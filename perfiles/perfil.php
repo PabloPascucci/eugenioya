@@ -20,6 +20,7 @@
         if($resultado_data->num_rows == 1){
             $row = mysqli_fetch_assoc($resultado_data);
             $user_name = $row['nombre'];
+            $user_surname = isset($row['apellido']) ? $row['apellido'] : " ";
             $user_category = $row['categoria'];
             $user_profession = $row['profesion'];
             $about_user = isset($row['sobre_mi']) ? $row['sobre_mi'] : "Agregá una presentación a tu perfil.";
@@ -63,7 +64,7 @@
     
 <!-- ==== Scripts ==== -->
     <script src="https://kit.fontawesome.com/6374ab8d9e.js" crossorigin="anonymous"></script>
-    <title><?php echo $user_name; ?></title>
+    <title><?php echo $user_name . " " . $user_surname; ?></title>
 
     <!-- ==== Cookie GA ==== -->
     <script>
@@ -121,7 +122,7 @@
     <header class="header_perfil">
         <img src="<?php echo $user_photo ?>" alt="" class="img_perfil">
         <div class="div_perfil">
-            <p class="user_name"><?php echo $user_name ?></p>
+            <p class="user_name"><?php echo $user_name . " " . $user_surname; ?></p>
             <?php if($matricula != null) { ?>
                     <p class="user_area">Matricula: <?php echo $matricula ?></p>
             <?php } ?>
@@ -196,13 +197,13 @@
 
             while ($stmt_rating_usuario->fetch()) {
                 // Localizar al perfil del usuario en la tabla usuarios
-                $stmt_user_rater = $conn->prepare("SELECT foto_perfil, nombre FROM usuario WHERE id_usuario = ?");
+                $stmt_user_rater = $conn->prepare("SELECT foto_perfil, nombre, apellido FROM usuario WHERE id_usuario = ?");
                 $stmt_user_rater->bind_param("i", $id_rating_user);
                 $stmt_user_rater->execute();
                 $stmt_user_rater->store_result();
 
                 if ($stmt_user_rater->num_rows > 0) {
-                    $stmt_user_rater->bind_result($foto_perfil, $rater_name);
+                    $stmt_user_rater->bind_result($foto_perfil, $rater_name, $rater_surname);
                     while ($stmt_user_rater->fetch()) {
                         ?>
                         <article class="art_comments_made">
@@ -214,7 +215,7 @@
                             <?php } else { ?>
                                 <img src="../imagenes/user_icon.png" class="img_user_comments">
                             <?php } ?>
-                                <p class="user_name_comments"><?php echo $rater_name ?></p>
+                                <p class="user_name_comments"><?php echo $rater_name . " " . $rater_surname; ?></p>
                                 <span class="stars" data-value="<?php echo $rating_star ?>"></span>
                                 <p class="rating_comment"><?php echo $rating_comment ?></p>
                                 <p class="rating_date"><?php echo $rating_date ?></p>

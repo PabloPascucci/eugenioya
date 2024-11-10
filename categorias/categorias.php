@@ -77,6 +77,8 @@
             $categoria_definida = "Mascotas";
         }elseif($categoria == '23'){
             $categoria_definida = "Salud y Bienestar";
+        }elseif($categoria == '24'){
+            $categoria_definida = "Cadetería";
         }else{
             header("Location: ../pantallas/error.php?e=categoria-inexistente&url-redirect-user=$url_redirect_categoria");
         }
@@ -212,6 +214,7 @@
                     while ($row = mysqli_fetch_array($query_perfil_sma)) {
                         $id_usuario = $row['id_usuario'];
                         $usuario = $row['nombre'];
+                        $apellido = isset($row['apellido']) ? $row['apellido'] : '';
                         $profesion = $row['profesion'];
                         $zona = $row['barrio'];
                         $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
@@ -242,7 +245,7 @@
                                 <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
                             </div>
                             <div class="div_categoria">
-                                <p class="p1_usuario"><?php echo $usuario ?></p>
+                                <p class="p1_usuario"><?php echo $usuario . " " . $apellido; ?></p>
                                 <p class="p2_usuario"><?php echo $profesion ?></p>
                             </div>
                             <div class="div_categoria">
@@ -275,6 +278,7 @@
                     while ($row = mysqli_fetch_array($query_perfil_nqn)) {
                         $id_usuario = $row['id_usuario'];
                         $usuario = $row['nombre'];
+                        $apellido = isset($row['apellido']) ? $row['apellido'] : " ";
                         $profesion = $row['profesion'];
                         $zona = $row['barrio'];
                         $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
@@ -305,7 +309,7 @@
                                 <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
                             </div>
                             <div class="div_categoria">
-                                <p class="p1_usuario"><?php echo $usuario ?></p>
+                                <p class="p1_usuario"><?php echo $usuario . " " . $apellido; ?></p>
                                 <p class="p2_usuario"><?php echo $profesion ?></p>
                             </div>
                             <div class="div_categoria">
@@ -385,6 +389,7 @@
                         while ($row = mysqli_fetch_array($query_perfil_publico)) {
                             $id_usuario = $row['id_usuario'];
                             $usuario = $row['nombre'];
+                            $apellido = isset($row['apellido']) ? $row['apellido'] : " ";
                             $profesion = $row['profesion'];
                             $zona = $row['barrio'];
                             $ruta = isset($row['foto_perfil']) ? $row['foto_perfil'] : "../imagenes/user_icon.png";
@@ -415,7 +420,7 @@
                                     <img src="../perfiles/<?php echo $ruta ?>" alt="<?php echo $usuario ?>" title="<?php echo $usuario ?>" class="img_perfil">
                                 </div>
                                 <div class="div_categoria">
-                                    <p class="p1_usuario"><?php echo $usuario ?></p>
+                                    <p class="p1_usuario"><?php echo $usuario . " " . $apellido; ?></p>
                                     <p class="p2_usuario"><?php echo $profesion ?></p>
                                 </div>
                                 <div class="div_categoria">

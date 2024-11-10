@@ -23,6 +23,7 @@
         if($query_usuario->num_rows === 1){
             $row_user = mysqli_fetch_assoc($query_usuario);
             $user_name = $row_user['nombre'];
+            $apellido = isset($row_user['apellido']) ? $row_user['apellido'] : '';
             $user_photo = isset($row_user['foto_perfil']) ? $row_user['foto_perfil'] : "../imagenes/user_icon.png";
             $user_profession = $row_user['profesion'];
             $user_area = isset($row_user['barrio']) ? $row_user['barrio'] : "";
@@ -140,7 +141,7 @@
             <img src="<?php echo $user_photo ?>" title="<?php echo $user_name ?>" class="img_perfil">
         <div class="div_perfil">
             <div class="div_categorias">
-                <p class="user_name"><?php echo $user_name ?></p>
+                <p class="user_name"><?php echo $user_name . " " . $apellido; ?></p>
             </div>
             <?php if($matricula != null) { ?>
                 <div class="div_categorias">
@@ -256,13 +257,13 @@
 
                 while ($stmt_rating_usuario->fetch()) {
                     // Localizar al perfil del usuario en la tabla usuarios
-                    $stmt_user_rater = $conn->prepare("SELECT foto_perfil, nombre FROM usuario WHERE id_usuario = ?");
+                    $stmt_user_rater = $conn->prepare("SELECT foto_perfil, nombre, apellido FROM usuario WHERE id_usuario = ?");
                     $stmt_user_rater->bind_param("i", $id_rating_user);
                     $stmt_user_rater->execute();
                     $stmt_user_rater->store_result();
 
                     if ($stmt_user_rater->num_rows > 0) {
-                        $stmt_user_rater->bind_result($foto_perfil, $rater_name);
+                        $stmt_user_rater->bind_result($foto_perfil, $rater_name, $rater_apellido);
                         while ($stmt_user_rater->fetch()) {
                             ?>
                             <article class="art_comments_made">
@@ -277,7 +278,7 @@
                                     if($id_rating_user === 1) { ?>
                                         <p class="user_name_comments"><?php echo $rater_name ?> [admin]</p>
                                     <?php } else { ?>
-                                        <p class="user_name_comments"><?php echo $rater_name ?></p>
+                                        <p class="user_name_comments"><?php echo $rater_name . " " . $rater_apellido; ?></p>
                                     <?php }
                                     ?>
                                     <span class="stars" data-value="<?php echo $rating_star ?>"></span>
