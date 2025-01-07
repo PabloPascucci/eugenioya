@@ -77,14 +77,14 @@
 
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
-            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
+            <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
+                    <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
                     <a href="index.html" class="a_nav">Inicio</a>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
                     <a href="formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
@@ -96,14 +96,14 @@
         </div>
     <?php } else { ?>
         <div class="div_nav">
-            <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
+            <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo">
+                    <!-- <img src="imagenes/logo/logo_nav.png" title="EugenioYa" class="logo"> -->
                     <a href="perfiles/perfil.php" class="a_nav">Perfil</a>
                     <a href="categorias/indice.php" class="a_nav">Oficios</a>
                     <a href="bolsa-de-trabajo.php" class="a_nav_1">Bolsa de Trabajo</a>
@@ -155,7 +155,7 @@
     <footer class="footer">
         <div class="div_footer">
             <article class="art_div_footer">
-                <img src="imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
+                <img src="imagenes/logo/logo_1_7.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
                 <a href="nosotros.html" class="a_footer">Sobre Eugenio</a>

@@ -1,21 +1,34 @@
 <?php
+// Setear la fecha
+$machine_date = date('Y-m-d');
+
 // Vamos a importar los datos del formulario
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
 $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : '';
 $correo = isset($_POST['correo']) ? $_POST['correo'] : '';
 $password_user = isset($_POST['password']) ? $_POST['password'] : '';
 $confirm_password = isset($_POST['password_1']) ? $_POST['password_1'] : '';
+$birthday = isset($_POST['date']) ? $_POST['date'] : '';
 $localidad = $_POST['city'];
 $categoria = $_POST['rubro'];
 $profesion = isset($_POST['oficio']) ? $_POST['oficio'] : 'usuario';
 $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
+
+// Calcular la edad del usuario
+$edad = date_diff(date_create($birthday), date_create($machine_date))->y;
 
 // Verificar que los datos no esten vacios
     if (empty($nombre) || empty($apellido) || empty($correo) || empty($password_user) || empty($confirm_password)) {
         header("Location: ../registrar.php?error=empty-input");
         exit();
     } elseif ($categoria != "1" && empty($telefono)) {
-        header("Location: ../registrar.php?error=empty-input");
+        header("Location: ../registrar.php?error=empty-phone");
+        exit();
+    } elseif (empty($birthday)) {
+        header("Location: ../registrar.php?error=empty-birthday");
+        exit();
+    } elseif ($edad < 18) {
+        header("Location: ../registrar.php?error=underage");
         exit();
     } else {
 // Validar que la contraseña sea similar
@@ -37,6 +50,7 @@ $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
             $nombre = mysqli_real_escape_string($conn, $nombre);
             $apellido = mysqli_real_escape_string($conn, $apellido);
             $correo = mysqli_real_escape_string($conn, $correo);
+            $date = mysqli_real_escape_string($conn, $birthday);
             $categoria = mysqli_real_escape_string($conn, $categoria);
             $profesion = mysqli_real_escape_string($conn, $profesion);
             $telefono = mysqli_real_escape_string($conn, $telefono);
@@ -44,6 +58,8 @@ $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
 
 // Prepara la consulta SQL
             $query = "INSERT INTO usuario (nombre, correo, acceso, categoria, profesion, telefono, ciudad, apellido) VALUES ('$nombre', '$correo', '$hashed_password', '$categoria', '$profesion', '$telefono', '$localidad', '$apellido')";
+
+            $query_date = "INSERT INTO birthday (correo_usuario, fecha_nacimiento) VALUES ('$correo', '$date')";
 
 // ==> Verificar que la cuenta con el correo sea nueva y no repetida <==
             $query_very = "SELECT * FROM usuario WHERE correo = '$correo'";
@@ -54,14 +70,22 @@ $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
                 header("Location: ../iniciar.php?exist=1&correo=$correo");
             }else {
 // El usuario es nuevo
-// Ejecutar la consulta y crear carpeta de imagenes
-                if ($conn->query($query) === TRUE) {
-                    if($profesion === "usuario") {
-                        header("Location: zone_register.php?category=user&email=$correo&name=$nombre&location=$localidad");
-                        exit();
-                    } else {
-                        header("Location: zone_register.php?category=professional&email=$correo&name=$nombre&location=$localidad");
-                        exit();
+// Ejecutar la inserción de datos del usuario
+                $result_1 = $conn->query($query);
+
+// Verificar si result_1 fue exitosa
+                if ($result_1 === TRUE) {
+                    // ejecutar la inserción de datos de nacimiento del usuario
+                    $result_2 = $conn->query($query_date);
+                    // Verificar si result_2 fue exitosa
+                    if($result_2 === TRUE) {
+                        if($profesion === "usuario") {
+                            header("Location: zone_register.php?category=user&email=$correo&name=$nombre&location=$localidad");
+                            exit();
+                        } else {
+                            header("Location: zone_register.php?category=professional&email=$correo&name=$nombre&location=$localidad");
+                            exit();
+                        }
                     }
                 } else {
                     echo "Error al registrar usuario: " . $conn->error;

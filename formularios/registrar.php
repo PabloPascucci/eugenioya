@@ -43,11 +43,27 @@
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if (isset($_GET['error'])) {
-                    if ($_GET['error'] === "password-mismatch") {
-                        echo "<p class='wrong'>LAS CONTRASEÑAS NO COINCIDEN</p>";
-                    }
-                    if($_GET['error'] === "empty-input") {
-                        echo "<p class='wrong'>PARA REGISTRARTE DEBERÁS COMPLETAR TODO EL FORMULARIO</p>";
+                    $error = htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8');
+                
+                    switch ($error) {
+                        case 'empty-input':
+                            echo "<p class='wrong'>Error: Todos los campos son obligatorios.</p>";
+                            break;
+                        case 'empty-phone':
+                            echo "<p class='wrong'>Error: El teléfono es obligatorio si no seleccionas la categoría 1.</p>";
+                            break;
+                        case 'empty-birthday':
+                            echo "<p class='wrong'>Error: La fecha de nacimiento es obligatoria.</p>";
+                            break;
+                        case 'underage':
+                            echo "<p class='wrong'>Error: Debes ser mayor de 18 años para registrarte.</p>";
+                            break;
+                        case 'password-mismatch':
+                            echo "<p class='wrong'>Error: Las contraseñas no coinciden.</p>";
+                            break;
+                        default:
+                            echo "<p class='wrong'>Error desconocido.</p>";
+                            break;
                     }
                 }
                 if (isset($_GET['new'])) {
@@ -61,6 +77,8 @@
             <input type="email" name="correo" placeholder="Correo Electrónico" class="inp_form" autocomplete="off">
             <input type="password" name="password" placeholder="Contraseña" class="inp_form">
             <input type="password" name="password_1" placeholder="Confirma tu Contraseña" class="inp_form">
+            <label for="date" class="a_form">Fecha de Nacimiento</label>
+            <input type="date" name="date" class="inp_form">
             <label for="city" class="a_form">Elije tu Localidad</label>
             <select name="city" id="city" class="inp_form">
                 <option value="1">San Martín de los Andes</option>

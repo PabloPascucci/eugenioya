@@ -1,4 +1,6 @@
 <?php 
+    // Iniciar sesión
+    session_start();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Recibimos el barrio
@@ -14,8 +16,22 @@
         $query = "UPDATE usuario SET barrio = '$zona' WHERE correo = '$correo_usuario'";
 
         if($conn->query($query) === TRUE) {
-            header("Location: ../iniciar.php?exist=2&nombre=$nombre_usuario");
-            exit();
+            // Extreamos el ID del usuario
+            $sql_pre_sesion = "SELECT id_usuario FROM usuario WHERE correo = ?";
+            $stmt_id = $conn->prepare($sql_pre_sesion);
+            $stmt_id->bind_param('s', $correo_usuario);
+            $stmt_id->execute();
+            $result_id = $stmt_id->get_result();
+            // Asociamos la ID a la Sessión
+            if ($result_id->num_rows === 1) {
+                $row_id = $result_id->fetch_assoc();
+                $id_usuario = $row_id['id_usuario'];
+                $_SESSION['user_loged_id'] = $id_usuario;
+
+                // Redirigimos al usuario a su perfil
+                header("Location: ../../perfiles/perfil.php");
+                exit;
+            }
         } else {
             echo "Error al registrar la zona: " . $conn->error;
         }
