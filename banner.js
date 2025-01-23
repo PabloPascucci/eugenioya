@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error fetching banners:', error);
-            document.getElementById('banner-container').innerHTML = '';
+            document.getElementById('banner-container').innerHTML = '<p>Error cargando los banners.</p>';
         });
 });
