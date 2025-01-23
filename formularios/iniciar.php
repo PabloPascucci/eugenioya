@@ -74,7 +74,7 @@
         <p class="p_footer_ubi" id="footer_ubi"></p>
         <p class="p_footer_legal" id="footer_legal"></p>
     </div>
-    <script src="../JS/version_1_7.js"></script>
+    <script src="../JS/version_1_8.js"></script>
     
 </body>
 </html>
