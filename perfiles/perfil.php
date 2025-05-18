@@ -139,11 +139,45 @@
                     echo "";
                 }
             ?>
+            <a href="catalogo/catalogo.php?id-profesional=<?php echo $user_id ?>" class="inp_sub_catalogo">Editá tu Catálogo aquí</a>
         </div>
     </header>
     
     <article class="art_perfil">
         <p class="about_user"><?php echo $about_user ?></p>
+    </article>
+
+    <article class="art_perfil">
+        <form action="procesar_peticion_presupuesto.php" class="form_presup">
+            <textarea name="" id="" placeholder="Escribe lo que necesites y recibe presupuestos" class="textA_presupuesto"></textarea>
+            <select name="rubro" id="rubro" class="inp_form">
+                <option value="1" id="ninguno">Eljie una Categoría</option>
+                <option value="2">Artistas</option>
+                <option value="3">Belleza y Estética</option>
+                <option value="24">Cadetería</option>
+                <option value="4">Carpintería</option>
+                <option value="5">Cerrajería</option>
+                <option value="6">Construcción y Reformas</option>
+                <option value="7">Cuidado del Hogar y Limpieza</option>
+                <option value="8">Cuidado Infantil y Acompañamiento Hospitalario</option>
+                <option value="9">Educación y Tutoría</option>
+                <option value="10">Electricistas</option>
+                <option value="11">Fotógrafo</option>
+                <option value="12">Gasistas</option>
+                <option value="13">Jardinería y Paisajismo</option>
+                <option value="22">Mascotas</option>
+                <option value="14">Plomería</option>
+                <option value="15">Reparación de Automóviles y Mecánica</option>
+                <option value="16">Reparación de Celulares y PC</option>
+                <option value="17">Reparación de Electrodomésticos</option>
+                <option value="23">Salud y Bienestar</option>
+                <option value="18">Servicios de Catering y Eventos</option>
+                <option value="19">Servicios de Diseño Gráfico y Web</option>
+                <option value="20">Servicios de Marketing y Publicidad</option>
+                <option value="21">Transporte y Mudanzas</option>
+            </select>
+            <input type="submit" value="Publicar Solicitud" class="inp_sub">
+        </form>
     </article>
 
     <section class="sec_publicaciones">

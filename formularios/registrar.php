@@ -50,7 +50,7 @@
                             echo "<p class='wrong'>Error: Todos los campos son obligatorios.</p>";
                             break;
                         case 'empty-phone':
-                            echo "<p class='wrong'>Error: El teléfono es obligatorio si no seleccionas la categoría 1.</p>";
+                            echo "<p class='wrong'>Error: El teléfono es obligatorio si sos un profesional.</p>";
                             break;
                         case 'empty-birthday':
                             echo "<p class='wrong'>Error: La fecha de nacimiento es obligatoria.</p>";
@@ -60,6 +60,9 @@
                             break;
                         case 'password-mismatch':
                             echo "<p class='wrong'>Error: Las contraseñas no coinciden.</p>";
+                            break;
+                        case 'empty-profesion':
+                            echo "<p class='wrong'>Error: Debes de poner tu profesión/Oficio.</p>";
                             break;
                         default:
                             echo "<p class='wrong'>Error desconocido.</p>";
@@ -87,6 +90,7 @@
             <label for="rubro" class="a_form">Elije una Categoría</label>
             <select name="rubro" id="rubro" class="inp_form">
                 <option value="1" id="ninguno">Ninguna</option>
+                <!-- <option value="25">Inicio de Clases</option> -->
                 <option value="2">Artistas</option>
                 <option value="3">Belleza y Estética</option>
                 <option value="24">Cadetería</option>

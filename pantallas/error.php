@@ -46,14 +46,14 @@
     
     <?php if(!$_SESSION){ ?>
         <div class="div_nav">
-            <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav">
+            <!-- <img src="../imagenes/logo/logo_nav.png" title="EugenioYa" class="logo_nav"> -->
             <nav class="nav">
                 <input type="checkbox" name="check" id="check">
                     <label for="check" class="checkbtn">
                         <i class="fa-solid fa-bars"></i>
                     </label>
                 <ul class="barr_nav">
-                    <img src="../imagenes/logo/logo_nav.png" title="Nombre" class="logo">
+                    <!-- <img src="../imagenes/logo/logo_nav.png" title="Nombre" class="logo"> -->
                     <a href="../index.html" class="a_nav">Inicio</a>
                     <a href="indice.php" class="a_nav_1">Oficios</a>
                     <a href="../formularios/iniciar.php" class="a_nav">Iniciar Sesión</a>
@@ -85,7 +85,6 @@
     <?php } ?>
 
     <div class="contendor">
-        <img src="../imagenes/error.png" title="Ha Ocurrido un error" class="img">
 
     <?php if($_SERVER['REQUEST_METHOD'] === 'GET') {
         $error = $_GET['e'];
@@ -94,6 +93,16 @@
         } else {
             $url = $_GET['url-redirect-user'];
         }
+        
+        if($error == 'db-connect-error' || $error == 'fatal-error-files' || $error == 'connect-server-error' || $error == 'rating') { ?>
+            <img src="../imagenes/error/500.png" title="Ha Ocurrido un error" class="img">
+        <?php }
+        if($error == 'wrong-image-type' || $error == 'rating-type' || $error == 'categoria-inexistente'){ ?>
+            <img src="../imagenes/error/404.png" title="Ha Ocurrido un error" class="img">
+        <?php }
+        if($error == 'pasword') { ?>
+            <img src="../imagenes/error/error.png" title="Ha Ocurrido un error" class="img">
+        <?php }
 
         // Pantallazos breves para el admin (sabe como reparar el error)
         if($error === 'banner-error-admin') { ?>
@@ -152,42 +161,34 @@
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'db-connect-error') { ?>
-            <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
-            <p class="p">Ha ocurrido un error, conectando con el servidor. Por favor, intente nuevamente.</p>
+            <p class="p">Ha ocurrido un error, conectando con el servidor. Por favor, intente nuevamente más tarde.</p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'wrong-image-type') { ?>
-            <p class="h1">Error 404 Not Found => <?php echo $error ?></p>
             <p class="p">El tipo de imagen que quieres introducir, no es el permitido. Los permitidos son los siguientes tipos de imagen: jpeg, jpg o png. Intenta cargar esos tipos de imágenes nuevamente.</p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'fatal-error-files') { ?>
-            <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error con el servidor y su manejo de ficheros, por favor comunicarlo a soporte a traves del correo <span>soporte@eugenioya.com</span>, adjuntar en el correo tu nombre de perfil.</p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'insert-error') { ?>
-            <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error en el manejo de inserción de datos. Intentalo más tarde, si el problema persiste, comunicarse con soporte a: <span>soporte@eugenioya.com</span></p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'connect-server-error') { ?>
-            <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error de conexión con el servidor. Intentalo más tarde, si el problema persiste, comunicarse con soporte a: <span>soporte@eugenioya.com</span></p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'rating-type') { ?>
-            <p class="h1">Error 404 Not Found=> <?php echo $error ?></p>
             <p class="p">El tipo de puntuación no es el permitido, trata de puntar de los rangos establecidos entre 1 (una) estrella y 5 (cinco) estrellas</p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'rating') { ?>
-            <p class="h1">Error 500 Internal Server Error=> <?php echo $error ?></p>
             <p class="p">Ha ocurrido un error al actualizar o insertar tu comentario y puntuación, por favor, intente más tarde. Si el error persiste comunicarlo a soporte a través del correo: <span>soporte@eugenioya.com</span></p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
         if($error === 'categoria-inexistente') { ?>
-            <p class="h1">Error 404 Not Found => <?php echo $error ?></p>
             <p class="p">No se ha encontrado la categoría que estás buscando, si el error persiste, por favor comunicarse con soporte al correo <b>soporte@eugenioya.com</b></p>
             <a href="<?php echo $url ?>" class="a_redirect">Clic aquí para volver atrás</a>
         <?php }
@@ -198,7 +199,7 @@
     <footer class="footer">
         <div class="div_footer">
             <article class="art_div_footer">
-                <img src="../imagenes/logo/logo_footer.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
+                <img src="../imagenes/logo/logo_1_7.png" alt="EugenioYa.com" title="EugenioYa" class="logo_footer">
             </article>
             <article class="art_div_footer">
                 <a href="../nosotros.html" class="a_footer">Sobre Eugenio</a>

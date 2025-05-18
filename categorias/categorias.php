@@ -79,6 +79,8 @@
             $categoria_definida = "Salud y Bienestar";
         }elseif($categoria == '24'){
             $categoria_definida = "Cadetería";
+        }elseif($categoria == '25'){
+            $categoria_definida = "Guias de Turismo";
         }else{
             header("Location: ../pantallas/error.php?e=categoria-inexistente&url-redirect-user=$url_redirect_categoria");
         }

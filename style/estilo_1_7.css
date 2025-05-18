@@ -12,6 +12,18 @@
     --a_footer_color: #ccc;
 }
 
+/* ===>>> Cateogoria especial <<<=== */
+.p_categoria_especial {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+    color: var(--footer_color);
+}
+
 /* ==>> Barra de navegación <<== */
 .logo {
     display: none;

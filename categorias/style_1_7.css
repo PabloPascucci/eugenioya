@@ -12,6 +12,10 @@
     --third_color: #444;
 }
 
+.bdy_especial {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/007/059/448/non_2x/panoramic-green-background-texture-blackboard-vector.jpg);
+}
+
 /* ==>> body del indice.html <<== */
 
  .div2_header_indice {

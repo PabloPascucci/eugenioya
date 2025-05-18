@@ -11,7 +11,7 @@ $confirm_password = isset($_POST['password_1']) ? $_POST['password_1'] : '';
 $birthday = isset($_POST['date']) ? $_POST['date'] : '';
 $localidad = $_POST['city'];
 $categoria = $_POST['rubro'];
-$profesion = isset($_POST['oficio']) ? $_POST['oficio'] : 'usuario';
+$profesion = isset($_POST['oficio']) ? $_POST['oficio'] : '';
 $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
 
 // Calcular la edad del usuario
@@ -30,6 +30,8 @@ $edad = date_diff(date_create($birthday), date_create($machine_date))->y;
     } elseif ($edad < 18) {
         header("Location: ../registrar.php?error=underage");
         exit();
+    } elseif ($categoria != "1" && empty($profesion)) {
+        header("Location: ../registrar.php?error=empty-profesion");
     } else {
 // Validar que la contraseña sea similar
         if ($password_user === $confirm_password) {

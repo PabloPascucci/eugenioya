@@ -131,6 +131,17 @@
     margin: 5px 0;
 }
 
+.inp_sub_catalogo {
+    padding: 5px;
+    border: none;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    color: #fff;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 .div_perfil {
     display: flex;
     flex-direction: column;
@@ -159,6 +170,7 @@
     font-weight: var(--font_weight);
     font-style: var(--font_style);
     color: green;
+    text-align: center;
 }
 
 .about_user {
@@ -167,6 +179,40 @@
     font-weight: var(--font_weight);
     font-style: var(--font_style);
     margin: 15px;
+}
+
+.form_presup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 312px;
+    margin: 10px 5px;
+    padding: 5px;
+    border: 1px solid var(--second_color);
+    border-radius: 5px;
+}
+
+.textA_presupuesto {
+    margin: 10px 0;
+    width: 310px;
+    height: 100px;
+    padding: 5px;
+    resize: none;
+    border: none;
+    border-bottom: 2px solid var(--footer_color);
+}
+
+.textA_presupuesto::placeholder {
+    color: var(--main_color);
+}
+
+.inp_form {
+    width: 310px;
+    margin: 10px 0;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid var(--footer_color);
+    outline: none;
 }
 
     /* ==>> perfiles.php -> sección de perfiles públicos <<== */
@@ -450,4 +496,129 @@
     font-family: var(--title_font);
     font-weight: 400;
     color: var(--footer_color);
+}
+
+    /* ==>> Catalogo <<== */
+
+.header_catalogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.img_perfil_catalogo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.p_catalogo {
+    font-size: 18px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    color: var(--footer_color);
+    margin: 5px 0;
+}
+
+.h1_catalogo {
+    font-size: 22px;
+    font-family: var(--title_font);
+    color: #000;
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+}
+
+.sec_catalogo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px auto;
+    height: 400px;
+    width: 70vw;
+}
+
+.art_catalogo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 5px;
+    border: 2px solid var(--footer_color);
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+
+.div_titulo_catalogo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.img_catalogo, .img_catalogo_pause {
+    max-width: 100%;
+    max-height: 90%;
+    object-fit: cover;
+}
+
+.des_catalogo, .des_catalogo_pause {
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-weight: var(--font_weight);
+    font-style: var(--font_style);
+    text-wrap: wrap;
+}
+
+.precio_catalogo, .precio_catalogo_pause {
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: var(--font_weight);
+    color: var(--footer_color);
+}
+
+.a_catalogo, .a_catalogo_delete {
+    font-size: 14px;
+    width: 115px;
+    padding: 2px;
+    margin: 5px 0;
+    background: linear-gradient(70deg, var(--footer_color), var(--main_color));
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.img_catalogo_pause {
+    filter: grayscale(100%);
+}
+
+.des_catalogo_pause {
+    color: var(--second_color);
+}
+
+.precio_catalogo_pause {
+    color: var(--second_color);
+}
+
+.a_catalogo_delete {
+    background: #f00;
+}
+
+.form_catalogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 10px;
+}
+
+.wrong {
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px 0;
+    font-size: 18px;
+    font-family: monospace;
+    color: #f00;
 }

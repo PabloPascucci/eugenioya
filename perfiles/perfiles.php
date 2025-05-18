@@ -33,6 +33,7 @@
             $telefono = isset($row_user['telefono']) ? $row_user['telefono'] : "";
         }
     }
+    $mensaje = urlencode("¡Hola, " . $user_name . "! Te encontré en EugenioYa.com y estoy interesado en tus servicios. ¿Podríamos conversar?");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,6 +168,13 @@
                         </div>";
                 }
             ?>
+            <?php
+                if($user_id != $id_usuario) {
+                    echo "<a href='catalogo/catalogo.php?id-profesional=$id_usuario' class='inp_sub_catalogo'>Mira mi Catálogo Aquí</a>";
+                }else {
+                    echo "<a href='catalogo/catalogo.php?id-profesional=$id_usuario' class='inp_sub_catalogo'>Edita tu Catálogo Aquí</a>";
+                }
+            ?>
         </div>
         
     </header>
@@ -175,7 +183,7 @@
         <?php if(!$_SESSION) { ?>
             <a href="../formularios/iniciar.php" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>
         <?php } elseif($user_id != $id_usuario) { ?>
-            <a href="https://wa.me/+54<?php echo $telefono ?>" class="mensaje_btn">Envíar Mensaje</a>
+            <a href="https://wa.me/+54<?php echo $telefono ?>?text=<?php echo $mensaje ?>" class="mensaje_btn">Envíar Mensaje</a>
         <?php } else { ?>
             <p class="comment_btn"></p>
         <?php } ?>
