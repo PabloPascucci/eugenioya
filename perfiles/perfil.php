@@ -147,7 +147,11 @@
         <p class="about_user"><?php echo $about_user ?></p>
     </article>
 
-    <article class="art_perfil">
+    <!-- -------------------------------
+     -- Proximamente esta herramienta --
+     ----------------------------------- -->
+     
+    <!-- <article class="art_perfil">
         <form action="procesar_peticion_presupuesto.php" class="form_presup">
             <textarea name="" id="" placeholder="Escribe lo que necesites y recibe presupuestos" class="textA_presupuesto"></textarea>
             <select name="rubro" id="rubro" class="inp_form">
@@ -178,7 +182,7 @@
             </select>
             <input type="submit" value="Publicar Solicitud" class="inp_sub">
         </form>
-    </article>
+    </article> -->
 
     <section class="sec_publicaciones">
     <?php
@@ -296,8 +300,7 @@
             <p class="p_footer_legal" id="footer_legal"></p>
         </div>
         <script src="../JS/version_1_8.js"></script>
-    </footer>
-    
+    </footer>    
     
 </body>
 </html>

@@ -33,6 +33,11 @@
             $telefono = isset($row_user['telefono']) ? $row_user['telefono'] : "";
         }
     }
+
+    // ========== Consulta a la tabla de catalogo
+    $sql_info_catalogo = "SELECT id_producto FROM catalogo WHERE id_usuario = '$id_usuario'";
+    $query_info_catalogo = mysqli_query($conn, $sql_info_catalogo);
+
     $mensaje = urlencode("¡Hola, " . $user_name . "! Te encontré en EugenioYa.com y estoy interesado en tus servicios. ¿Podríamos conversar?");
 ?>
 <!DOCTYPE html>
@@ -170,7 +175,11 @@
             ?>
             <?php
                 if($user_id != $id_usuario) {
-                    echo "<a href='catalogo/catalogo.php?id-profesional=$id_usuario' class='inp_sub_catalogo'>Mira mi Catálogo Aquí</a>";
+                    if ($query_info_catalogo->num_rows > 0) {
+                        echo "<a href='catalogo/catalogo.php?id-profesional=$id_usuario' class='inp_sub_catalogo'>Mira mi Catálogo Aquí</a>";
+                    } else {
+                        echo "";
+                    }
                 }else {
                     echo "<a href='catalogo/catalogo.php?id-profesional=$id_usuario' class='inp_sub_catalogo'>Edita tu Catálogo Aquí</a>";
                 }

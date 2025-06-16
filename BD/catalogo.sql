@@ -8,5 +8,6 @@ CREATE TABLE `catalogo` (
     `estado_producto` ENUM('activo', 'inactivo') DEFAULT 'activo',
     `imagen_1` VARCHAR(255) NULL,
     `imagen_2` VARCHAR(255) NULL,
+    `imagen_3` VARCHAR(255) NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

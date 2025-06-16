@@ -158,111 +158,154 @@
     </header>
 
     <section class="sec_catalogo">
-    <?php
-    // Conectar a la base de datos
-    require_once("../../server_.php");
+        <?php
+        // Conectar a la base de datos
+        require_once("../../server_.php");
 
-    $conn = mysqli_connect($server, $user, $password, $db_name);
+        $conn = mysqli_connect($server, $user, $password, $db_name);
 
-    // ========== Sanitizar el id_perfil para evitar inyecciones SQL
-    $id_perfil = mysqli_real_escape_string($conn, $id_perfil);
+        // ========== Sanitizar el id_perfil para evitar inyecciones SQL
+        $id_perfil = mysqli_real_escape_string($conn, $id_perfil);
 
-    // ========== Consulta a la BD
-    $sql_info_catalogo = "SELECT * FROM catalogo WHERE id_usuario = '$id_perfil'";
-    $query_info_catalogo = mysqli_query($conn, $sql_info_catalogo);
+        // ========== Consulta a la BD
+        $sql_info_catalogo = "SELECT * FROM catalogo WHERE id_usuario = '$id_perfil'";
+        $query_info_catalogo = mysqli_query($conn, $sql_info_catalogo);
 
-    // ========== Extraer datos
-    if($query_info_catalogo->num_rows > 0) {
-        while ($row_info_catalogo = mysqli_fetch_array($query_info_catalogo)) {
-            $id_producto = $row_info_catalogo['id_producto'];
-            $id_usuario = $row_info_catalogo['id_usuario'];
-            $nombre_producto = $row_info_catalogo['nombre_producto'];
-            $precio = $row_info_catalogo['precio'];
-            $estado = $row_info_catalogo['estado_producto'];
-            $ruta_img_1 = isset($row_info_catalogo['imagen_1']) ? $row_info_catalogo['imagen_1'] : NULL;
-            $ruta_img_2 = isset($row_info_catalogo['imagen_2']) ? $row_info_catalogo['imagen_2'] : NULL;
-            $ruta_img_2 = $row_info_catalogo['imagen_2'];
-            // ========== Mostrar información 
-            if($estado == "activo") { ?>
-                <article class="art_catalogo">
-                    <div class="div_titulo_catalogo">
-                        <?php if($ruta_img_1 != NULL){ ?>
-                            <img src="<?php echo $ruta_img_1; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo">
-                        <?php }else { ?>
-                            <img src="imagenes/no-photo.png" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo">
-                        <?php } if($ruta_img_2 != NULL){ ?>
-                            <img src="imagenes/<?php echo $id_usuario; ?>/<?php echo $ruta_img_2; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_publicacion">
-                        <?php } ?>
+        // ========== Extraer datos
+        if ($query_info_catalogo->num_rows > 0) {
+            while ($row_info_catalogo = mysqli_fetch_array($query_info_catalogo)) {
+                $id_producto = $row_info_catalogo['id_producto'];
+                $id_usuario = $row_info_catalogo['id_usuario'];
+                $nombre_producto = $row_info_catalogo['nombre_producto'];
+                $precio = $row_info_catalogo['precio'];
+                $estado = $row_info_catalogo['estado_producto'];
+                $ruta_img_1 = isset($row_info_catalogo['imagen_1']) ? $row_info_catalogo['imagen_1'] : NULL;
+                $ruta_img_2 = isset($row_info_catalogo['imagen_2']) ? $row_info_catalogo['imagen_2'] : NULL;
+                $ruta_img_3 = isset($row_info_catalogo['imagen_3']) ? $row_info_catalogo['imagen_3'] : NULL;
+
+                // ========== Mostrar información
+                if ($estado == "activo") { ?>
+                    <article class="art_catalogo">
+                        <div class="div_titulo_catalogo">
+                            <div class="carrusel" id="carrusel-<?php echo $id_producto; ?>">
+                            <?php
+                                $imagenes = [];
+
+                                if (!empty($ruta_img_1)) $imagenes[] = $ruta_img_1;
+                                if (!empty($ruta_img_2)) $imagenes[] = $ruta_img_2;
+                                if (!empty($ruta_img_3)) $imagenes[] = $ruta_img_3;
+
+
+                                if (empty($imagenes)) {
+                                    $imagenes[] = "imagenes/no-photo.png";
+                                }
+
+                                foreach ($imagenes as $index => $img) {
+                                    $activeClass = ($index === 0) ? 'active' : '';
+                                    echo '<div class="carrusel-slide ' . $activeClass . '" data-index="' . $index . '">
+                                            <img src="' . $img . '" class="carrusel-img">
+                                        </div>';
+                                }
+                            ?>
+                            <?php if (count($imagenes) > 1): ?>
+                                <button class="prev" onclick="moverCarrusel('<?php echo $id_producto; ?>', -1)">⟨</button>
+                                <button class="next" onclick="moverCarrusel('<?php echo $id_producto; ?>', 1)">⟩</button>
+                            <?php endif; ?>
+                        </div>
                     </div>
                     <div class="div_info">
                         <p class="des_catalogo"><?php echo $nombre_producto; ?></p>
                         <p class="precio_catalogo">$<?php echo $precio; ?></p>
-                        <?php if($user_id == $id_perfil) {
-                            echo "<a href='catalogo-config.php?action=1&product=$id_producto' class='a_catalogo'>Pausar producto</p></a>";
-                        } ?>
-                    </div>
-                </article>
-            <?php } 
-            if($estado == 'inactivo' && $user_id == $id_perfil) { ?>
-                <article class="art_catalogo">
-                    <div class="div_titulo_catalogo">
-                        <?php if($ruta_img_1 != NULL){ ?>
-                            <img src="<?php echo $ruta_img_1; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo_pause">
-                        <?php }else { ?>
-                            <img src="imagenes/no-photo.png" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo_pause">
-                        <?php } if($ruta_img_2 != NULL){ ?>
-                            <img src="imagenes/<?php echo $id_usuario; ?>/<?php echo $ruta_img_2; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_publicacion_pause">
-                        <?php } ?>
-                    </div>
-                    <div class="div_info">
-                        <p class="des_catalogo_pause"><?php echo $nombre_producto; ?></p>
-                        <p class="precio_catalogo_pause">$<?php echo $precio; ?></p>
-                        <?php if($user_id == $id_perfil) {
-                            echo "<a href='catalogo-config.php?action=2&product=$id_producto' class='a_catalogo'>Activar Producto</p></a>";
-                            echo "<a href='catalogo-config.php?action=3&product=$id_producto' class='a_catalogo_delete'>Eliminar Producto</p></a>";
-                        } ?>
+                        <?php 
+                        if(!$_SESSION) {
+                            echo '<a href="../../formularios/iniciar.php" class="mensaje_btn">Iniciar Sesión para Envíar Mensaje</a>';
+                        } else {
+                            if ($user_id == $id_perfil) {
+                                echo "<a href='catalogo-config.php?action=1&product=$id_producto' class='a_catalogo'>Pausar producto</a>";
+                            } 
+                            if ($user_id != $id_perfil) {
+                                $mensaje = "Hola " . $user_name . ", me llamó la atención este producto ''" . $nombre_producto . "'' de tu catálogo en EugenioYa y quería saber más." ?>
+                                <a href="https://wa.me/+54<?php echo $telefono ?>?text=<?php echo $mensaje ?>" class="mensaje_btn_catalogo" target="_blank"><img src="../../imagenes/logo_wpp.png" title="Ir al WhatsApp" class="img_wpp_catalogo">Consultar</a>
+                            <?php }
+                        }
+                        ?>
                     </div>
                 </article>
             <?php }
-         }
-    } 
-    if($user_id == $id_perfil && $query_info_catalogo->num_rows < 5) {
-        // ========== No hay productos y hay menos de 5 ========== 
-        ?>
-        <form action="catalogo-config.php" method="post" enctype="multipart/form-data" class="form_catalogo">
-        <h2 class="h1_form">¡Agrega un producto!</h2>
-            <?php 
-            // error:
-            if($_SERVER['REQUEST_METHOD'] == 'GET') {
-                if(isset($_GET['empty-input'])) {
-                    $error_input = htmlspecialchars($_GET['empty-input'], ENT_QUOTES, 'UTF-8');
-                    switch ($error_input) {
-                        case 'nombre-producto-error':
-                            echo "<p class='wrong'>Debes colocar un nombre a tu producto.</p>";
-                            break;
-                        case 'precio-producto-error':
-                            echo "<p class='wrong'>Debes colocar un precio a tu producto.</p>";
-                            break;
-                        case 'product-files-error':
-                            echo "<p class='wrong'>Debes colocar una imagen de tu producto.</p>";
-                            break;
-                        default:
-                            echo "<p class='wrong'>Error Desconocido, por favor comunicarlo a soporte a soporte@eugenioya.com o vía Instagram.</p>";
-                            break;
+            if ($estado == 'inactivo' && $user_id == $id_perfil) { ?>
+                <article class="art_catalogo">
+                <div class="div_titulo_catalogo">
+                    <?php if ($ruta_img_1 != NULL) { ?>
+                        <img src="<?php echo $ruta_img_1; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo_pause">
+                    <?php } else { ?>
+                        <img src="imagenes/no-photo.png" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_catalogo_pause">
+                    <?php }
+                    if ($ruta_img_2 != NULL) { ?>
+                        <img src="imagenes/<?php echo $id_usuario; ?>/<?php echo $ruta_img_2; ?>" alt="<?php echo $nombre_producto; ?>" title="<?php echo $nombre_producto ?>" class="img_publicacion_pause">
+                    <?php } ?>
+                </div>
+                <div class="div_info">
+                    <p class="des_catalogo_pause"><?php echo $nombre_producto; ?></p>
+                    <p class="precio_catalogo_pause">$<?php echo $precio; ?></p>
+                    <?php
+                    echo "<a href='catalogo-config.php?action=2&product=$id_producto' class='a_catalogo'>Activar Producto</a>";
+                    echo "<a href='catalogo-config.php?action=3&product=$id_producto' class='a_catalogo_delete'>Eliminar Producto</a>";
+                    ?>
+                </div>
+            </article>
+        <?php   }
+            }
+        }
+
+        if($user_id == $id_perfil && $query_info_catalogo->num_rows < 5) {
+            // ========== No hay productos y hay menos de 5 ========== 
+            ?>
+            <form action="catalogo-config.php" method="post" enctype="multipart/form-data" class="form_catalogo">
+                <h2 class="h1_form">Publicá tu servicio o producto</h2>
+                <p class="p_catalogo_subT">Podés incluir hasta 3 imágenes para mostrarlo mejor.</p>
+                <?php
+                // error:
+                if($_SERVER['REQUEST_METHOD'] == 'GET') {
+                    if(isset($_GET['empty-input'])) {
+                        $error_input = htmlspecialchars($_GET['empty-input'], ENT_QUOTES, 'UTF-8');
+                        switch ($error_input) {
+                            case 'nombre-producto-error':
+                                echo "<p class='wrong'>Debes colocar un nombre a tu producto.</p>";
+                                break;
+                            case 'precio-producto-error':
+                                echo "<p class='wrong'>Debes colocar un precio a tu producto.</p>";
+                                break;
+                            case 'product-files-error':
+                                echo "<p class='wrong'>Debes colocar una imagen de tu producto.</p>";
+                                break;
+                            default:
+                                echo "<p class='wrong'>Error Desconocido, por favor comunicarlo a soporte a soporte@eugenioya.com o vía Instagram.</p>";
+                                break;
+                        }
                     }
                 }
-            }
-            ?>
-            <input type="file" name="foto_producto" class="inp">
-            <input type="text" name="producto" placeholder="Nombre del Producto" class="inp" autocomplete="off" >
-            <input type="number" name="precio" placeholder="Precio" class="inp" autocomplete="off" >
-            <input type="submit" value="Cargar Producto" class="inp_sub">
-        </form>
-    <?php } 
-        // Liberar resultados y cerrar la conexión
-        mysqli_close($conn);
-        mysqli_free_result($query_info_catalogo);
-    ?>
+                ?>
+                <input type="file" name="foto_producto_1" class="inp">
+                <input type="file" name="foto_producto_2" class="inp">
+                <input type="file" name="foto_producto_3" class="inp">
+                <input type="text" name="producto" placeholder="Nombre del Producto" class="inp" autocomplete="off" >
+                <input type="number" name="precio" placeholder="Precio" class="inp" autocomplete="off" >
+                <input type="submit" value="Cargar Producto" class="inp_sub">
+            </form>
+        <?php
+        }
+        if ($user_id == $id_perfil && $query_info_catalogo->num_rows == 5) { ?>
+            <div class="header_catalogo">
+                <h1 class='h1_catalogo'>¡Tu catálogo está completo!</h1>
+                <p class="alert_catalogo">Actualmente podés publicar hasta 5 productos. Pronto habilitaremos nuevas herramientas para ampliar tus publicaciones.</p>
+            </div>
+    <?php
+        }
+            // Liberar resultados y cerrar la conexión
+            mysqli_close($conn);
+            mysqli_free_result($query_info_catalogo);
+        ?>
+        <script src="catalogo.js"></script>
     </section>
     
 </body>
