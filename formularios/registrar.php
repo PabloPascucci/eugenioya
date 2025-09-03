@@ -33,7 +33,8 @@
 <body>
 
     <header class="header_inicio">
-        <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img">
+        <!-- <img src="../imagenes/avatar/eugenio.png" title="EuGENIO" class="img"> -->
+        <img src="../imagenes/especial/invierno.png" title="EuGENIO" class="img">
         <h1 class="h1_inicio">EugenioYa</h1>
     </header>
 
@@ -135,7 +136,7 @@
         <p class="p_footer_ubi" id="footer_ubi"></p>
         <p class="p_footer_legal" id="footer_legal"></p>
     </div>
-    <script src="../JS/version_1_8.js"></script>
+    <script src="../JS/version_1_8_1.js"></script>
     
 </body>
 </html>

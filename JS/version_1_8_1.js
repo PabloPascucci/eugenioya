@@ -2,7 +2,7 @@
 
 let footer = document.getElementById('footer_legal');
 
-footer.textContent = "EugenioYa © 2024 | V 1.8 | Todos los Derechos Reservados";
+footer.textContent = "EugenioYa © 2025 | V 1.8.1 | Todos los Derechos Reservados";
 
 
 // Código para modificar la zona

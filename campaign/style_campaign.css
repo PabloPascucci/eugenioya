@@ -1,0 +1,226 @@
+/* =================================== */
+/* Este archivo contiene los estilos especificos para las landing Page de campañas */
+/* Los estilos para diferentes páginas estarán separados a menos que usen los mismo estilos entre si */
+/* ===================== */
+/* Creación de archivo: 19/6/2025 23:38h */
+/* Última modificación: 28/8/2025 00:46h */
+/* Versionado de la plataforma: 1.8.1 */
+/* Subido a Git Hub: / / */
+/* ===================== */
+
+/* =================================== */
+/* Estilos de Landing Page "landing-page-folleteria */
+/* =================================== */
+
+/* ==>> Variables <<== */
+:root {
+    --main_color: #007BFF;
+    --title_font: "Poetsen One", sans-serif;
+    --main_font: "Roboto", sans-serif;
+    --font_weight: 500;
+    --font_style: normal;
+    --second_color: #999;
+    --footer_color: #0056b3;
+    --a_footer_color: #ccc;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 123, 255, 1) 100%);
+}
+
+.genio_head {
+    width: 250px;
+}
+
+.sec_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.bold_text {
+    font-family: var(--title_font);
+    font-size: 26px;
+    font-style: var(--font_style);
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.blue_text {
+    font-family: var(--main_font);
+    font-size: 32px;
+    color: var(--main_color);
+    text-align: center;
+}
+
+.art {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.div_art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.div_art_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    margin: 40px 20px;
+}
+
+.icon_down_p {
+    font-family: var(--title_font);
+    font-size: 18px;
+    font-style: var(--font_style);
+    font-weight: 600;
+    text-align: center;
+}
+
+.icon_down_p_2 {
+    font-family: var(--title_font);
+    font-size: 16px;
+    font-style: var(--font_style);
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.register_button, .proffesional_button {
+    padding: 10px;
+    margin: 20px 0;
+    background-color: var(--main_color);
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: var(--main_font);
+    font-size: 20px;
+    font-weight: var(--font_weight);
+    border-radius: 15px;
+}
+
+.sec_profiles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    background-color: #699eb3;
+    padding: 5px;
+}
+
+.art_profiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.div_profile {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px 10px 10px;
+}
+
+.img_profile {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.user_name {
+    font-size: 20px;
+    font-family: var(--title_font);
+    color: #fff;
+    width: 155px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user_prof {
+    font-size: 14px;
+    font-family: var(--title_font);
+    font-style: var(--font_style);
+    font-weight: 600;
+    color: #000;
+    width: 155px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.a_usuario {
+    font-size: 16px;
+    font-family: var(--title_font);
+    font-style: var(--font_style);
+    font-weight: 600;
+    background-color: #fff;
+    padding: 3px;
+    color: #5b8b9e;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.a_index {
+    padding: 3px;
+    font-size: 16px;
+    font-family: var(--main_font);
+    font-style: var(--font_style);
+    font-weight: var(--font_weight);
+    color: #fff;
+    text-align: center;
+}
+
+.proffesional_button {
+    background-color: #699eb3;
+}
+
+.bold_text_2 {
+    font-family: var(--title_font);
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background: #007BFF;
+    background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.img_footer {
+    width: 100px;
+    margin: 0 20px 30px 20px;
+}
+
+.a_footer {
+    font-size: 12px;
+    font-family: var(--title_font);
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
+
+.p_footer_ubi_campaign, .p_footer_legal_campaign {
+    font-size: 12px;
+    font-family: var(--title_font);
+    font-style: var(--font_style);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
