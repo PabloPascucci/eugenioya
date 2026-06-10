@@ -2,21 +2,25 @@
         // Iniciamos Sesión
         session_start();
 
+        // Verificar que el usuario haya iniciado sesión
+        if (!isset($_SESSION['user_loged_id'])) {
+            header("Location: ../formularios/iniciar.php");
+            exit();
+        }
+
         // Traemos a través de session el id del usuario.
         $admin = $_SESSION['user_loged_id'];
-        if($admin !== 1) {
+
+        // Solo el administrador (id_usuario = 1) puede acceder al panel
+        if ((int)$admin !== 1) {
             header("Location: ../categorias/indice.php");
+            exit();
         }
-        
+
         // Conexión con la BD
         require_once("../server_.php");
 
         $conn = new mysqli($server, $user, $password, $db_name);
-
-        if(!$_SESSION){
-            header("Location: ../formularios/iniciar.php");
-            exit();
-        }
 
     ?>
 <!DOCTYPE html>
